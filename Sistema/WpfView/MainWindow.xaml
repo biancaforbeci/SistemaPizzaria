@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfView"
         mc:Ignorable="d"
-        Title="MainWindow" Height="430.673" Width="677.659" Background="{x:Null}" WindowStyle="ThreeDBorderWindow" ScrollViewer.VerticalScrollBarVisibility="Auto" WindowStartupLocation="CenterScreen" >
+        Title="MainWindow" Style="{StaticResource estiloJanela}" Background="{x:Null}" WindowStyle="ThreeDBorderWindow" ScrollViewer.VerticalScrollBarVisibility="Auto" WindowStartupLocation="CenterScreen" >
 
     <Grid Margin="0,0,-8,-2">
         <Grid.Background>
