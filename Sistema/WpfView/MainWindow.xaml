@@ -1,0 +1,41 @@
+﻿<Window x:Class="WpfView.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfView"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="430.673" Width="677.659" Background="{x:Null}" WindowStyle="ThreeDBorderWindow" ScrollViewer.VerticalScrollBarVisibility="Auto" WindowStartupLocation="CenterScreen" >
+
+    <Grid Margin="0,0,-8,-2">
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="#FF50A3DC" Offset="0.123"/>
+                <GradientStop Color="#FFB9BFAF" Offset="0.627"/>
+                <GradientStop Color="#FFB9BFAF" Offset="0.932"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*" ></ColumnDefinition>
+            <ColumnDefinition Width="2*" ></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="4*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Canvas HorizontalAlignment="Left" Height="358" VerticalAlignment="Top" Width="568" Grid.ColumnSpan="2" Grid.RowSpan="3" Margin="-11,-7,0,0">
+            <Image Height="206" Width="350" Source="Imagens/pizza.jpg" HorizontalAlignment="Left" Canvas.Left="78" Canvas.Top="142"/>
+            <Button x:Name="btnCadastrarCliente" Content="Novo Cliente" HorizontalAlignment="Left" VerticalAlignment="Top" Width="127" Height="32"  Click="btnCadastrarCliente_Click" Canvas.Left="471" Canvas.Top="142" FontSize="18"/>
+            <Button x:Name="btnEditarCliente" Content="Editar Cliente" HorizontalAlignment="Left" VerticalAlignment="Top" Width="127" Height="32" Canvas.Left="471" Canvas.Top="195" Click="btnEditarCliente_Click" FontSize="18"/>
+            <Button x:Name="btnRealizarPedido" Content="Fazer Pedido" HorizontalAlignment="Left" VerticalAlignment="Top" Width="127" Height="32" Canvas.Left="471" Canvas.Top="252" FontSize="18" Click="btnRealizarPedido_Click"/>
+            <Button x:Name="btnAreaADM" Content="Administrativo" HorizontalAlignment="Left" VerticalAlignment="Top" Width="127" Height="32" Canvas.Left="471" Canvas.Top="305" FontSize="18" Click="btnAreaADM_Click"/>
+            <Label Content="System Pizza" HorizontalAlignment="Left" Width="487" FontSize="72" VerticalAlignment="Center" Height="114" FontWeight="Bold" FontFamily="Swis721 BdOul BT" FontStyle="Italic" Canvas.Left="111" Canvas.Top="23"/>
+        </Canvas>
+
+
+
+
+    </Grid>
+</Window>

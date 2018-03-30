@@ -286,3 +286,11 @@ __pycache__/
 *.btm.cs
 *.odx.cs
 *.xsd.cs
+/Sistema/WpfView/FazerPedido.xaml.cs
+/Sistema/WpfView/FazerPedido.xaml
+/Sistema/WpfView/EditarCliente.xaml.cs
+/Sistema/WpfView/EditarCliente.xaml
+/Sistema/WpfView/CadastrarCliente.xaml
+/Sistema/WpfView/CadastrarCliente.xaml.cs
+/Sistema/WpfView/AreaAdministrativa.xaml
+/Sistema/WpfView/AreaAdministrativa.xaml.cs
