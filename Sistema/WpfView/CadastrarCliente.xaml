@@ -5,23 +5,56 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfView"
         mc:Ignorable="d"
-        Title="CadastrarCliente" Style="{StaticResource estiloJanela}">     
-    
-    <Grid Margin="0,0,2,3">
+        Title="CadastrarCliente" Style="{StaticResource estiloJanela}">
 
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*" ></ColumnDefinition>
-            <ColumnDefinition Width="auto" ></ColumnDefinition>
-        </Grid.ColumnDefinitions>
+    <Grid Margin="0,0,2,3" RenderTransformOrigin="0.508,0.567">
 
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
 
-        <Canvas HorizontalAlignment="Left" Height="285" Margin="10,10,0,0" VerticalAlignment="Top" Width="483">
-            <Canvas Height="19" Canvas.Left="36" Canvas.Top="25" Width="30"/>
-        </Canvas>
+        <Canvas HorizontalAlignment="Left" Height="377" Margin="10,10,0,0" VerticalAlignment="Top" Width="648"/>
+        <StackPanel Grid.Row="0" Margin="10,70,10,169">
+            <DockPanel>
+                <TextBlock Text="Nome" Width="100" FontSize="16" FontFamily="Arial" />
+                <TextBox x:Name="txtNome"/>
+            </DockPanel>
+            <DockPanel>
+                <TextBlock Text="CPF" Width="100" FontFamily="Arial" FontSize="16"/>
+                <TextBox x:Name="txtCPF"/>
+            </DockPanel>
+            <DockPanel>
+                <TextBlock Text="Telefone" Width="100" FontFamily="Arial" FontSize="16"/>
+                <TextBox x:Name="txtTelefone" />
+            </DockPanel>
+            <DockPanel>
+                <TextBlock Text="Rua" Width="100" FontFamily="Arial" FontSize="16" Height="18"/>
+                <TextBox x:Name="txtRua"/>
+            </DockPanel>
+            <DockPanel>
+                <TextBlock Text="Número" Width="100" FontFamily="Arial" FontSize="16" Height="18"/>
+                <TextBox x:Name="txtNumero"/>
+            </DockPanel>
+            <DockPanel>
+                <TextBlock Text="Bairro" Width="100" FontFamily="Arial" FontSize="16" Height="18"/>
+                <TextBox x:Name="txtBairro"/>
+            </DockPanel>
+            <DockPanel>
+                <TextBlock Text="Complemento" Width="100" FontFamily="Arial" FontSize="16" Height="18"/>
+                <TextBox x:Name="txtComplemento"/>
+            </DockPanel>
+            <DockPanel>
+                <TextBlock Text="Referência" Width="100" FontFamily="Arial" FontSize="16" Height="18"/>
+                <TextBox x:Name="txtReferencia"/>
+            </DockPanel>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Margin="10,233,-10,119" Grid.ColumnSpan="2">
+            <Button x:Name="btnSalvar" Content="Salvar"   Width="100" Height="30" FontFamily="Arial" FontSize="18" Click="btnSalvar_Click"/>
+            <Button x:Name="btnCancelar" Content="Cancelar" Width="100" Height="30" FontFamily="Arial" FontSize="18"/>
+        </StackPanel>
+        <Label Content="Cadastro Clientes " HorizontalAlignment="Center" Margin="164,22,0,0" Width="345" FontFamily="Arial Black" FontSize="24" VerticalAlignment="Top"/>
+        <Canvas/>
 
     </Grid>
 </Window>

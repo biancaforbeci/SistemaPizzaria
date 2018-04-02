@@ -24,23 +24,17 @@ namespace WpfView
         {
             InitializeComponent();
         }
-
-        private void btnEditarCliente_Click(object sender, RoutedEventArgs e)
-        {
-            EditarCliente ec = new EditarCliente();
-            ec.ShowDialog();
-        }
-
-        private void btnCadastrarCliente_Click(object sender, RoutedEventArgs e)
-        {
-            CadastrarCliente cl = new CadastrarCliente();
-            cl.ShowDialog();
-        }
-
+      
         private void btnRealizarPedido_Click(object sender, RoutedEventArgs e)
         {
-            FazerPedido fp = new FazerPedido();
-            fp.ShowDialog();
+            MessageBoxResult resposta = MessageBox.Show("Deseja procurar por telefone ?", "Busca de Cliente", MessageBoxButton.YesNo);
+
+            if (resposta == MessageBoxResult.Yes)
+            {
+                CadastrarCliente cl = new CadastrarCliente();
+                cl.ShowDialog();
+            }
+            // *****************************//
         }
 
         private void btnAreaADM_Click(object sender, RoutedEventArgs e)

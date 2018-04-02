@@ -7,6 +7,14 @@
         mc:Ignorable="d"
         Title="FazerPedido" Style="{StaticResource estiloJanela}">
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" ></ColumnDefinition>
+            <ColumnDefinition Width="auto" ></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <StackPanel HorizontalAlignment="Left" Height="100" Margin="130,81,0,0" VerticalAlignment="Top" Width="100"/>
+
+
+
+
     </Grid>
 </Window>

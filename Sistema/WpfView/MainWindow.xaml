@@ -27,10 +27,8 @@
         </Grid.RowDefinitions>
         <Canvas HorizontalAlignment="Left" Height="358" VerticalAlignment="Top" Width="568" Grid.ColumnSpan="2" Grid.RowSpan="3" Margin="-11,-7,0,0">
             <Image Height="206" Width="350" Source="Imagens/pizza.jpg" HorizontalAlignment="Left" Canvas.Left="78" Canvas.Top="142"/>
-            <Button x:Name="btnCadastrarCliente" Content="Novo Cliente" HorizontalAlignment="Left" VerticalAlignment="Top" Width="127" Height="32"  Click="btnCadastrarCliente_Click" Canvas.Left="471" Canvas.Top="142" FontSize="18"/>
-            <Button x:Name="btnEditarCliente" Content="Editar Cliente" HorizontalAlignment="Left" VerticalAlignment="Top" Width="127" Height="32" Canvas.Left="471" Canvas.Top="195" Click="btnEditarCliente_Click" FontSize="18"/>
-            <Button x:Name="btnRealizarPedido" Content="Fazer Pedido" HorizontalAlignment="Left" VerticalAlignment="Top" Width="127" Height="32" Canvas.Left="471" Canvas.Top="252" FontSize="18" Click="btnRealizarPedido_Click"/>
-            <Button x:Name="btnAreaADM" Content="Administrativo" HorizontalAlignment="Left" VerticalAlignment="Top" Width="127" Height="32" Canvas.Left="471" Canvas.Top="305" FontSize="18" Click="btnAreaADM_Click"/>
+            <Button x:Name="btnRealizarPedido" Content="Fazer Pedido" HorizontalAlignment="Left" VerticalAlignment="Top" Width="127" Height="32" Canvas.Left="485" Canvas.Top="182" FontSize="18" Click="btnRealizarPedido_Click"/>
+            <Button x:Name="btnAreaADM" Content="Administrativo" HorizontalAlignment="Left" VerticalAlignment="Top" Width="127" Height="32" Canvas.Left="485" Canvas.Top="261" FontSize="18" Click="btnAreaADM_Click"/>
             <Label Content="System Pizza" HorizontalAlignment="Left" Width="487" FontSize="72" VerticalAlignment="Center" Height="114" FontWeight="Bold" FontFamily="Swis721 BdOul BT" FontStyle="Italic" Canvas.Left="111" Canvas.Top="23"/>
         </Canvas>
 
