@@ -1,0 +1,24 @@
+﻿<Window x:Class="WpfView.ProcurarClientePorID"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfView"
+        mc:Ignorable="d"
+        Title="ProcurarClientePorID" Height="450" Width="800">
+    <Grid>
+        <DataGrid HorizontalAlignment="Left" Height="331" VerticalAlignment="Top" Width="772" Margin="10,10,0,0"/>
+        <Canvas HorizontalAlignment="Left" Height="63" Margin="10,346,0,0" VerticalAlignment="Top" Width="772">
+            <Canvas.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FF1D77D1" Offset="0.08"/>
+                    <GradientStop Color="#FFC6CCD3" Offset="0.633"/>
+                </LinearGradientBrush>
+            </Canvas.Background>
+            <Label Content="ID" Canvas.Left="218" Canvas.Top="10" RenderTransformOrigin="0.492,0.012" Width="37" FontFamily="Arial Black" FontSize="18"/>
+            <TextBox Height="30" Canvas.Left="331" TextWrapping="Wrap" Canvas.Top="11" Width="120"/>
+            <Button Content="Pesquisar" Canvas.Left="501" Canvas.Top="11" Width="96" FontFamily="Arial" FontSize="18" IsDefault="True" IsCancel="True"/>
+        </Canvas>
+
+    </Grid>
+</Window>

@@ -1,5 +1,4 @@
-﻿using Controllers;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,21 +15,13 @@ using System.Windows.Shapes;
 namespace WpfView
 {
     /// <summary>
-    /// Interaction logic for AreaAdministrativa.xaml
+    /// Interaction logic for ProcurarClientePorID.xaml
     /// </summary>
-    public partial class AreaAdministrativa : Window
+    public partial class ProcurarClientePorID : Window
     {
-        public AreaAdministrativa()
+        public ProcurarClientePorID()
         {
             InitializeComponent();
-        }
-
-        private void btnEnviarLogin_Click(object sender, RoutedEventArgs e)
-        {
-            AdministradorController ac = new AdministradorController();
-
-
-
         }
     }
 }

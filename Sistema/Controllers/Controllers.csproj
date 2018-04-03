@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdministradorController.cs" />
     <Compile Include="ClienteController.cs" />
     <Compile Include="EnderecoController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

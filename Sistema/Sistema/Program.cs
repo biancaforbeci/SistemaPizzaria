@@ -26,10 +26,10 @@ namespace Sistema
             Console.WriteLine();
             Console.WriteLine();
             Console.WriteLine("-------Menu Inicial-------------");
-            Console.WriteLine("1- Cadastro de novo cliente na pizzaria.");
-            Console.WriteLine("2- Editar cliente");
-            Console.WriteLine("3- Excluir cliente");
-            Console.WriteLine("4- Realizar Pedido");
+            Console.WriteLine("1- Cadastro de novo cliente na pizzaria.");  // Essa parte estará na parte de realização do pedido, caso não encontre cliente cadastrado.
+            Console.WriteLine("2- Editar cliente"); //Essa parte estará na parte de editar na realização do pedido, caso deseje arrumar algo depois que foi encontrado o cliente.
+            Console.WriteLine("3- Excluir cliente");//Essa parte estará somente na área administrativa, caso queira excluir definitivamente um cliente.
+            Console.WriteLine("4- Realizar Pedido"); 
             Console.WriteLine("5- Área Administrativa");
             Console.WriteLine("6- Sair");
 
@@ -291,8 +291,44 @@ namespace Sistema
 
         private static void FazerPedido()
         {
+            Console.WriteLine("Realizar busca por ID ? Digite 1 para sim, 2 para busca por telefone");
+            int i = int.Parse(Console.ReadLine());
+
+            if (i==1)
+            {
+                PesquisaCliente();
+            }
+                PesquisaPorTelefone();
+        }
+
+        private static void PesquisaCliente()
+        {
+            ClienteController cc = new ClienteController();
+            ListarTodosClientes();
+
+            Console.WriteLine();
+            Console.WriteLine("Digite o ID de busca: ");
+            int id = int.Parse(Console.ReadLine());
+            Cliente c = cc.PesquisarPorIDCliente(id);
+
+            InformacoesCliente(c);
+
+            Console.WriteLine("Deseja alterar algo ? Digite 1 para sim e 2 para não");
+            int alter = int.Parse(Console.ReadLine());
+
+            if (alter.Equals(1))
+            {
+                ArrumarCadastro(c.PessoaID);
+            }
+            Console.WriteLine("=====================Área de Pedido===================");
 
         }
+
+        private static void PesquisaPorTelefone()
+        {
+
+        }
+
 
         private static void AreaADM()
         {

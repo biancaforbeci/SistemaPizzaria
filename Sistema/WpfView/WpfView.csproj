@@ -101,10 +101,17 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="ProcurarClientePorID.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ProcurarCliente.xaml.cs">
       <DependentUpon>ProcurarCliente.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ProcurarClientePorID.xaml.cs">
+      <DependentUpon>ProcurarClientePorID.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
@@ -133,6 +140,12 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Imagens\pizza.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Controllers\Controllers.csproj">
+      <Project>{13a617c9-e9dc-4640-a8ed-fda5551ff85a}</Project>
+      <Name>Controllers</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
