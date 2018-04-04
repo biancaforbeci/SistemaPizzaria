@@ -12,7 +12,7 @@
             <TextBlock/>
             <TextBox x:Name="txtNome" Width="194" Canvas.Left="135" Canvas.Top="9" Height="29" />
             <DataGrid Height="316" Canvas.Left="13" Canvas.Top="54" Width="627"/>
-            <Button Content="Procurar" Canvas.Left="360" Canvas.Top="12" Width="121" Height="26" RenderTransformOrigin="0.506,0.159"/>
+            <Button Content="Procurar" Canvas.Left="360" Canvas.Top="12" Width="121" Height="26" RenderTransformOrigin="0.506,0.159" Click="Button_Click"/>
             <Canvas Height="49" Canvas.Left="18" Width="622"/>
         </Canvas>
 

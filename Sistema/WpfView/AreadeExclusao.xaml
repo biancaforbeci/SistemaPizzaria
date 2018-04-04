@@ -1,0 +1,15 @@
+﻿<Window x:Class="WpfView.AreadeExclusao"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfView"
+        mc:Ignorable="d"
+        Title="AreadeExclusao"  Style="{StaticResource estiloJanela}">
+    <Grid>
+        <CheckBox x:Name="CheckCliente" Content="Excluir Cliente&#xD;&#xA;" HorizontalAlignment="Left" Margin="55,26,0,0" VerticalAlignment="Top" Height="15"/>
+        <CheckBox x:Name="CheckPizza" Content="Excluir Pizza" HorizontalAlignment="Left" Margin="196,26,0,0" VerticalAlignment="Top"/>
+        <CheckBox x:Name="checkBebida" Content="Excluir Bebida" HorizontalAlignment="Left" Margin="320,26,0,0" VerticalAlignment="Top"/>
+
+    </Grid>
+</Window>

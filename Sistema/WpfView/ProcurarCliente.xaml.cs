@@ -26,9 +26,12 @@ namespace WpfView
 
         public void ListaGrid()
         {
-            string strSQL = "SELECT Nome, CPF, Telefone FROM Clientes ";
+
         }
 
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
 
+        }
     }
 }

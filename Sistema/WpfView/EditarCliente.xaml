@@ -43,7 +43,7 @@
             </DockPanel>
         </StackPanel>
         <StackPanel Orientation="Horizontal" Margin="10,233,-10,119" Grid.ColumnSpan="2">
-            <Button x:Name="btnSalvar" Content="Salvar"   Width="100" Height="30" FontFamily="Arial" FontSize="18" Click="btnSalvar_Click"/>
+            <Button x:Name="btnEditar" Content="Editar"   Width="100" Height="30" FontFamily="Arial" FontSize="18" Click="btnEditar_Click"/>
             <Button x:Name="btnCancelar" Content="Cancelar" Width="100" Height="30" FontFamily="Arial" FontSize="18"/>
         </StackPanel>
         <Label Content="Editar Clientes " HorizontalAlignment="Center" Margin="164,22,0,0" Width="345" FontFamily="Arial Black" FontSize="24" VerticalAlignment="Top"/>

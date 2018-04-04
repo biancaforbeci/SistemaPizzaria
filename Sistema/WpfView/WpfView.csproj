@@ -61,6 +61,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="AreaAdmInterno.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="AreadeExclusao.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="CadastrarCliente.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -83,6 +91,12 @@
     </Compile>
     <Compile Include="AreaAdministrativa.xaml.cs">
       <DependentUpon>AreaAdministrativa.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AreaAdmInterno.xaml.cs">
+      <DependentUpon>AreaAdmInterno.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="AreadeExclusao.xaml.cs">
+      <DependentUpon>AreadeExclusao.xaml</DependentUpon>
     </Compile>
     <Compile Include="CadastrarCliente.xaml.cs">
       <DependentUpon>CadastrarCliente.xaml</DependentUpon>
@@ -146,6 +160,12 @@
       <Project>{13a617c9-e9dc-4640-a8ed-fda5551ff85a}</Project>
       <Name>Controllers</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagens\030418134103_128.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Imagens\password_userpassword_9564.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

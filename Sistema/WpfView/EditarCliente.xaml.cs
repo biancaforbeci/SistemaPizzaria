@@ -23,5 +23,10 @@ namespace WpfView
         {
             InitializeComponent();
         }
+
+        private void btnEditar_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

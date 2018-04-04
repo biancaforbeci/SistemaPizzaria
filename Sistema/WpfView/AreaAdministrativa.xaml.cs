@@ -29,7 +29,17 @@ namespace WpfView
         {
             AdministradorController ac = new AdministradorController();
 
+            bool resp = ac.Permissao(txtLogin.Text, txtSenha.Text);
 
+            if (resp == true)
+            {
+                AreadeExclusao ae = new AreadeExclusao();
+                ae.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Erro !", "Erro de login", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+            }
 
         }
     }

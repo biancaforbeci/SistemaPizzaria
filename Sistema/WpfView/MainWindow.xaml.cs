@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,14 +26,14 @@ namespace WpfView
         {
             InitializeComponent();
         }
-      
+
         private void btnRealizarPedido_Click(object sender, RoutedEventArgs e)
         {
             MessageBoxResult resposta = MessageBox.Show("Deseja procurar por telefone ?", "Busca de Cliente", MessageBoxButton.YesNo);
 
             if (resposta == MessageBoxResult.Yes)
             {
-                CadastrarCliente cl = new CadastrarCliente();
+                ProcurarClientePorID cl = new ProcurarClientePorID();
                 cl.ShowDialog();
             }
             // *****************************//
