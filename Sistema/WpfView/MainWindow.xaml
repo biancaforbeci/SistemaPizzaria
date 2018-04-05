@@ -28,8 +28,22 @@
 
         <Canvas HorizontalAlignment="Left" Height="358" VerticalAlignment="Top" Width="568" Grid.ColumnSpan="2" Grid.RowSpan="3" Margin="-11,-7,0,0">
             <Image Height="206" Width="350" Source="Imagens/pizza.jpg" HorizontalAlignment="Left" Canvas.Left="78" Canvas.Top="142"/>
-            <Button x:Name="btnRealizarPedido" Content="Fazer Pedido" HorizontalAlignment="Left" VerticalAlignment="Top" Width="127" Height="32" Canvas.Left="485" Canvas.Top="182" FontSize="18" Click="btnRealizarPedido_Click"/>
-            <Button x:Name="btnAreaADM" Content="Administrativo" HorizontalAlignment="Left" VerticalAlignment="Top" Width="127" Height="32" Canvas.Left="485" Canvas.Top="261" FontSize="18" Click="btnAreaADM_Click"/>
+            <Button x:Name="btnRealizarPedido" Content="Fazer Pedido" HorizontalAlignment="Left" VerticalAlignment="Top" Width="179" Height="49" Canvas.Left="433" Canvas.Top="182" FontSize="18" Click="btnRealizarPedido_Click">
+                <Button.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#FF577DE0" Offset="0"/>
+                        <GradientStop Color="#FFAEBEEA" Offset="1"/>
+                    </LinearGradientBrush>
+                </Button.Background>
+            </Button>
+            <Button x:Name="btnAreaADM" Content="Administrativo" HorizontalAlignment="Left" VerticalAlignment="Top" Width="179" Height="46" Canvas.Left="433" Canvas.Top="261" FontSize="18" Click="btnAreaADM_Click" >
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FF577DE0" Offset="0"/>
+                    <GradientStop Color="#FFAEBEEA" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
+            </Button>
             <Label Content="System Pizza" HorizontalAlignment="Left" Width="487" FontSize="72" VerticalAlignment="Center" Height="114" FontWeight="Bold" FontFamily="Swis721 BdOul BT" FontStyle="Italic" Canvas.Left="125" Canvas.Top="28"/>
         </Canvas>
 

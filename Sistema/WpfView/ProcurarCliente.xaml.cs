@@ -33,5 +33,11 @@ namespace WpfView
         {
 
         }
+
+        private void ProcuraID(object sender, RoutedEventArgs e)
+        {
+            ProcurarClientePorID pID = new ProcurarClientePorID();
+            pID.ShowDialog();
+        }
     }
 }

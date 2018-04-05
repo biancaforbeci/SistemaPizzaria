@@ -7,6 +7,33 @@
         mc:Ignorable="d"
         Title="AreaAdmInterno"  Style="{StaticResource estiloJanela}">
     <Grid>
-        
+        <Canvas HorizontalAlignment="Left" Height="108" Margin="10,0,0,0" VerticalAlignment="Top" Width="650">
+            <DockPanel Canvas.Left="10" Canvas.Top="10">
+                <Button x:Name="btnCadastrarPizzas" Content="Cadastrar Produtos" Width="173" Height="70" RenderTransformOrigin="0.487,0.143" FontFamily="Arial Black" FontSize="16" Margin="0,4">
+                    <Button.Background>
+                        <ImageBrush ImageSource="Imagens/Pizza-icon_30282.png" Opacity="0.5" Stretch="Uniform"/>
+                    </Button.Background>
+                </Button>
+                <Button x:Name="btnExcluirProdutos"  Content="Excluir Produtos" Width="152" Height="70" Margin="0,4" FontFamily="Arial Black" FontSize="16">
+                    <Button.Background>
+                        <ImageBrush ImageSource="Imagens/delete_unapprove_discard_remove_x_red_icon-icons.com_55984.png" Opacity="0.5" Stretch="Uniform"/>
+                    </Button.Background>
+
+                </Button>
+                <Button x:Name="ExcluirCliente" Content="Excluir Cliente" Width="138" Height="70" Margin="0,4" FontFamily="Arial Black" FontSize="16">
+                    <Button.Background>
+                        <ImageBrush ImageSource="Imagens/delete_delete_deleteusers_delete_male_user_maleclient_2348.png" Stretch="Uniform" Opacity="0.5"/>
+                    </Button.Background>
+                </Button>
+
+                <Button x:Name="ExcluirProdutos" Content="Editar Produtos" Width="148" Height="70" Margin="0,4" FontFamily="Arial Black" FontSize="16" >
+                    <Button.Background>
+                        <ImageBrush ImageSource="Imagens/menu_editconfig_men_9554.png" Stretch="Uniform" Opacity="0.5"/>
+                    </Button.Background>
+
+                </Button>
+            </DockPanel>
+        </Canvas>
+
     </Grid>
 </Window>

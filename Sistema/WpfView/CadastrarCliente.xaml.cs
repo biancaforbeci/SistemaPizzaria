@@ -8,6 +8,7 @@ using System.Data.SqlClient;
 
 using System.Configuration;
 using Controllers;
+using System.Text.RegularExpressions;
 
 namespace WpfView
 {
@@ -25,10 +26,23 @@ namespace WpfView
 
         private void btnSalvar_Click(object sender, RoutedEventArgs e)
         {
+            string caracter = txtNumero.Text.Substring(0, 1);
+            string verifica = "^[0-9]";
+
+            if (Regex.IsMatch(caracter, verifica))
+            {
+                MessageBox.Show("É número.");
+            }
+            else
+            {
+                MessageBox.Show("Erro ! Tem letra");
+            }
+
+
             ClienteController cc = new ClienteController();
-            cc.SalvarCliente(txtNome.Text, txtCPF.Text, txtTelefone.Text);
+            cc.SalvarCliente(txtNome.Text, txtCPF.Text.Trim(), txtTelefone.Text.Trim());
             EnderecoController ee = new EnderecoController();
-            ee.SalvarEndereco(txtRua.Text,txtNumero.Text,txtBairro.Text,txtComplemento.Text,txtReferencia.Text);
+            ee.SalvarEndereco(txtRua.Text,txtNumero.Text.Trim(), txtBairro.Text,txtComplemento.Text,txtReferencia.Text);
 
         }   
     }

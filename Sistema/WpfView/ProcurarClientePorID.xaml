@@ -18,7 +18,7 @@
             <TextBox Height="30" Canvas.Left="331" TextWrapping="Wrap" Canvas.Top="11" Width="120"/>
             <Button Content="Pesquisar" Canvas.Left="501" Canvas.Top="11" Width="96" FontFamily="Arial" FontSize="18" IsDefault="True" IsCancel="True"/>
         </Canvas>
-        <Grid x:Name="GridMostrar" HorizontalAlignment="Left" Height="317" Margin="23,10,0,0" VerticalAlignment="Top" Width="741" ContextMenuOpening="GridMostrar_ContextMenuOpening"/>
+        <DataGrid HorizontalAlignment="Left" Height="331" Margin="10,10,0,0" VerticalAlignment="Top" Width="772"/>
 
     </Grid>
 </Window>

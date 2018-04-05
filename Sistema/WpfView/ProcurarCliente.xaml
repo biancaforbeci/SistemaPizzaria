@@ -12,8 +12,8 @@
             <TextBlock/>
             <TextBox x:Name="txtNome" Width="194" Canvas.Left="135" Canvas.Top="9" Height="29" />
             <DataGrid Height="316" Canvas.Left="13" Canvas.Top="54" Width="627"/>
-            <Button Content="Procurar" Canvas.Left="360" Canvas.Top="12" Width="121" Height="26" RenderTransformOrigin="0.506,0.159" Click="Button_Click"/>
-            <Canvas Height="49" Canvas.Left="18" Width="622"/>
+            <Button x:Name="btnProcura" Content="Procurar"  Width="121" Height="26" Click="Button_Click" Canvas.Left="370" Canvas.Top="12"/>
+            <Button x:Name="btnProcuraID" Content="Procurar por ID" Width="121" Height="26" Canvas.Left="519" Canvas.Top="12" Click="ProcuraID" />
         </Canvas>
 
     </Grid>

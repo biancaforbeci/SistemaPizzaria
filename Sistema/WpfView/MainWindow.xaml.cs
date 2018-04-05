@@ -28,14 +28,10 @@ namespace WpfView
         }
 
         private void btnRealizarPedido_Click(object sender, RoutedEventArgs e)
-        {
-            MessageBoxResult resposta = MessageBox.Show("Deseja procurar por telefone ?", "Busca de Cliente", MessageBoxButton.YesNo);
-
-            if (resposta == MessageBoxResult.Yes)
-            {
-                ProcurarClientePorID cl = new ProcurarClientePorID();
+        {         
+                ProcurarCliente cl = new ProcurarCliente();
                 cl.ShowDialog();
-            }
+            
             // *****************************//
         }
 
