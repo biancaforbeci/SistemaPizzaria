@@ -1,0 +1,22 @@
+﻿<Window x:Class="WpfView.AreaExclusao"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfView"
+        mc:Ignorable="d"
+        Title="AreaExclusao" Style="{StaticResource estiloJanela}">
+    <Grid>
+        <Canvas HorizontalAlignment="Left" Height="380" Margin="10,10,0,0" VerticalAlignment="Top" Width="650">
+            <CheckBox x:Name="CheckPizza" Content="Pizza" Canvas.Left="30" Canvas.Top="10" FontFamily="Arial" FontSize="22" Checked="CheckPizza_Checked" />
+            <CheckBox x:Name="CheckBebiba" Content="Bebida" Canvas.Left="124" Canvas.Top="10" FontFamily="Arial" FontSize="22" Checked="CheckBebiba_Checked"/>
+            <CheckBox x:Name="CheckCliente" Content="Cliente" Canvas.Left="218" Canvas.Top="13" FontFamily="Arial" FontSize="22" Checked="CheckCliente_Checked"/>
+            <DataGrid x:Name="GridMostrar" Height="247" Canvas.Left="30" Canvas.Top="61" Width="590"/>
+            <Button x:Name="btnListar" Content="Listar" Canvas.Left="336" Canvas.Top="12" Width="154" FontFamily="Arial" FontSize="22" Click="btnListar_Click"/>
+            <Button x:Name="btnExcluir" Content="Excluir" Canvas.Left="53" Canvas.Top="328" Width="127" Height="28" FontFamily="Arial" FontSize="22" Click="btnExcluir_Click"/>
+            <Button x:Name="btnVoltar" Content="Voltar" Canvas.Left="484" Canvas.Top="328" Width="119" Height="28" FontFamily="Arial" FontSize="22" Click="btnVoltar_Click"/>
+            <Button x:Name="btnAtualizar" Content="Atualizar" Canvas.Left="270" Canvas.Top="328" Width="132" Height="28" FontFamily="Arial" FontSize="22"/>
+        </Canvas>
+
+    </Grid>
+</Window>

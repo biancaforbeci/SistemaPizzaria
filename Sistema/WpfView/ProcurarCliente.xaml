@@ -8,12 +8,13 @@
         Title="ProcurarCliente" Style="{StaticResource estiloJanela}">
     <Grid>
         <Canvas HorizontalAlignment="Left" Height="380" Margin="10,10,0,0" VerticalAlignment="Top" Width="650">
-            <TextBlock Text="Telefone" Width="68" FontSize="16" FontFamily="Arial" Canvas.Left="45" Canvas.Top="20"/>
+            <TextBlock Text="Telefone" Width="93" FontSize="22" FontFamily="Arial" Canvas.Top="13" Canvas.Left="10"/>
             <TextBlock/>
-            <TextBox x:Name="txtNome" Width="194" Canvas.Left="135" Canvas.Top="9" Height="29" />
-            <DataGrid Height="316" Canvas.Left="13" Canvas.Top="54" Width="627"/>
-            <Button x:Name="btnProcura" Content="Procurar"  Width="121" Height="26" Click="Button_Click" Canvas.Left="370" Canvas.Top="12"/>
-            <Button x:Name="btnProcuraID" Content="Procurar por ID" Width="121" Height="26" Canvas.Left="519" Canvas.Top="12" Click="ProcuraID" />
+            <TextBox x:Name="txtTelefone" Width="182" Canvas.Left="119" Canvas.Top="13" Height="29" />
+            <DataGrid x:Name="GridMostrar" Height="252" Canvas.Left="13" Canvas.Top="54" Width="627"/>
+            <Button x:Name="btnProcura" Content="Procurar"  Width="106" Height="26" Canvas.Left="318" Canvas.Top="13" FontFamily="Arial" FontSize="22" Click="btnProcura_Click"/>
+            <Button x:Name="btnProcuraID" Content="Procurar por ID" Width="164" Height="26" Canvas.Left="453" Canvas.Top="13" Click="ProcuraID" RenderTransformOrigin="0.703,0.836" FontFamily="Arial" FontSize="22" />
+            <Button x:Name="btnVoltar" Content="Voltar" Canvas.Left="522" Canvas.Top="327" Width="75" RenderTransformOrigin="0.899,0.378" Height="43" FontFamily="Arial" FontSize="22" Click="btnVoltar_Click"/>
         </Canvas>
 
     </Grid>

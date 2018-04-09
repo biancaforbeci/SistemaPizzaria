@@ -29,17 +29,21 @@ namespace Controllers
                 comando.Parameters.Add(new SqlParameter("@Complemento", txtComplemento));
                 comando.Parameters.Add(new SqlParameter("@Referencia", txtReferencia));
 
+
                 conn.Open();
 
                 comando.ExecuteNonQuery();
+
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message.ToString());
+                                
             }
             finally
             {
-                conn.Close();
+               conn.Close();
+               
             }
 
         }

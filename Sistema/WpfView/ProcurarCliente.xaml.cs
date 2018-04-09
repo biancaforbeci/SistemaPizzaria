@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Controllers;
+using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -29,15 +31,40 @@ namespace WpfView
 
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
+        
         private void ProcuraID(object sender, RoutedEventArgs e)
         {
             ProcurarClientePorID pID = new ProcurarClientePorID();
+            this.Close();
             pID.ShowDialog();
+        }
+
+        private void btnVoltar_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow m = new MainWindow();
+            this.Close();
+            m.ShowDialog();
+        }
+
+        private void btnProcura_Click(object sender, RoutedEventArgs e)
+        {
+            ClienteController cc = new ClienteController();
+            DataTable Dt = cc.ProcurarTelefone(txtTelefone.Text.Trim());
+
+            if (Dt.Rows.Count==0)
+            {
+               MessageBoxResult result =MessageBox.Show("Telefone não cadastrado ! Deseja cadastrar cliente ?", "Cliente não encontrado", MessageBoxButton.YesNo, MessageBoxImage.Error);
+                if (result==MessageBoxResult.Yes)
+                {
+                    CadastrarCliente ccli = new CadastrarCliente();
+                    this.Close();
+                    ccli.ShowDialog();
+                }
+            }
+            else
+            {
+                GridMostrar.ItemsSource = Dt.DefaultView;
+            }
         }
     }
 }

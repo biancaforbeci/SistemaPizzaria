@@ -94,7 +94,7 @@ namespace Sistema
             Endereco end = CadastrarEndereco();
             c.EnderecoID =end.EnderecoID;
 
-            cc.SalvarCliente(c);
+           // cc.SalvarCliente(c);
             return c;
         }
 
@@ -118,7 +118,7 @@ namespace Sistema
             Console.WriteLine("Digite uma referência: ");
             e.Referencia = Console.ReadLine();
 
-            ec.SalvarEndereco(e);
+           // ec.SalvarEndereco(e);
 
             return e;
         }
@@ -137,7 +137,7 @@ namespace Sistema
         {
             EnderecoController ec = new EnderecoController();
 
-            Endereco e = ec.PesquisarPorIDEndereco(id);
+        //    Endereco e = ec.PesquisarPorIDEndereco(id);
 
             Console.WriteLine("Rua: " + e.Rua);
             Console.WriteLine("Número: " + e.Numero);

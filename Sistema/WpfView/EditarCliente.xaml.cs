@@ -28,5 +28,12 @@ namespace WpfView
         {
 
         }
+
+        private void btnVoltar_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow m = new MainWindow();
+            this.Close();
+            m.ShowDialog();
+        }
     }
 }

@@ -29,7 +29,5 @@
             <Image Grid.Column="2" HorizontalAlignment="Left" Height="80" Grid.Row="1" VerticalAlignment="Top" Width="100" Source="Imagens/030418134103_128.png" Canvas.Left="111" Canvas.Top="95"/>
             <Image Grid.Column="2" HorizontalAlignment="Left" Height="80" Grid.Row="1" VerticalAlignment="Top" Width="100" Source="Imagens/password_userpassword_9564.png" Grid.RowSpan="2" Canvas.Left="111" Canvas.Top="208"/>
         </Canvas>
-
-
     </Grid>
 </Window>

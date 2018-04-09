@@ -29,16 +29,38 @@ namespace WpfView
 
         private void btnRealizarPedido_Click(object sender, RoutedEventArgs e)
         {         
-                ProcurarCliente cl = new ProcurarCliente();
+                ProcurarCliente  cl = new ProcurarCliente();
                 cl.ShowDialog();
             
             // *****************************//
         }
 
-        private void btnAreaADM_Click(object sender, RoutedEventArgs e)
+        private void btnCadastrar_Click(object sender, RoutedEventArgs e)
         {
-            AreaAdministrativa aa = new AreaAdministrativa();
-            aa.ShowDialog();
+            CadastrarCliente cc = new CadastrarCliente();
+            this.Close();
+            cc.ShowDialog();
+        }
+
+        private void ItemPizzas_Click(object sender, RoutedEventArgs e)
+        {
+            CadastroPizzas cp = new CadastroPizzas();
+            this.Close();
+            cp.ShowDialog();
+        }
+
+        private void ItemBebibas_Click(object sender, RoutedEventArgs e)
+        {
+            Bebidas b = new Bebidas();
+            this.Close();
+            b.ShowDialog();
+        }
+
+        private void Exclusao_Click(object sender, RoutedEventArgs e)
+        {
+            AreaAdministrativa ad = new AreaAdministrativa();
+            this.Close();
+            ad.ShowDialog();
         }
     }
 }

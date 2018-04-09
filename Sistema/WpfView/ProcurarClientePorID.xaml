@@ -7,18 +7,31 @@
         mc:Ignorable="d"
         Title="ProcurarClientePorID" Height="450" Width="800">
     <Grid>
-        <Canvas HorizontalAlignment="Left" Height="63" Margin="10,346,0,0" VerticalAlignment="Top" Width="772">
+        <Canvas HorizontalAlignment="Left" Height="384" Margin="10,10,0,0" VerticalAlignment="Top" Width="325">
             <Canvas.Background>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                     <GradientStop Color="#FF1D77D1" Offset="0.08"/>
                     <GradientStop Color="#FFC6CCD3" Offset="0.633"/>
                 </LinearGradientBrush>
             </Canvas.Background>
-            <Label Content="ID" Canvas.Left="218" Canvas.Top="10" RenderTransformOrigin="0.492,0.012" Width="37" FontFamily="Arial Black" FontSize="18"/>
-            <TextBox Height="30" Canvas.Left="331" TextWrapping="Wrap" Canvas.Top="11" Width="120"/>
-            <Button Content="Pesquisar" Canvas.Left="501" Canvas.Top="11" Width="96" FontFamily="Arial" FontSize="18" IsDefault="True" IsCancel="True"/>
+            <Label Content="ID" Canvas.Left="23" Canvas.Top="13" RenderTransformOrigin="0.492,0.012" Width="37" FontFamily="Arial Black" FontSize="18"/>
+            <TextBox Height="30" Canvas.Left="87" TextWrapping="Wrap" Canvas.Top="14" Width="120"/>
+            <Button Content="Pesquisar" Canvas.Left="66" Canvas.Top="88" Width="123" FontFamily="Arial" FontSize="22" IsDefault="True" IsCancel="True" Height="31"/>
+            <Button x:Name="btnClientes" Content="Carregar Clientes" Canvas.Left="23" Canvas.Top="169" Width="231" Height="31" Click="btnClientes_Click" FontFamily="Arial Black" FontSize="22"/>
+            <Button x:Name="btnVoltar" Content="Voltar" Canvas.Left="72" Canvas.Top="255" Width="117" Height="27" FontFamily="Arial" FontSize="22" Click="btnVoltar_Click"/>
         </Canvas>
-        <DataGrid HorizontalAlignment="Left" Height="331" Margin="10,10,0,0" VerticalAlignment="Top" Width="772"/>
-
+        <DataGrid x:Name="GridMostrar" AutoGenerateColumns="False" Margin="340,10,23,25">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Binding="{Binding Path=ID}"/>
+                <DataGridTextColumn Header="Nome" Binding="{Binding Path=Nome}"/>
+                <DataGridTextColumn Header="CPF" Binding="{Binding Path=CPF}"/>
+                <DataGridTextColumn Header="Telefone" Binding="{Binding Path=Telefone}"/>
+                <DataGridTextColumn Header="Rua" Binding="{Binding Path=Rua}"/>
+                <DataGridTextColumn Header="Número" Binding="{Binding Path=Numero}"/>
+                <DataGridTextColumn Header="Bairro" Binding="{Binding Path=Bairro}"/>
+                <DataGridTextColumn Header="Complemento" Binding="{Binding Path=Complemento}"/>
+                <DataGridTextColumn Header="Referência" Binding="{Binding Path=Referencia}"/>
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </Window>

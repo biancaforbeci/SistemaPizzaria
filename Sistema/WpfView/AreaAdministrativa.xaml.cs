@@ -33,7 +33,8 @@ namespace WpfView
 
             if (resp == true)
             {
-                AreadeExclusao ae = new AreadeExclusao();
+                AreaExclusao ae = new AreaExclusao();
+                this.Close();
                 ae.ShowDialog();
             }
             else

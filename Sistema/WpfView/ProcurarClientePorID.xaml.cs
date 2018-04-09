@@ -25,12 +25,21 @@ namespace WpfView
         public ProcurarClientePorID()
         {
             InitializeComponent();
-
+            
         }
 
-        private void GridMostrar_ContextMenuOpening(object sender, ContextMenuEventArgs e)
+        private void btnClientes_Click(object sender, RoutedEventArgs e)
         {
-            
+            ClienteController cc = new ClienteController();
+            DataTable dt = cc.ExibirDados();
+            GridMostrar.ItemsSource = dt.DefaultView;
+        }
+
+        private void btnVoltar_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow m = new MainWindow();
+            this.Close();
+            m.ShowDialog();
         }
     }
 }

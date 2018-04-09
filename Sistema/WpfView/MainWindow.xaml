@@ -10,8 +10,8 @@
     <Grid Margin="0,0,-8,-2">
         <Grid.Background>
             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                <GradientStop Color="#FF50A3DC" Offset="0.123"/>
-                <GradientStop Color="#FFB9BFAF" Offset="0.627"/>
+                <GradientStop Color="#FF50A3DC" Offset="0.035"/>
+                <GradientStop Color="#FFB9BFAF" Offset="0.591"/>
                 <GradientStop Color="#FFB9BFAF" Offset="0.932"/>
             </LinearGradientBrush>
         </Grid.Background>
@@ -26,9 +26,52 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <Canvas HorizontalAlignment="Left" Height="358" VerticalAlignment="Top" Width="568" Grid.ColumnSpan="2" Grid.RowSpan="3" Margin="-11,-7,0,0">
-            <Image Height="206" Width="350" Source="Imagens/pizza.jpg" HorizontalAlignment="Left" Canvas.Left="78" Canvas.Top="142"/>
-            <Button x:Name="btnRealizarPedido" Content="Fazer Pedido" HorizontalAlignment="Left" VerticalAlignment="Top" Width="179" Height="49" Canvas.Left="433" Canvas.Top="182" FontSize="18" Click="btnRealizarPedido_Click">
+        <Menu Width="364" 
+        Height="40"
+        Margin="10,10,0,0" 
+        VerticalAlignment="Top"
+        HorizontalAlignment="Center"
+        BorderBrush="Black" 
+        BorderThickness="3" Grid.ColumnSpan="2">
+            <Menu.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FF4494F3" Offset="0.077"/>
+                    <GradientStop Color="#FFEBF1FB" Offset="0.834"/>
+                    <GradientStop Color="#FFEBF1FB" Offset="0.387"/>
+                </LinearGradientBrush>
+            </Menu.Background>
+
+            <Menu.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <VirtualizingStackPanel Orientation="Horizontal" />
+                </ItemsPanelTemplate>
+            </Menu.ItemsPanel>
+
+            <MenuItem Header="Cadastro de Produtos" FontFamily="Arial" FontSize="16">
+                <MenuItem.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <VirtualizingStackPanel Orientation="Vertical"/>
+                    </ItemsPanelTemplate>
+
+                </MenuItem.ItemsPanel>
+                <MenuItem x:Name="ItemPizzas" Header="Pizzas" IsCheckable="true" FontSize="16" FontFamily="Arial" Click="ItemPizzas_Click"/>
+                <MenuItem x:Name="ItemBebibas" Header="Bebidas" IsCheckable="true" Click="ItemBebibas_Click"/>
+            </MenuItem>
+
+            <MenuItem Header="Pedidos" FontFamily="Arial" FontSize="16">
+                <MenuItem x:Name="ItemPedidoAndamento" Header="Andamento"/>
+                <MenuItem x:Name="ItemListaPedidos" Header="Lista de Pedidos"/>
+            </MenuItem>
+
+            <MenuItem Header="Administrativo" FontFamily="Arial" FontSize="16">
+                <MenuItem x:Name="Exclusao" Header="Área de Exclusão" Click="Exclusao_Click" />
+            </MenuItem>
+        </Menu>
+
+
+        <Canvas HorizontalAlignment="Left" Height="317" VerticalAlignment="Top" Width="568" Grid.ColumnSpan="2" Grid.RowSpan="3" Margin="59,81,0,0">
+            <Image Height="206" Width="350" Source="Imagens/pizza.jpg" HorizontalAlignment="Left" Canvas.Left="29" Canvas.Top="99"/>
+            <Button x:Name="btnRealizarPedido" Content="Fazer Pedido" HorizontalAlignment="Left" VerticalAlignment="Top" Width="179" Height="49" Canvas.Left="379" Canvas.Top="176" FontSize="18" Click="btnRealizarPedido_Click">
                 <Button.Background>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                         <GradientStop Color="#FF577DE0" Offset="0"/>
@@ -36,15 +79,8 @@
                     </LinearGradientBrush>
                 </Button.Background>
             </Button>
-            <Button x:Name="btnAreaADM" Content="Administrativo" HorizontalAlignment="Left" VerticalAlignment="Top" Width="179" Height="46" Canvas.Left="433" Canvas.Top="261" FontSize="18" Click="btnAreaADM_Click" >
-            <Button.Background>
-                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                    <GradientStop Color="#FF577DE0" Offset="0"/>
-                    <GradientStop Color="#FFAEBEEA" Offset="1"/>
-                </LinearGradientBrush>
-            </Button.Background>
-            </Button>
-            <Label Content="System Pizza" HorizontalAlignment="Left" Width="487" FontSize="72" VerticalAlignment="Center" Height="114" FontWeight="Bold" FontFamily="Swis721 BdOul BT" FontStyle="Italic" Canvas.Left="125" Canvas.Top="28"/>
+            <Label Content="System Pizza" HorizontalAlignment="Left" Width="487" FontSize="72" VerticalAlignment="Center" Height="114" FontWeight="Bold" FontFamily="Swis721 BdOul BT" FontStyle="Italic" Canvas.Left="29" Canvas.Top="-15"/>
+            <Button x:Name="btnCadastrar" Content="Button" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Click="btnCadastrar_Click" Canvas.Left="441" Canvas.Top="118"/>
         </Canvas>
 
 

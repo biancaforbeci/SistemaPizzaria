@@ -61,15 +61,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="AreaAdmInterno.xaml">
+    <Page Include="AreaExclusao.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="AreadeExclusao.xaml">
+    <Page Include="Bebidas.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="CadastrarCliente.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="CadastroPizzas.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -92,14 +96,17 @@
     <Compile Include="AreaAdministrativa.xaml.cs">
       <DependentUpon>AreaAdministrativa.xaml</DependentUpon>
     </Compile>
-    <Compile Include="AreaAdmInterno.xaml.cs">
-      <DependentUpon>AreaAdmInterno.xaml</DependentUpon>
+    <Compile Include="AreaExclusao.xaml.cs">
+      <DependentUpon>AreaExclusao.xaml</DependentUpon>
     </Compile>
-    <Compile Include="AreadeExclusao.xaml.cs">
-      <DependentUpon>AreadeExclusao.xaml</DependentUpon>
+    <Compile Include="Bebidas.xaml.cs">
+      <DependentUpon>Bebidas.xaml</DependentUpon>
     </Compile>
     <Compile Include="CadastrarCliente.xaml.cs">
       <DependentUpon>CadastrarCliente.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="CadastroPizzas.xaml.cs">
+      <DependentUpon>CadastroPizzas.xaml</DependentUpon>
     </Compile>
     <Compile Include="EditarCliente.xaml.cs">
       <DependentUpon>EditarCliente.xaml</DependentUpon>

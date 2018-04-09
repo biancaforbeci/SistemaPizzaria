@@ -1,0 +1,25 @@
+﻿<Window x:Class="WpfView.CadastroPizzas"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfView"
+        mc:Ignorable="d"
+        Title="CadastroPizzas" Style="{StaticResource estiloJanela}">
+    <Grid>
+        <Label Content="Cadastro e Edição de Pizzas" HorizontalAlignment="Left" Margin="145,10,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.418,0.13" Width="402" FontFamily="Arial Black" FontSize="24"/>
+        <Button x:Name="btnSalvarPizza" Content="Salvar" HorizontalAlignment="Left" Margin="294,108,0,0" VerticalAlignment="Top" Width="75" FontFamily="Arial Black" FontSize="18" Click="btnSalvarPizza_Click" RenderTransformOrigin="0.075,0.443"/>
+        <Button x:Name="btnListarPizzas" Content="Mostrar Pizzas Cadastradas" HorizontalAlignment="Left" Margin="43,108,0,0" VerticalAlignment="Top" Width="225" Height="26" FontFamily="Arial Black" FontSize="14" Click="btnListarPizzas_Click"/>
+        <DataGrid x:Name="GridMostrarPizza" HorizontalAlignment="Left" Height="221" Margin="43,154,0,0" VerticalAlignment="Top" Width="596" SelectionChanged="GridMostrarPizza_SelectionChanged"/>
+        <Canvas HorizontalAlignment="Left" Height="60" Margin="22,41,0,0" VerticalAlignment="Top" Width="638">
+            <Label Content="Nome" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Top="19" RenderTransformOrigin="0.509,0.887" Canvas.Left="5"/>
+            <TextBox x:Name="txtPizza" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Canvas.Left="53" Canvas.Top="20" RenderTransformOrigin="0.483,1.003"/>
+            <Label Content="Ingredientes" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="173" Canvas.Top="17" RenderTransformOrigin="0.751,0.695"/>
+            <TextBox x:Name="txtIngredientes" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="194" Canvas.Left="249" Canvas.Top="19"/>
+            <Label Content="Preço" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="-0.094,0.659" Canvas.Left="448" Canvas.Top="17"/>
+            <TextBox x:Name="txtPreco" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Canvas.Left="493" Canvas.Top="17"/>
+        </Canvas>
+        <Button x:Name="btnEditar" Content="Editar" HorizontalAlignment="Left" Margin="391,107,0,0" VerticalAlignment="Top" Width="94" FontFamily="Arial Black" FontSize="18" Height="23" Click="btnEditar_Click"/>
+        <Button x:Name="btnVoltar" Content="Voltar" HorizontalAlignment="Left" Margin="510,104,0,0" VerticalAlignment="Top" Width="86" FontFamily="Arial Black" FontSize="22" Height="25" Click="btnVoltar_Click"/>
+    </Grid>
+</Window>

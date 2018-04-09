@@ -25,6 +25,7 @@ namespace Controllers
 
                 SqlCommand comando = new SqlCommand(sql, conn);
 
+                
                 comando.Parameters.Add(new SqlParameter("@Nome",txtNome));
                 comando.Parameters.Add(new SqlParameter("@CPF",txtCPF));
                 comando.Parameters.Add(new SqlParameter("@Telefone", txtTelefone));
@@ -32,6 +33,8 @@ namespace Controllers
                 conn.Open();
 
                 comando.ExecuteNonQuery();
+                MessageBox.Show("Cadastro concluído");
+                
             }
             catch (Exception ex)
             {
@@ -40,7 +43,6 @@ namespace Controllers
             finally
             {
                 conn.Close();
-                MessageBox.Show("Cadastro concluído");
             }
             
 
@@ -48,20 +50,44 @@ namespace Controllers
 
         public DataTable ExibirDados()
         {
-            string sql = "SELECT * FROM Clientes";
             try
-            {                
+            {
+                string sql = "SELECT ID,Nome, CPF, Telefone, Rua, Numero, Bairro, Complemento, Referencia FROM Clientes, Enderecos WHERE ID_End = ID_Endereco";
+                conn.Open();
                 SqlCommand comando = new SqlCommand(sql, conn);
-                SqlDataAdapter Da = new SqlDataAdapter();
+
+                SqlDataAdapter Da = new SqlDataAdapter(comando);
                 Da.SelectCommand = comando;
 
-                SqlCommandBuilder commandBuilder = new SqlCommandBuilder(Da);
-
-                DataTable Dt = new DataTable();
-                Dt.Locale = System.Globalization.CultureInfo.InvariantCulture;
+                DataTable Dt = new DataTable("Clientes");
                 Da.Fill(Dt);
 
-                
+                conn.Close();
+                return Dt;
+            }
+            catch (Exception erro)
+            {
+                throw erro;
+            }
+        }
+
+        public DataTable ProcurarTelefone(string telefone_pedido)
+        {
+            try
+            {
+                string sql = "SELECT ID,Nome, CPF, Telefone FROM Clientes WHERE Telefone=@Telefone";
+                conn.Open();
+                SqlCommand comando = new SqlCommand(sql, conn);
+                comando.Parameters.Add(new SqlParameter("@Telefone", telefone_pedido));
+                comando.ExecuteNonQuery();
+
+                SqlDataAdapter Da = new SqlDataAdapter(comando);
+                Da.SelectCommand = comando;
+
+                DataTable Dt = new DataTable("Clientes");
+                Da.Fill(Dt);
+
+                conn.Close();
                 return Dt;
             }
             catch (Exception erro)
