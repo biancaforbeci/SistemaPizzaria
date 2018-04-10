@@ -4,12 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Modelos
+namespace Models
 {
     public abstract class Pessoa
     {
-        public int PessoaID { get; set; }
-
         public String Nome { get; set; }
 
         public String Cpf { get; set; }
@@ -17,7 +15,6 @@ namespace Modelos
         public String Telefone { get; set; }
 
         public int EnderecoID { get; set; }
-
 
     }
 }
