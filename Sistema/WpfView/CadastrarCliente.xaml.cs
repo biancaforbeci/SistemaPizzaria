@@ -9,6 +9,7 @@ using System.Data.SqlClient;
 using System.Configuration;
 using Controllers;
 using System.Text.RegularExpressions;
+using Models;
 
 namespace WpfView
 {
@@ -44,11 +45,11 @@ namespace WpfView
 
             if (result == true)
             {
-                EnderecoController ee = new EnderecoController();
-                ee.SalvarEndereco(txtRua.Text, txtNumero.Text.Trim(), txtBairro.Text, txtComplemento.Text, txtReferencia.Text);
-                ClienteController cc = new ClienteController();
-                cc.SalvarCliente(txtNome.Text, txtCPF.Text.Trim(), txtTelefone.Text.Trim());
+                Endereco end = SalvarEndereco(txtRua.Text, int.Parse(txtNumero.Text.Trim()), txtBairro.Text, txtComplemento.Text, txtReferencia.Text);
+                Cliente clinovo = SalvarCliente(txtNome.Text, txtCPF.Text.Trim(), txtTelefone.Text.Trim(), end.EnderecoID);
+                ClienteController.SalvarCliente(clinovo);
             }
+
 
         }
 
@@ -58,5 +59,30 @@ namespace WpfView
             this.Close();
             m.ShowDialog();
         }
+
+        private Cliente SalvarCliente(string Nome, string CPF, string Telefone, int ID)
+        {
+            Cliente cli = new Cliente();
+            cli.Nome = Nome;
+            cli.Cpf = CPF;
+            cli.Telefone = Telefone;
+            cli.Endereco_ID = ID;
+            return cli;
+        }
+
+        private Endereco SalvarEndereco(string Rua, int Num, string Bairro, string Compl, string Refe)
+        {
+            Endereco end = new Endereco();
+            end.Rua = Rua;
+            end.Numero = Num;
+            end.Bairro = Bairro;
+            end.Complemento = Compl;
+            end.Referencia = Refe;
+
+            EnderecoController.SalvarEndereco(end);
+
+            return end;
+        }
+
     }
 }

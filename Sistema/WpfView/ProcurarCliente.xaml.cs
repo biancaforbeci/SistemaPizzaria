@@ -25,13 +25,7 @@ namespace WpfView
         {
             InitializeComponent();
         }
-
-        public void ListaGrid()
-        {
-
-        }
-
-        
+             
         private void ProcuraID(object sender, RoutedEventArgs e)
         {
             ProcurarClientePorID pID = new ProcurarClientePorID();
@@ -48,7 +42,7 @@ namespace WpfView
 
         private void btnProcura_Click(object sender, RoutedEventArgs e)
         {
-            ClienteController cc = new ClienteController();
+        /*    ClienteController cc = new ClienteController();
             DataTable Dt = cc.ProcurarTelefone(txtTelefone.Text.Trim());
 
             if (Dt.Rows.Count==0)
@@ -64,7 +58,7 @@ namespace WpfView
             else
             {
                 GridMostrar.ItemsSource = Dt.DefaultView;
-            }
+            } */
         }
     }
 }

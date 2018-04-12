@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Sistema.Models.DAL
 {
-    public class MeuContexto : DbContext     //Espelho do banco de dados o contexto - mostra estrutura do banco
+    public class MeuContexto : DbContext
     {
         public MeuContexto() : base("strConn")
         {
@@ -18,6 +18,12 @@ namespace Sistema.Models.DAL
         public DbSet<Cliente> TblClientes { get; set; }
 
         public DbSet<Endereco>TblEnderecos { get; set; }
+
+        public DbSet<Pizza> TblPizza { get; set; }
+
+        public DbSet<Pedido> TblPedido {get;set;}
+
+        public DbSet<Bebida> TblBebida { get; set; }
 
     }
 }

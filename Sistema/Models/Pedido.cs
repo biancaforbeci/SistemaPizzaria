@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace Models
 {
-    class Pedido
+    public class Pedido
     {
         public int PedidoID { get; set; }
         public int Quantidade { get; set; }
-        public int PizzaID { get; set; }   //lista de pedidos de pizza
+        public int Produto_ID { get; set; }   //lista de pedidos de pizza
         public double ValorTotal { get; set; }
 
     }

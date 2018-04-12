@@ -47,16 +47,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Bebida.cs" />
     <Compile Include="Cliente.cs" />
     <Compile Include="DAL\MeuContexto.cs" />
     <Compile Include="Endereco.cs" />
     <Compile Include="Motoboy.cs" />
     <Compile Include="Pedido.cs" />
     <Compile Include="Pessoa.cs" />
+    <Compile Include="Pizza.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

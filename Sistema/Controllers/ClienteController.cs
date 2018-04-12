@@ -16,15 +16,12 @@ namespace Controllers
             bancoDados.SaveChanges();
         }
 
-        // SELECT *
         public static List<Cliente> ListarTodosClientes()
         {
             MeuContexto bancoDados = new MeuContexto();
-            return bancoDados.TblClientes.ToList();
+            return bancoDados.TblClientes.ToList(); //IQueryable
         }
 
-
-        // SELECT BY ID
         public static Cliente CarregarPorID(int id)
         {
             MeuContexto bancoDados = new MeuContexto();
@@ -34,13 +31,16 @@ namespace Controllers
         public static void EditarCliente(int id, Cliente novoCliente)
         {
             MeuContexto bancoDados = new MeuContexto();
-            Cliente clienteAtual = bancoDados.TblClientes.Find(id);
+            Cliente clienteEdit = PesquisarPorID(id);
 
-            clienteAtual.Nome = novoCliente.Nome;
-            clienteAtual.Cpf = novoCliente.Cpf ;
-            clienteAtual.Telefone = novoCliente.Telefone;
-            
-            bancoDados.Entry(clienteAtual).State =
+            if(clienteEdit != null)
+            {
+                clienteEdit.Nome = novoCliente.Nome;
+                clienteEdit.Cpf = novoCliente.Cpf;
+                clienteEdit.Telefone = novoCliente.Telefone;
+            }
+
+            bancoDados.Entry(clienteEdit).State =
                 System.Data.Entity.EntityState.Modified;
 
             bancoDados.SaveChanges();
@@ -53,9 +53,34 @@ namespace Controllers
 
             bancoDados.Entry(clienteAtual).State =
                 System.Data.Entity.EntityState.Deleted;
-
-            bancoDados.SaveChanges();
+                bancoDados.SaveChanges();
 
         }
+
+        public static Cliente PesquisarPorNome(string nome)
+        {
+            MeuContexto cont = new MeuContexto();
+
+            var c = from x in cont.TblClientes
+                    where x.Nome.ToLower().Contains(nome)
+                    select x;
+
+            if (c != null)
+            {
+                return c.FirstOrDefault();
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+        public static Cliente PesquisarPorID(int IDCliente)
+        {
+            MeuContexto cont = new MeuContexto();
+            return cont.TblClientes.Find(IDCliente);
+        }
+
+
     }
 }

@@ -8,6 +8,8 @@ namespace Models
 {
     public abstract class Pessoa
     {
+        public int PessoaID { get; set; }
+
         public String Nome { get; set; }
 
         public String Cpf { get; set; }
@@ -15,6 +17,8 @@ namespace Models
         public String Telefone { get; set; }
 
         public int EnderecoID { get; set; }
+
+        public Endereco _Endereco { get; set; }
 
     }
 }

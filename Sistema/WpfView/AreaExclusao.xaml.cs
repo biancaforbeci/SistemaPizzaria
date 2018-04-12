@@ -65,9 +65,9 @@ namespace WpfView
             }
             else if (check == 3)
             {
-                ClienteController pc = new ClienteController();
-                DataTable dt = pc.ExibirDados();
-                GridMostrar.ItemsSource = dt.DefaultView;
+              //  ClienteController pc = new ClienteController();
+              //  DataTable dt = pc.ExibirDados();
+              //  GridMostrar.ItemsSource = dt.DefaultView;
             }
         }
 

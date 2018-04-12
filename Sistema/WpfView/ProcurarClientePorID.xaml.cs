@@ -1,4 +1,5 @@
 ﻿using Controllers;
+using Models;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -30,9 +31,9 @@ namespace WpfView
 
         private void btnClientes_Click(object sender, RoutedEventArgs e)
         {
-            ClienteController cc = new ClienteController();
-            DataTable dt = cc.ExibirDados();
-            GridMostrar.ItemsSource = dt.DefaultView;
+             List<Cliente> dt = ClienteController.ListarTodosClientes();
+             GridMostrar.ItemsSource = dt;            
+
         }
 
         private void btnVoltar_Click(object sender, RoutedEventArgs e)
@@ -40,6 +41,30 @@ namespace WpfView
             MainWindow m = new MainWindow();
             this.Close();
             m.ShowDialog();
+        }
+
+        private void VerificaExistenciaCliente(List<Cliente> lista)
+        {
+          /*  if (lista.Contains(null))
+            {
+                MessageBoxResult result = System.Windows.MessageBox.Show("Telefone não cadastrado ! Deseja cadastrar cliente ?", "Cliente não encontrado", MessageBoxButton.YesNo, MessageBoxImage.Error);
+                if (result == MessageBoxResult.Yes)
+                {
+                    CadastrarCliente ccli = new CadastrarCliente();
+                    this.Close();
+                    ccli.ShowDialog();
+                }
+            }
+            else
+            {
+                GridMostrar.ItemsSource = lista;
+            }   */         
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            CadastrarCliente cc = new CadastrarCliente();
+            cc.ShowDialog();
         }
     }
 }
