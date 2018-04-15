@@ -34,7 +34,7 @@
             </DataGrid.Columns>
         </DataGrid>
 
-        <DataGrid x:Name="gridCliente" IsReadOnly="True" AutoGenerateColumns="False" SelectionMode="Single" CanUserAddRows="false" Canvas.Left="83" Canvas.Top="163" Margin="10,199,10,45" Grid.Column="2" SelectionChanged="gridBebida_SelectionChanged">
+        <DataGrid x:Name="gridCliente" IsReadOnly="True" AutoGenerateColumns="False" SelectionMode="Single" CanUserAddRows="false" Canvas.Left="83" Canvas.Top="163" Margin="10,199,10,45" Grid.Column="2" SelectionChanged="gridCliente_SelectionChanged">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="ID" Binding="{Binding Path=ClienteID}"/>
                 <DataGridTextColumn Header="Nome" Binding="{Binding Path=Nome}"/>

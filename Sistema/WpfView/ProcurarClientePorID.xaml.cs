@@ -5,12 +5,12 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
-using System.Windows.Forms;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
@@ -32,7 +32,10 @@ namespace WpfView
         private void btnClientes_Click(object sender, RoutedEventArgs e)
         {
              List<Cliente> dt = ClienteController.ListarTodosClientes();
-             GridMostrar.ItemsSource = dt;
+            if (dt!=null)
+            {
+                GridMostrar.ItemsSource = dt;
+            }                        
         }
 
         private void btnVoltar_Click(object sender, RoutedEventArgs e)
@@ -42,28 +45,52 @@ namespace WpfView
             m.ShowDialog();
         }
 
-        private void VerificaExistenciaCliente(List<Cliente> lista)
+        private void btnPesquisar_Click(object sender, RoutedEventArgs e)
         {
-          /*  if (lista.Contains(null))
+            string caracter = txtID.Text.Substring(0, 1);
+            string verifica = "^[0-9]";
+
+            if ((Regex.IsMatch(caracter, verifica) || (txtID.Text != null)))
             {
-                MessageBoxResult result = System.Windows.MessageBox.Show("Telefone não cadastrado ! Deseja cadastrar cliente ?", "Cliente não encontrado", MessageBoxButton.YesNo, MessageBoxImage.Error);
-                if (result == MessageBoxResult.Yes)
+                List<Cliente> cli = ClienteController.PesquisaPorIDLista(int.Parse(txtID.Text));
+                if (cli!=null)
                 {
-                    CadastrarCliente ccli = new CadastrarCliente();
-                    this.Close();
-                    ccli.ShowDialog();
+                    GridMostrar.ItemsSource = cli;
+                }
+                else
+                {
+                    MessageBox.Show("ID não encontrado");
                 }
             }
             else
             {
-                GridMostrar.ItemsSource = lista;
-            }   */         
+                MessageBox.Show("Campo inválido, digite apenas números.");
+            }
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void GridMostrar_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            CadastrarCliente cc = new CadastrarCliente();
-            cc.ShowDialog();
+            if (GridMostrar.SelectedItem != null)
+            {
+                MessageBoxResult result = MessageBox.Show("Deseja editar o cliente de nome: " + ((Cliente)GridMostrar.SelectedItem).Nome + " ?", "Editar", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                if (result == MessageBoxResult.Yes)
+                {
+                    try
+                    {      //Se confirmado a exclusão é pego o ID do cliente da linha selecionada.
+                        Cliente cli = ((Cliente)GridMostrar.SelectedItem);
+                        EditarCliente edit = new EditarCliente();
+                        edit.EditarNome(cli);
+                        this.Close();
+                        edit.ShowDialog();
+                    }
+                    catch (Exception erro)
+                    {
+                        MessageBox.Show("ERRO: " + erro);
+                    }
+                }
+            }
         }
+
     }
+}
 }

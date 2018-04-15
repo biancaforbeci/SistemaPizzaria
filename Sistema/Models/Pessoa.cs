@@ -16,9 +16,9 @@ namespace Models
 
         public String Telefone { get; set; }
 
-        public int EnderecoID { get; set; }
+        public virtual int EnderecoID { get; set; }
 
-        public Endereco _Endereco { get; set; }
+        public virtual Endereco _Endereco { get; set; }
 
         public Pedido _Pedido { get; set; }
 

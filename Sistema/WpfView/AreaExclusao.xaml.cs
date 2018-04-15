@@ -131,7 +131,7 @@ namespace WpfView
 
         private void btnProcuraBebida_Click(object sender, RoutedEventArgs e)
         {
-            if ((txtBebida.Text != null) || (Regex.IsMatch(txtBebida.Text, @"^[a-zA-Z]+$") == true) )
+            if ((txtBebida.Text != null) || (Regex.IsMatch(txtBebida.Text, @"^[a-zA-Z]+$")) )
             {
                 List<Bebida> bebida = BebibasController.PesquisarPorNome(txtBebida.Text);
                 if (bebida != null)
@@ -151,7 +151,7 @@ namespace WpfView
   
         private void btnPesquisaPizza_Click(object sender, RoutedEventArgs e)
         {
-            if(txtPizza.Text != null || !Regex.IsMatch(txtPizza.Text, @"^[a-zA-Z]+$"))
+            if(txtPizza.Text != null || (Regex.IsMatch(txtBebida.Text, @"^[a-zA-Z]+$") ))
             {
               List<Pizza> pizza= PizzaController.PesquisarPorNome(txtPizza.Text);
                 if (pizza != null)
@@ -171,7 +171,7 @@ namespace WpfView
 
         private void btnPesquisaCliente_Click(object sender, RoutedEventArgs e)
         {
-            if (txtCliente.Text != null || !Regex.IsMatch(txtCliente.Text, @"^[a-zA-Z]+$"))
+            if (txtCliente.Text != null || (Regex.IsMatch(txtBebida.Text, @"^[a-zA-Z]+$") == true))
             {
                 List<Cliente>cli = ClienteController.PesquisarPorNome(txtCliente.Text);
                 if (cli != null)

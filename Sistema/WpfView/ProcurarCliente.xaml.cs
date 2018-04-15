@@ -1,9 +1,11 @@
 ﻿using Controllers;
+using Models;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -25,7 +27,7 @@ namespace WpfView
         {
             InitializeComponent();
         }
-             
+
         private void ProcuraID(object sender, RoutedEventArgs e)
         {
             ProcurarClientePorID pID = new ProcurarClientePorID();
@@ -42,7 +44,38 @@ namespace WpfView
 
         private void btnProcura_Click(object sender, RoutedEventArgs e)
         {
-        
+            if (txtTelefone.Text != null || (Regex.IsMatch(txtTelefone.Text, @"^[a-zA-Z]+$")))
+            {
+                List<Cliente> cli = ClienteController.PesquisarPorTelefone(txtTelefone.Text);
+                if (cli != null)
+                {
+                    gridCliente.ItemsSource = cli;
+                }
+                else
+                {
+
+                }
+            }
+            else
+            {
+                MessageBox.Show("Só é aceito campo númerico e que não esteja vazio.");
+            }
+        }
+
+        private void MensagemErro()
+        {
+            MessageBoxResult result = System.Windows.MessageBox.Show("Telefone não cadastrado ! Deseja cadastrar cliente ?", "Cliente não encontrado", MessageBoxButton.YesNo, MessageBoxImage.Error);
+            if (result == MessageBoxResult.Yes)
+            {
+                CadastrarCliente ccli = new CadastrarCliente();
+                this.Close();
+                ccli.ShowDialog();
+            }            
+        }
+
+        private void gridCliente_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
         }
     }
 }

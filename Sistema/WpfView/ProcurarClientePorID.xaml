@@ -10,17 +10,17 @@
         <Canvas HorizontalAlignment="Left" Height="384" Margin="10,10,0,0" VerticalAlignment="Top" Width="325">
             <Canvas.Background>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                    <GradientStop Color="#FF1D77D1" Offset="0.08"/>
-                    <GradientStop Color="#FFC6CCD3" Offset="0.633"/>
+                    <GradientStop Color="#FF88B7E6" Offset="0.126"/>
+                    <GradientStop Color="#FFD1D6DC" Offset="0.7"/>
                 </LinearGradientBrush>
             </Canvas.Background>
             <Label Content="ID" Canvas.Left="30" Canvas.Top="153" RenderTransformOrigin="0.492,0.012" Width="38" FontFamily="Arial Black" FontSize="18"/>
-            <TextBox Height="30" Canvas.Left="90" TextWrapping="Wrap" Canvas.Top="154" Width="192"/>
-            <Button Content="Pesquisar" Canvas.Left="90" Canvas.Top="248" Width="123" FontFamily="Arial" FontSize="22" IsDefault="True" IsCancel="True" Height="30" RenderTransformOrigin="0.606,-0.081"/>
+            <TextBox x:Name="txtID" Height="30" Canvas.Left="90" TextWrapping="Wrap" Canvas.Top="154" Width="192"/>
+            <Button x:Name="btnPesquisar" Content="Pesquisar" Canvas.Left="90" Canvas.Top="236" Width="123" FontFamily="Arial" FontSize="22" IsDefault="True" IsCancel="True" Height="30" RenderTransformOrigin="0.606,-0.081" Click="btnPesquisar_Click" />
             <Button x:Name="btnClientes" Content="Carregar Clientes" Canvas.Left="51" Canvas.Top="59" Width="231" Height="31" Click="btnClientes_Click" FontFamily="Arial Black" FontSize="22"/>
-            <Button x:Name="btnVoltar" Content="Voltar" Canvas.Left="90" Canvas.Top="333" Width="117" Height="27" FontFamily="Arial" FontSize="22" Click="btnVoltar_Click"/>
+            <Button x:Name="btnVoltar" Content="Voltar" Canvas.Left="96" Canvas.Top="318" Width="117" Height="27" FontFamily="Arial" FontSize="22" Click="btnVoltar_Click"/>
         </Canvas>
-        <DataGrid x:Name="GridMostrar" AutoGenerateColumns="False" Margin="340,10,23,25">
+        <DataGrid x:Name="GridMostrar" AutoGenerateColumns="False" Margin="340,10,23,25" SelectionChanged="GridMostrar_SelectionChanged">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="ID" Binding="{Binding Path=ClienteID}"/>
                 <DataGridTextColumn Header="Nome" Binding="{Binding Path=Nome}"/>
@@ -33,6 +33,5 @@
                 <DataGridTextColumn Header="Referência" Binding="{Binding Path=Referencia}"/>
             </DataGrid.Columns>
         </DataGrid>
-        <Button Content="Button" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="111,125,0,0" Click="Button_Click"/>
     </Grid>
 </Window>

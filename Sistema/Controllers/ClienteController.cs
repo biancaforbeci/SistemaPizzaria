@@ -70,5 +70,37 @@ namespace Controllers
         {            
             return ContextoSingleton.Instancia.TblClientes.Find(IDCliente);
         }
+
+        public static List<Cliente> PesquisarPorTelefone(string tel)
+        {
+            var c = (from x in ContextoSingleton.Instancia.TblClientes
+                     where x.Telefone.Contains(tel)
+                     select x).ToList();
+
+            if (c.Count > 0)
+            {
+                return c;
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+        public static List<Cliente> PesquisaPorIDLista(int id)
+        {
+            var c = (from x in ContextoSingleton.Instancia.TblClientes
+                     where x.ClienteID.Equals(id)
+                     select x).ToList();
+
+            if (c.Count > 0)
+            {
+                return c;
+            }
+            else
+            {
+                return null;
+            }
+        }
     }
 }

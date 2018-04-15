@@ -8,10 +8,21 @@
         Title="FazerPedido" Style="{StaticResource estiloJanela}">
     <Grid>
         <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*" ></ColumnDefinition>
             <ColumnDefinition Width="*" ></ColumnDefinition>
-            <ColumnDefinition Width="auto" ></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        <StackPanel HorizontalAlignment="Left" Height="100" Margin="130,81,0,0" VerticalAlignment="Top" Width="100"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="38,87,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Cliente" HorizontalAlignment="Left" Margin="63,54,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.557,1.265" FontFamily="Arial" FontSize="16"/>
+        <DataGrid HorizontalAlignment="Left" Height="228" VerticalAlignment="Top" Width="364" Margin="63,129,0,0"/>
+        <Label Content="Número Pedido" HorizontalAlignment="Left" Margin="316,54,0,0" VerticalAlignment="Top" FontFamily="Arial" FontSize="16"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="318,87,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Button Content="Mostrar pizzas" HorizontalAlignment="Left" VerticalAlignment="Top" Width="116" Margin="180,72,0,0" Height="38" FontFamily="Arial" FontSize="16"/>
+        <Label Content="Pedido" HorizontalAlignment="Left" Margin="201,6,0,0" VerticalAlignment="Top" Width="139" FontFamily="Arial" FontSize="24" FontWeight="Bold"/>
+        <Label Content="Valor Total" Grid.Column="1" HorizontalAlignment="Left" Margin="69,67,0,0" VerticalAlignment="Top" FontFamily="Arial" FontSize="16"/>
+        <TextBox Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="52,114,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Button Content="Cancelar Pedido" Grid.Column="1" HorizontalAlignment="Left" Margin="36,310,0,0" VerticalAlignment="Top" Width="136" Height="47" FontFamily="Arial" FontSize="16"/>
+        <Button Content="Confirmar Pedido" Grid.Column="1" HorizontalAlignment="Left" Margin="36,180,0,0" VerticalAlignment="Top" Width="136" Height="48" FontFamily="Arial" FontSize="16"/>
+
 
 
 
