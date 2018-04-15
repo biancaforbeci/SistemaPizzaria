@@ -14,34 +14,34 @@
             <ColumnDefinition Width="2*" ></ColumnDefinition>
         </Grid.ColumnDefinitions>
 
-        <CheckBox x:Name="CheckPizza" Content="Pizza" Canvas.Left="30" Canvas.Top="10" FontFamily="Arial" FontSize="22" Checked="CheckPizza_Checked" Margin="33,38,15,336" Grid.Column="1" />
-        <CheckBox x:Name="CheckBebiba" Content="Bebida" Canvas.Left="124" Canvas.Top="10" FontFamily="Arial" FontSize="22" Checked="CheckBebiba_Checked" Margin="20,38,102,336"/>
-        <CheckBox x:Name="CheckCliente" Content="Cliente" Canvas.Left="218" Canvas.Top="13" FontFamily="Arial" FontSize="22" Checked="CheckCliente_Checked" Grid.Column="2" Margin="10,38,10,336"/>
-        <DataGrid x:Name="gridPizza" IsReadOnly="True" AutoGenerateColumns="False" SelectionMode="Single" CanUserAddRows="false" SelectionChanged="gridPizza_SelectionChanged" Margin="17,178,15,66" Grid.Column="1">
+        <CheckBox x:Name="CheckPizza" Content="Pizza" Canvas.Left="30" Canvas.Top="10" FontFamily="Arial" FontSize="16" Checked="CheckPizza_Checked" Margin="33,52,15,322" Grid.Column="1" Unchecked="CheckPizza_Unchecked" />
+        <CheckBox x:Name="CheckBebiba" Content="Bebida" Canvas.Left="124" Canvas.Top="10" FontFamily="Arial" FontSize="16" Checked="CheckBebiba_Checked" Margin="46,52,76,322" Unchecked="CheckBebiba_Unchecked"/>
+        <CheckBox x:Name="CheckCliente" Content="Cliente" Canvas.Left="218" Canvas.Top="13" FontFamily="Arial" FontSize="16" Checked="CheckCliente_Checked" Grid.Column="2" Margin="29,52,-9,322" Unchecked="CheckCliente_Unchecked"/>
+        <DataGrid x:Name="gridPizza" IsReadOnly="True" AutoGenerateColumns="False" SelectionMode="Single" CanUserAddRows="false" Margin="10,199,22,45" Grid.Column="1" SelectionChanged="gridPizza_SelectionChanged">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="ID" Binding="{Binding Path=ClienteID}"/>
+                <DataGridTextColumn Header="ID" Binding="{Binding Path=PizzaID}"/>
                 <DataGridTextColumn Header="Pizza" Binding="{Binding Path=Nome}"/>
-                <DataGridTextColumn Header="Ingredientes" Binding="{Binding Path=Idade}"/>
-                <DataGridTextColumn Header="Preço" Binding="{Binding Path=Telefone}"/>
+                <DataGridTextColumn Header="Ingredientes" Binding="{Binding Path=Ingredientes}"/>
+                <DataGridTextColumn Header="Preço" Binding="{Binding Path=Preco}"/>
             </DataGrid.Columns>
         </DataGrid>
-        <Button x:Name="btnVoltar" Content="Voltar" Canvas.Left="484" Canvas.Top="328" Width="119" Height="28" FontFamily="Arial" FontSize="22" Click="btnVoltar_Click" Grid.Column="2" Margin="94,362,10,10"/>
-        <DataGrid x:Name="gridBebida" IsReadOnly="True" AutoGenerateColumns="False" SelectionMode="Single" CanUserAddRows="false" SelectionChanged="gridBebida_SelectionChanged" Margin="20,178,0,89">
+        <Button x:Name="btnVoltar" Content="Voltar" Canvas.Left="484" Canvas.Top="328" Width="119" FontFamily="Arial" FontSize="22" Click="btnVoltar_Click" Grid.Column="1" Margin="42,363,63,10"/>
+        <DataGrid x:Name="gridBebida" IsReadOnly="True" AutoGenerateColumns="False" SelectionMode="Single" CanUserAddRows="false" SelectionChanged="gridBebida_SelectionChanged" Margin="10,199,10,45">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="ID" Binding="{Binding Path=ClienteID}"/>
+                <DataGridTextColumn Header="ID" Binding="{Binding Path=BebidaID}"/>
                 <DataGridTextColumn Header="Bebida" Binding="{Binding Path=Nome}"/>
-                <DataGridTextColumn Header="Preço" Binding="{Binding Path=Idade}"/>
+                <DataGridTextColumn Header="Preco" Binding="{Binding Path=Preco}"/>
             </DataGrid.Columns>
         </DataGrid>
 
-        <DataGrid x:Name="gridCliente" IsReadOnly="True" AutoGenerateColumns="False" SelectionMode="Single" CanUserAddRows="false" Canvas.Left="83" Canvas.Top="163" SelectionChanged="gridCliente_SelectionChanged" Margin="10,178,10,66" Grid.Column="2">
+        <DataGrid x:Name="gridCliente" IsReadOnly="True" AutoGenerateColumns="False" SelectionMode="Single" CanUserAddRows="false" Canvas.Left="83" Canvas.Top="163" Margin="10,199,10,45" Grid.Column="2" SelectionChanged="gridBebida_SelectionChanged">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="ID" Binding="{Binding Path=ClienteID}"/>
                 <DataGridTextColumn Header="Nome" Binding="{Binding Path=Nome}"/>
                 <DataGridTextColumn Header="CPF" Binding="{Binding Path=CPF}"/>
                 <DataGridTextColumn Header="Telefone" Binding="{Binding Path=Telefone}"/>
                 <DataGridTextColumn Header="Rua" Binding="{Binding Path=Rua}"/>
-                <DataGridTextColumn Header="Número" Binding="{Binding Path=Número}"/>
+                <DataGridTextColumn Header="Número" Binding="{Binding Path=Numero}"/>
             </DataGrid.Columns>
         </DataGrid>
         <TextBox x:Name="txtBebida" HorizontalAlignment="Left" Height="23" Margin="46,109,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
@@ -53,5 +53,9 @@
         <Button x:Name="btnProcuraBebida" Content="Procurar" HorizontalAlignment="Left" Margin="68,137,0,0" VerticalAlignment="Top" Width="75" Click="btnProcuraBebida_Click"/>
         <Button x:Name="btnPesquisaPizza" Content="Procurar" Grid.Column="1" HorizontalAlignment="Left" Margin="71,137,0,0" VerticalAlignment="Top" Width="75" Click="btnPesquisaPizza_Click"/>
         <Button x:Name="btnPesquisaCliente" Content="Procurar" Grid.Column="2" HorizontalAlignment="Left" Margin="78,137,0,0" VerticalAlignment="Top" Width="75" Click="btnPesquisaCliente_Click"/>
+        <Label Content="Clique na bebida para excluir" HorizontalAlignment="Left" Margin="20,168,0,0" VerticalAlignment="Top" RenderTransformOrigin="-1.342,-0.192" Width="184"/>
+        <Label Content="Clique na  pizza para excluir" HorizontalAlignment="Left" Margin="25,168,0,0" VerticalAlignment="Top" RenderTransformOrigin="-1.342,-0.192" Width="184" Grid.Column="1"/>
+        <Label Content="Clique no cliente para excluir" HorizontalAlignment="Left" Margin="29,168,0,0" VerticalAlignment="Top" RenderTransformOrigin="-1.342,-0.192" Width="184" Grid.Column="2"/>
+        <Label Content="Área de Exclusão" Grid.Column="1" HorizontalAlignment="Left" Margin="0,7,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.447,0.769" Width="224" FontFamily="Arial Black" FontSize="22"/>
     </Grid>
 </Window>

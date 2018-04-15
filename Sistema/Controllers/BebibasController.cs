@@ -60,13 +60,13 @@ namespace Controllers
 
         public static List<Bebida> PesquisarPorNome(string nome)
         {
-            var c = from x in ContextoSingleton.Instancia.TblBebida
-                    where x.Nome.ToLower().Contains(nome)
-                    select x;
+            var c = (from x in ContextoSingleton.Instancia.TblBebida
+                    where x.Nome.ToLower().Equals(nome.ToLower())
+                    select x).ToList();
 
-            if (c != null)
+            if (c.Count > 0)
             {
-                return c.ToList();
+                return c;
             }
             else
             {

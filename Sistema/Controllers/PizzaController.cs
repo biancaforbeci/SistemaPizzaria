@@ -63,13 +63,13 @@ namespace Controllers
         public static List<Pizza> PesquisarPorNome(string nome)
         {
 
-            var c = from x in ContextoSingleton.Instancia.TblPizza
-                    where x.Nome.ToLower().Contains(nome)
-                    select x;
+            var c = (from x in ContextoSingleton.Instancia.TblPizza
+                    where x.Nome.ToLower().Equals(nome.ToLower())
+                    select x).ToList();
 
-            if (c != null)
+            if (c.Count > 0)
             {
-                return c.ToList();
+                return c;
             }
             else
             {

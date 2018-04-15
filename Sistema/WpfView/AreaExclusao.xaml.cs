@@ -23,17 +23,11 @@ namespace WpfView
     /// </summary>
     public partial class AreaExclusao : Window
     {
-        private int check = 0;
-
+        
         public AreaExclusao()
         {
             InitializeComponent();
-            txtPizza.IsEnabled = false;
-            txtCliente.IsEnabled = false;
-            txtBebida.IsEnabled = false;
-            btnPesquisaPizza.IsEnabled = false;
-            btnProcuraBebida.IsEnabled = false;
-            btnPesquisaCliente.IsEnabled = false;
+            PadraoComponentes();
         }
 
         private void CheckPizza_Checked(object sender, RoutedEventArgs e)
@@ -88,48 +82,48 @@ namespace WpfView
             }
         }
 
-        private void gridPizza_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            if (gridPizza.SelectedItem != null)
+           private void gridPizza_SelectionChanged(object sender, SelectionChangedEventArgs e)
             {
-                MessageBoxResult result = MessageBox.Show("Confirma a exclusão do item " + ((Pizza)gridBebida.SelectedItem).Nome + " ?", "Exclusão", MessageBoxButton.YesNo, MessageBoxImage.Question);
-                if (result == MessageBoxResult.Yes)
+                if (gridPizza.SelectedItem != null)
                 {
-                    try
-                    {      //Se confirmado a exclusão é pego o ID da linha selecionada.
-                        int id = ((Pizza)gridPizza.SelectedItem).PizzaID;
-                        PizzaController.ExcluirPizza(id);
-                        MessageBox.Show("Pizza excluída com sucesso");
-                    }
-                    catch (Exception erro)
+                    MessageBoxResult result = MessageBox.Show("Confirma a exclusão do item " + ((Pizza)gridBebida.SelectedItem).Nome + " ?", "Exclusão", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                    if (result == MessageBoxResult.Yes)
                     {
-                        MessageBox.Show("ERRO: " + erro);
+                        try
+                        {      //Se confirmado a exclusão é pego o ID da linha selecionada.
+                            int id = ((Pizza)gridPizza.SelectedItem).PizzaID;
+                            PizzaController.ExcluirPizza(id);
+                            MessageBox.Show("Pizza excluída com sucesso");
+                        }
+                        catch (Exception erro)
+                        {
+                            MessageBox.Show("ERRO: " + erro);
+                        }
                     }
                 }
             }
-        }
 
-        private void gridCliente_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            if (gridCliente.SelectedItem != null)
+            private void gridCliente_SelectionChanged(object sender, SelectionChangedEventArgs e)
             {
-                MessageBoxResult result = MessageBox.Show("Confirma a exclusão do item " + ((Cliente)gridBebida.SelectedItem).Nome + " ?", "Exclusão", MessageBoxButton.YesNo, MessageBoxImage.Question);
-                if (result == MessageBoxResult.Yes)
+                if (gridCliente.SelectedItem != null)
                 {
-                    try
-                    {      //Se confirmado a exclusão é pego o ID da linha selecionada.
-                        int id = ((Cliente)gridCliente.SelectedItem).ClienteID;
-                        ClienteController.ExcluirCliente(id);
-                        MessageBox.Show("Cliente excluído com sucesso");
-                    }
-                    catch (Exception erro)
+                    MessageBoxResult result = MessageBox.Show("Confirma a exclusão do item " + ((Cliente)gridBebida.SelectedItem).Nome + " ?", "Exclusão", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                    if (result == MessageBoxResult.Yes)
                     {
-                        MessageBox.Show("ERRO: " + erro);
+                        try
+                        {      //Se confirmado a exclusão é pego o ID da linha selecionada.
+                            int id = ((Cliente)gridCliente.SelectedItem).ClienteID;
+                            ClienteController.ExcluirCliente(id);
+                            MessageBox.Show("Cliente excluído com sucesso");
+                        }
+                        catch (Exception erro)
+                        {
+                            MessageBox.Show("ERRO: " + erro);
+                        }
                     }
                 }
             }
-        }
-
+        
         private void MensagemErro()
         {
             MessageBox.Show("Erro, campo digitado não foi encontrado.");
@@ -137,7 +131,7 @@ namespace WpfView
 
         private void btnProcuraBebida_Click(object sender, RoutedEventArgs e)
         {
-            if (txtBebida.Text != null || Regex.IsMatch(txtBebida.Text, @"^[a-zA-Z]+$"))
+            if ((txtBebida.Text != null) || (Regex.IsMatch(txtBebida.Text, @"^[a-zA-Z]+$") == true) )
             {
                 List<Bebida> bebida = BebibasController.PesquisarPorNome(txtBebida.Text);
                 if (bebida != null)
@@ -149,15 +143,19 @@ namespace WpfView
                     MensagemErro();
                 }
             }
+            else
+            {
+                MessageBox.Show("Erro no campo digitado !");
+            }
         }
-
+  
         private void btnPesquisaPizza_Click(object sender, RoutedEventArgs e)
         {
-            if(txtPizza.Text != null || Regex.IsMatch(txtPizza.Text, @"^[a-zA-Z]+$"))
+            if(txtPizza.Text != null || !Regex.IsMatch(txtPizza.Text, @"^[a-zA-Z]+$"))
             {
               List<Pizza> pizza= PizzaController.PesquisarPorNome(txtPizza.Text);
                 if (pizza != null)
-                {
+                {  
                     gridPizza.ItemsSource = pizza;
                 }
                 else
@@ -165,11 +163,15 @@ namespace WpfView
                     MensagemErro();
                 }
             }
+            else
+            {
+                MessageBox.Show("Erro no campo digitado !");
+            }
         }
 
         private void btnPesquisaCliente_Click(object sender, RoutedEventArgs e)
         {
-            if (txtCliente.Text != null || Regex.IsMatch(txtCliente.Text, @"^[a-zA-Z]+$"))
+            if (txtCliente.Text != null || !Regex.IsMatch(txtCliente.Text, @"^[a-zA-Z]+$"))
             {
                 List<Cliente>cli = ClienteController.PesquisarPorNome(txtCliente.Text);
                 if (cli != null)
@@ -181,8 +183,42 @@ namespace WpfView
                     MensagemErro();
                 }
             }
+            else
+            {
+                MessageBox.Show("Erro no campo digitado !");
+            }
         }
-        
+
+        private void CheckBebiba_Unchecked(object sender, RoutedEventArgs e)
+        {
+            CheckPizza.IsEnabled = true;
+            CheckCliente.IsEnabled = true;
+           PadraoComponentes();
+        }
+
+        private void CheckPizza_Unchecked(object sender, RoutedEventArgs e)
+        {
+            CheckBebiba.IsEnabled = true;
+            CheckCliente.IsEnabled = true;
+            PadraoComponentes();
+        }
+
+        private void CheckCliente_Unchecked(object sender, RoutedEventArgs e)
+        {
+            CheckPizza.IsEnabled = true;
+            CheckBebiba.IsEnabled = true;
+            PadraoComponentes();
+        }
+
+        private void PadraoComponentes()
+        {
+            txtPizza.IsEnabled = false;
+            txtCliente.IsEnabled = false;
+            txtBebida.IsEnabled = false;
+            btnPesquisaPizza.IsEnabled = false;
+            btnProcuraBebida.IsEnabled = false;
+            btnPesquisaCliente.IsEnabled = false;
+        }
     }
 }
 
