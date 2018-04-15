@@ -9,6 +9,7 @@ namespace Models
 {
     public class Cliente:Pessoa
     {
+        public int ClienteID { get; set; }
         public int NumPedido { get; set; }
     }
 }

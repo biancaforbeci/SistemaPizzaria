@@ -19,7 +19,7 @@ namespace WpfView
     public partial class CadastrarCliente : Window
     {
 
-              
+
         public CadastrarCliente()
         {
             InitializeComponent();
@@ -27,30 +27,12 @@ namespace WpfView
 
         private void btnSalvar_Click(object sender, RoutedEventArgs e)
         {
-            bool result = true;
-            string caracter = txtNumero.Text.Substring(0, 1);
-            string verifica = "^[0-9]";
-
-            if ((Regex.IsMatch(caracter, verifica) && txtCPF.Text.Length.Equals(11) == true))
-            {
-              
-            }
-            else
-            {
-                MessageBox.Show("Erro !");
-                result = false;
-                MainWindow m = new MainWindow();
-                m.ShowDialog();
-            }
-
-            if (result == true)
+            if (VerificarItens() == true)
             {
                 Endereco end = SalvarEndereco(txtRua.Text, int.Parse(txtNumero.Text.Trim()), txtBairro.Text, txtComplemento.Text, txtReferencia.Text);
                 Cliente clinovo = SalvarCliente(txtNome.Text, txtCPF.Text.Trim(), txtTelefone.Text.Trim(), end.EnderecoID);
                 ClienteController.SalvarCliente(clinovo);
             }
-
-
         }
 
         private void btnVoltar_Click(object sender, RoutedEventArgs e)
@@ -66,7 +48,8 @@ namespace WpfView
             cli.Nome = Nome;
             cli.Cpf = CPF;
             cli.Telefone = Telefone;
-            cli.Endereco_ID = ID;
+            cli.EnderecoID = ID;
+
             return cli;
         }
 
@@ -82,6 +65,37 @@ namespace WpfView
             EnderecoController.SalvarEndereco(end);
 
             return end;
+        }
+
+        private bool VerificarItens()
+        {
+            string caracter = txtNumero.Text.Substring(0, 1);
+            string verifica = "^[0-9]";
+
+            if(!Regex.IsMatch(txtNome.Text, @"^[a-zA-Z]+$") || (txtNome.Text==null))
+            {
+                MessageBox.Show("ERRO, digite apenas caracter");
+                return false;
+            }
+            else if((!Regex.IsMatch(caracter, verifica) || txtCPF.Text.Length.Equals(11) == false) || (txtCPF.Text == null))
+            {
+                MessageBox.Show("Erro ! Digite 11 dígitos no CPF e apenas números");
+                return false;
+            }
+            else if(!Regex.IsMatch(txtTelefone.Text, verifica) || (txtTelefone.Text == null))
+            {
+                return false;
+            }else if((txtRua.Text == null))
+            {
+                return false;
+            }else if(!Regex.IsMatch(txtNumero.Text, verifica) || (txtNumero.Text == null))
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
         }
 
     }

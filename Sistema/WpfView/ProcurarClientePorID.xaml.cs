@@ -32,8 +32,7 @@ namespace WpfView
         private void btnClientes_Click(object sender, RoutedEventArgs e)
         {
              List<Cliente> dt = ClienteController.ListarTodosClientes();
-             GridMostrar.ItemsSource = dt;            
-
+             GridMostrar.ItemsSource = dt;
         }
 
         private void btnVoltar_Click(object sender, RoutedEventArgs e)

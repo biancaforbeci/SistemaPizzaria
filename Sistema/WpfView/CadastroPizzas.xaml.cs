@@ -1,4 +1,5 @@
 ﻿using Controllers;
+using Models;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -29,16 +30,32 @@ namespace WpfView
 
         private void btnListarPizzas_Click(object sender, RoutedEventArgs e)
         {
-            PizzaController pc = new PizzaController();
-            DataTable Dt= pc.ExibirDados();
-            GridMostrarPizza.ItemsSource = Dt.DefaultView;            
+            List<Pizza> list = PizzaController.ListarTodasPizzas();
+            if (list!= null)
+            {
+                GridMostrarPizza.ItemsSource = list;
+            }
+            else
+            {
+                MessageBox.Show("A tabela não possui nada cadastrado");
+            }
         }
 
         private void btnSalvarPizza_Click(object sender, RoutedEventArgs e)
         {
-            PizzaController pc = new PizzaController();
-            pc.CadastrarPizza(txtPizza.Text, txtIngredientes.Text, double.Parse(txtPreco.Text));
+            Pizza pizza = SalvarPizza();
+            PizzaController.SalvarPizza(pizza);
             LimparDados();
+        }
+
+        private Pizza SalvarPizza()
+        {
+            Pizza p = new Pizza();
+            p.Nome = txtPizza.Text;
+            p.Ingredientes = txtIngredientes.Text;
+            p.Preco = double.Parse(txtPreco.Text);
+
+            return p;
         }
 
         private void LimparDados()

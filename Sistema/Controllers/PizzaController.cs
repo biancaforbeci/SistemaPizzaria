@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Models;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -12,65 +13,68 @@ namespace Controllers
     public class PizzaController
     {
 
-        SqlConnection conn = new SqlConnection(@"Data Source=SAMSUNG\MSSQL;Initial Catalog=systempizza;Integrated Security=True");
+        // INSERT
+        public static void SalvarPizza(Pizza pizza)
+        {
+            ContextoSingleton.Instancia.TblPizza.Add(pizza);
+            ContextoSingleton.Instancia.SaveChanges();
+        }
 
-        public void CadastrarPizza(string txtNome, string txtIngredientes, double txtPreco)
+        public static List<Pizza> ListarTodasPizzas()
         {
 
-            string sql = "INSERT INTO Pizzas(Nome, Ingredientes, Preco) VALUES (@Nome, @Ingredientes, @Preco)";
-            try
-            {
-
-                SqlCommand comando = new SqlCommand(sql, conn);
-
-
-                comando.Parameters.Add(new SqlParameter("@Nome", txtNome));
-                comando.Parameters.Add(new SqlParameter("@Ingredientes", txtIngredientes));
-                comando.Parameters.Add(new SqlParameter("@Preco", txtPreco));
-
-                conn.Open();
-
-                comando.ExecuteNonQuery();
-                MessageBox.Show("Cadastro de pizza concluído");
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message.ToString());
-            }
-            finally
-            {
-                conn.Close();
-            }
+            return ContextoSingleton.Instancia.TblPizza.ToList(); //IQueryable
         }
 
-            public DataTable ExibirDados()
+        public static void EditarCliente(int id, Pizza novaPizza)
+        {
+
+            Pizza pizzaEdit = PesquisarPorID(id);
+
+            if (pizzaEdit != null)
             {
-                try
-                {
-                    string sql = "SELECT ID_Pizza,Nome, Ingredientes, Preco FROM Pizzas";
-                    conn.Open();
-                    SqlCommand comando = new SqlCommand(sql, conn);
-                    comando.ExecuteNonQuery();
-
-                    SqlDataAdapter Da = new SqlDataAdapter(comando);
-                    Da.SelectCommand = comando;
-
-                    DataTable Dt = new DataTable("Pizzas");
-                    Da.Fill(Dt);
-
-                    conn.Close();
-                    return Dt;
-                }
-                catch (Exception erro)
-                {
-                    throw erro;
-                }
+                pizzaEdit.Nome = novaPizza.Nome;
+                pizzaEdit.Ingredientes = novaPizza.Ingredientes;
+                pizzaEdit.Preco = novaPizza.Preco;
             }
 
-            public void UpdateTable()
-             {
-                 
-             }
+            ContextoSingleton.Instancia.Entry(pizzaEdit).State =
+                System.Data.Entity.EntityState.Modified;
 
+            ContextoSingleton.Instancia.SaveChanges();
+        }
+
+        public static void ExcluirPizza(int id)
+        {
+
+            Pizza pizzaAtual = ContextoSingleton.Instancia.TblPizza.Find(id);
+
+            ContextoSingleton.Instancia.Entry(pizzaAtual).State =
+                System.Data.Entity.EntityState.Deleted;
+            ContextoSingleton.Instancia.SaveChanges();
+
+        }
+
+        public static Pizza PesquisarPorID(int IDPizza)
+        {
+            return ContextoSingleton.Instancia.TblPizza.Find(IDPizza);
+        }
+
+        public static List<Pizza> PesquisarPorNome(string nome)
+        {
+
+            var c = from x in ContextoSingleton.Instancia.TblPizza
+                    where x.Nome.ToLower().Contains(nome)
+                    select x;
+
+            if (c != null)
+            {
+                return c.ToList();
+            }
+            else
+            {
+                return null;
+            }
         }
     }
+}

@@ -13,56 +13,56 @@ namespace Controllers
     public class EnderecoController
     {
 
-        public static void SalvarEndereco(Endereco endereco)
+        public static void SalvarEndereco(Endereco end)
         {
-            MeuContexto bancoDados = new MeuContexto();
-
-            bancoDados.TblEnderecos.Add(endereco);
-            bancoDados.SaveChanges();
+            ContextoSingleton.Instancia.TblEnderecos.Add(end);
+            ContextoSingleton.Instancia.SaveChanges();
         }
 
-        // SELECT *
         public static List<Endereco> ListarTodosClientes()
         {
-            MeuContexto bancoDados = new MeuContexto();
-            return bancoDados.TblEnderecos.ToList();
+            return ContextoSingleton.Instancia.TblEnderecos.ToList(); //IQueryable
         }
 
-
-        // SELECT BY ID
         public static Endereco CarregarPorID(int id)
         {
-            MeuContexto bancoDados = new MeuContexto();
-            return bancoDados.TblEnderecos.Find(id);
+            return ContextoSingleton.Instancia.TblEnderecos.Find(id);
         }
 
-        public static void EditarEnderecp(int id, Endereco NovoEnd)
+        public static void EditarEndereco(int id, Endereco novoEnd)
         {
-            MeuContexto bancoDados = new MeuContexto();
-            Endereco EndAtual = bancoDados.TblEnderecos.Find(id);
 
-            EndAtual.Rua = NovoEnd.Rua;
-            EndAtual.Numero = NovoEnd.Numero;
-            EndAtual.Complemento = NovoEnd.Complemento;
-            EndAtual.Bairro = NovoEnd.Bairro;
-            EndAtual.Referencia = NovoEnd.Referencia;
-           
-            bancoDados.Entry(EndAtual).State =
+            Endereco end = PesquisarPorID(id);
+
+            if (end != null)
+            {
+                end.Rua = novoEnd.Rua;
+                end.Numero = novoEnd.Numero;
+                end.Bairro = novoEnd.Bairro;
+                end.Complemento = novoEnd.Complemento;
+                end.Referencia = novoEnd.Referencia;
+            }
+
+            ContextoSingleton.Instancia.Entry(end).State =
                 System.Data.Entity.EntityState.Modified;
 
-            bancoDados.SaveChanges();
+            ContextoSingleton.Instancia.SaveChanges();
         }
 
-        public static void ExcluirCliente(int id)
+        public static void ExcluirEndereco(int id)
         {
-            MeuContexto bancoDados = new MeuContexto();
-            Cliente clienteAtual = bancoDados.TblClientes.Find(id);
 
-            bancoDados.Entry(clienteAtual).State =
+            Endereco endAtual = ContextoSingleton.Instancia.TblEnderecos.Find(id);
+
+            ContextoSingleton.Instancia.Entry(endAtual).State =
                 System.Data.Entity.EntityState.Deleted;
+            ContextoSingleton.Instancia.SaveChanges();
 
-            bancoDados.SaveChanges();
+        }        
 
+        public static Endereco PesquisarPorID(int ID)
+        {
+            return ContextoSingleton.Instancia.TblEnderecos.Find(ID);
         }
     }
 }

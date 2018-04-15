@@ -1,4 +1,5 @@
 ﻿using Controllers;
+using Models;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -29,16 +30,30 @@ namespace WpfView
 
         private void btnListarBebidas_Click(object sender, RoutedEventArgs e)
         {
-            BebibasController bc = new BebibasController();
-            DataTable Dt = bc.ExibirDados();
-            GridMostrarBebida.ItemsSource = Dt.DefaultView;
+            List<Bebida> list = BebibasController.ListarTodasBebidas();
+            if (list != null)
+            {
+                GridMostrarBebida.ItemsSource = list;
+            }
+            else
+            {
+                MessageBox.Show("A tabela não possui nada cadastrado");
+            }
         }
 
         private void btnSalvarBebida_Click(object sender, RoutedEventArgs e)
         {
-            BebibasController bc = new BebibasController();
-            bc.CadastrarBebida(txtBebida.Text, double.Parse(txtPreco.Text));
+            Bebida bebida=SalvarBebida();
+            BebibasController.SalvarBebidas(bebida);
             LimparDados();
+        }
+
+        private Bebida SalvarBebida()
+        {
+            Bebida b = new Bebida();
+            b.Nome = txtBebida.Text;
+            b.Preco = double.Parse(txtPreco.Text);
+            return b;
         }
 
         private void LimparDados()

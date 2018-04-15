@@ -12,7 +12,7 @@ namespace Sistema.Models.DAL
     {
         public MeuContexto() : base("strConn")
         {
-
+            Database.SetInitializer( new DropCreateDatabaseIfModelChanges<MeuContexto>());
         }
 
         public DbSet<Cliente> TblClientes { get; set; }

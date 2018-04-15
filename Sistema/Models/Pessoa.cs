@@ -20,5 +20,7 @@ namespace Models
 
         public Endereco _Endereco { get; set; }
 
+        public Pedido _Pedido { get; set; }
+
     }
 }

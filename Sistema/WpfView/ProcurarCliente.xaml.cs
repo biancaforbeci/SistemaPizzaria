@@ -42,23 +42,7 @@ namespace WpfView
 
         private void btnProcura_Click(object sender, RoutedEventArgs e)
         {
-        /*    ClienteController cc = new ClienteController();
-            DataTable Dt = cc.ProcurarTelefone(txtTelefone.Text.Trim());
-
-            if (Dt.Rows.Count==0)
-            {
-               MessageBoxResult result =MessageBox.Show("Telefone não cadastrado ! Deseja cadastrar cliente ?", "Cliente não encontrado", MessageBoxButton.YesNo, MessageBoxImage.Error);
-                if (result==MessageBoxResult.Yes)
-                {
-                    CadastrarCliente ccli = new CadastrarCliente();
-                    this.Close();
-                    ccli.ShowDialog();
-                }
-            }
-            else
-            {
-                GridMostrar.ItemsSource = Dt.DefaultView;
-            } */
+        
         }
     }
 }
