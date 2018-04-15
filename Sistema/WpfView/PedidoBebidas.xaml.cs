@@ -17,16 +17,24 @@ using System.Windows.Shapes;
 namespace WpfView
 {
     /// <summary>
-    /// Interaction logic for FazerPedido.xaml
+    /// Interaction logic for PedidoBebidas.xaml
     /// </summary>
-    public partial class FazerPedido : Window
+    public partial class PedidoBebidas : Window
     {
         private static double valorTotal = 0;
         private static Cliente clientePedido = null;
 
-        public FazerPedido()
+        public PedidoBebidas()
         {
             InitializeComponent();
+        }
+
+        public void ClientePedido(Cliente cli, double valor)
+        {
+            blockCliente.Text = cli.Nome;
+            blockTele.Text = cli.Telefone;
+            valorTotal = valor;
+            clientePedido = cli;
         }
 
         private void btnCancelar_Click(object sender, RoutedEventArgs e)
@@ -38,18 +46,17 @@ namespace WpfView
 
         public void MostrarCliente(Cliente cli)
         {
-            blockCliente.Text= cli.Nome;
+            blockCliente.Text = cli.Nome;
             blockTele.Text = cli.Telefone;
-            clientePedido = cli;
         }
 
         private void btnMostrar_Click(object sender, RoutedEventArgs e)
         {
-            List<Pizza> list = BebidaController.ListarTodasPizzas();
+            List<Bebida> list = BebibasController.ListarTodasBebidas();
 
             if (list != null)
             {
-                gridPizza.ItemsSource = list;
+                gridBebidas.ItemsSource = list;
             }
             else
             {
@@ -59,14 +66,14 @@ namespace WpfView
 
         private void gridPizza_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            double valor = ((Pizza)gridPizza.SelectedItem).Preco;
+            double valor = ((Bebida)gridBebidas.SelectedItem).Preco;
             valorTotal += valor;
             blockValorTotal.Text = Convert.ToString(valorTotal);
         }
 
         private void btnConfirmar_Click(object sender, RoutedEventArgs e)
         {
-            MessageBoxResult result=MessageBox.Show("Confirmar pedido ?", "Confirma Pedido", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            MessageBoxResult result = MessageBox.Show("Confirmar pedido ?", "Confirma Pedido", MessageBoxButton.YesNo, MessageBoxImage.Question);
             if (result == MessageBoxResult.Yes)
             {
                 SalvarPedido();
@@ -77,15 +84,7 @@ namespace WpfView
         {
             Pedido novoPedido = new Pedido();
             novoPedido.ValorTotal = valorTotal;
-           // novoPedido.Produto_ID=
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            PedidoBebidas bebidas = new PedidoBebidas();
-            bebidas.ClientePedido(clientePedido, valorTotal);
-            this.Close();
-            bebidas.ShowDialog();
+            // novoPedido.Produto_ID=
         }
     }
 }

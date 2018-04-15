@@ -30,7 +30,7 @@ namespace WpfView
 
         private void btnListarPizzas_Click(object sender, RoutedEventArgs e)
         {
-            List<Pizza> list = PizzaController.ListarTodasPizzas();
+            List<Pizza> list = BebidaController.ListarTodasPizzas();
             if (list!= null)
             {
                 GridMostrarPizza.ItemsSource = list;
@@ -44,7 +44,7 @@ namespace WpfView
         private void btnSalvarPizza_Click(object sender, RoutedEventArgs e)
         {
             Pizza pizza = SalvarPizza();
-            PizzaController.SalvarPizza(pizza);
+            BebidaController.SalvarPizza(pizza);
             LimparDados();
         }
 

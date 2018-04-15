@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace Controllers
 {
-    public class PizzaController
+    public class BebidaController
     {
 
         // INSERT
@@ -22,8 +22,16 @@ namespace Controllers
 
         public static List<Pizza> ListarTodasPizzas()
         {
+             List<Pizza> list=ContextoSingleton.Instancia.TblPizza.ToList(); //IQueryable
 
-            return ContextoSingleton.Instancia.TblPizza.ToList(); //IQueryable
+            if (list.Count > 0)
+            {
+                return list;
+            }
+            else
+            {
+                return null;
+            }
         }
 
         public static void EditarCliente(int id, Pizza novaPizza)

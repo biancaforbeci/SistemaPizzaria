@@ -11,21 +11,32 @@
             <ColumnDefinition Width="2*" ></ColumnDefinition>
             <ColumnDefinition Width="*" ></ColumnDefinition>
         </Grid.ColumnDefinitions>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="38,87,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+
         <Label Content="Cliente" HorizontalAlignment="Left" Margin="63,54,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.557,1.265" FontFamily="Arial" FontSize="16"/>
-        <DataGrid HorizontalAlignment="Left" Height="228" VerticalAlignment="Top" Width="364" Margin="63,129,0,0"/>
-        <Label Content="Número Pedido" HorizontalAlignment="Left" Margin="316,54,0,0" VerticalAlignment="Top" FontFamily="Arial" FontSize="16"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="318,87,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <Button Content="Mostrar pizzas" HorizontalAlignment="Left" VerticalAlignment="Top" Width="116" Margin="180,72,0,0" Height="38" FontFamily="Arial" FontSize="16"/>
+        <DataGrid x:Name="gridPizza" IsReadOnly="True" AutoGenerateColumns="False" SelectionMode="Extended" SelectionUnit="FullRow" CanUserAddRows="false" Margin="25,158,10,16" FontFamily="Arial" FontSize="18" SelectionChanged="gridPizza_SelectionChanged" >
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Binding="{Binding Path=PizzaID}"/>
+                <DataGridTextColumn Header="Pizza" Binding="{Binding Path=Nome}"/>
+                <DataGridTextColumn Header="Ingredientes" Binding="{Binding Path=Ingredientes}"/>
+                <DataGridTextColumn Header="Preço" Binding="{Binding Path=Preco}"/>
+                <DataGridTemplateColumn Header="Pizza escolhida">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <CheckBox IsChecked="{Binding IsActive}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Label Content="Telefone Cliente" HorizontalAlignment="Left" Margin="316,54,0,0" VerticalAlignment="Top" FontFamily="Arial" FontSize="16"/>
+        <Button x:Name="btnMostrar" Content="Mostrar pizzas" HorizontalAlignment="Left" VerticalAlignment="Top" Width="116" Margin="180,72,0,0" Height="38" FontFamily="Arial" FontSize="16" Click="btnMostrar_Click"/>
         <Label Content="Pedido" HorizontalAlignment="Left" Margin="201,6,0,0" VerticalAlignment="Top" Width="139" FontFamily="Arial" FontSize="24" FontWeight="Bold"/>
         <Label Content="Valor Total" Grid.Column="1" HorizontalAlignment="Left" Margin="69,67,0,0" VerticalAlignment="Top" FontFamily="Arial" FontSize="16"/>
-        <TextBox Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="52,114,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <Button Content="Cancelar Pedido" Grid.Column="1" HorizontalAlignment="Left" Margin="36,310,0,0" VerticalAlignment="Top" Width="136" Height="47" FontFamily="Arial" FontSize="16"/>
-        <Button Content="Confirmar Pedido" Grid.Column="1" HorizontalAlignment="Left" Margin="36,180,0,0" VerticalAlignment="Top" Width="136" Height="48" FontFamily="Arial" FontSize="16"/>
-
-
-
-
-
+        <Button x:Name="btnCancelar" Content="Cancelar Pedido" Grid.Column="1" HorizontalAlignment="Left" Margin="36,310,0,0" VerticalAlignment="Top" Width="163" Height="47" FontFamily="Arial" FontSize="16" Click="btnCancelar_Click"/>
+        <Button x:Name="btnConfirmar" Content="Confirmar Pedido" Grid.Column="1" HorizontalAlignment="Left" Margin="36,180,0,0" VerticalAlignment="Top" Width="163" Height="48" FontFamily="Arial" FontSize="16" Click="btnConfirmar_Click"/>
+        <Button Content="Acrescentar bebida" Grid.Column="1" HorizontalAlignment="Left" Margin="36,245,0,0" VerticalAlignment="Top" Width="163" Height="46" FontFamily="Arial" FontSize="16" Click="Button_Click"/>
+        <TextBlock x:Name="blockCliente" HorizontalAlignment="Left" Margin="25,87,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="23" Width="118" FontFamily="Arial" FontSize="16"/>
+        <TextBlock x:Name="blockTele" HorizontalAlignment="Left" Margin="316,84,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="26" Width="121" FontFamily="Arial" FontSize="16"/>
+        <TextBlock x:Name="blockValorTotal" Grid.Column="1" HorizontalAlignment="Left" Margin="69,110,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontFamily="Arial" FontSize="16" Width="117" Height="24"/>
     </Grid>
 </Window>

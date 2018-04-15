@@ -76,7 +76,7 @@ namespace WpfView
                 if (result == MessageBoxResult.Yes)
                 {
                     try
-                    {      //Se confirmado a exclusão é pego o ID do cliente da linha selecionada.
+                    {      
                         Cliente cli = ((Cliente)GridMostrar.SelectedItem);
                         EditarCliente edit = new EditarCliente();
                         edit.EditarNome(cli);
@@ -88,9 +88,17 @@ namespace WpfView
                         MessageBox.Show("ERRO: " + erro);
                     }
                 }
+                else
+                {
+                    FazerPedido pedido = new FazerPedido();
+                    Cliente cli = ((Cliente)GridMostrar.SelectedItem);
+                    pedido.MostrarCliente(cli);
+                    this.Close();
+                    pedido.ShowDialog();
+                }
             }
         }
 
     }
 }
-}
+

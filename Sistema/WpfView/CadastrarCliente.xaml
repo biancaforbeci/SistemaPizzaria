@@ -51,7 +51,6 @@
         </StackPanel>
         <StackPanel Orientation="Horizontal" Margin="10,233,-10,119" Grid.ColumnSpan="2">
             <Button x:Name="btnSalvar" Content="Salvar"   Width="100" Height="30" FontFamily="Arial" FontSize="18" Click="btnSalvar_Click"/>
-            <Button x:Name="btnCancelar" Content="Cancelar" Width="100" Height="30" FontFamily="Arial" FontSize="18"/>
             <Button x:Name="btnVoltar" Content="Voltar" Width="100" Height="30" FontFamily="Arial" FontSize="18" Click="btnVoltar_Click"/>
         </StackPanel>
         <Label Content="Cadastro Clientes " HorizontalAlignment="Center" Margin="164,22,0,0" Width="345" FontFamily="Arial Black" FontSize="24" VerticalAlignment="Top"/>

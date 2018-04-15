@@ -75,6 +75,33 @@ namespace WpfView
 
         private void gridCliente_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            if (gridCliente.SelectedItem != null)
+            {
+                MessageBoxResult result = MessageBox.Show("Deseja editar o cliente de nome: " + ((Cliente)gridCliente.SelectedItem).Nome + " ?", "Editar", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                if (result == MessageBoxResult.Yes)
+                {
+                    try
+                    {
+                        Cliente cli = ((Cliente)gridCliente.SelectedItem);
+                        EditarCliente edit = new EditarCliente();
+                        edit.EditarNome(cli);
+                        this.Close();
+                        edit.ShowDialog();
+                    }
+                    catch (Exception erro)
+                    {
+                        MessageBox.Show("ERRO: " + erro);
+                    }
+                }
+                else
+                {
+                    FazerPedido pedido = new FazerPedido();
+                    Cliente cli = ((Cliente)gridCliente.SelectedItem);
+                    pedido.MostrarCliente(cli);
+                    this.Close();
+                    pedido.ShowDialog();
+                }
+            }
 
         }
     }

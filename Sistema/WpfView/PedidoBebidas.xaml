@@ -1,0 +1,41 @@
+﻿<Window x:Class="WpfView.PedidoBebidas"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfView"
+        mc:Ignorable="d"
+        Title="PedidoBebidas" Style="{StaticResource estiloJanela}">
+    <Grid>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*" ></ColumnDefinition>
+            <ColumnDefinition Width="*" ></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <Label Content="Cliente" HorizontalAlignment="Left" Margin="63,47,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.557,1.265" FontFamily="Arial" FontSize="16"/>
+        <DataGrid x:Name="gridBebidas" IsReadOnly="True" AutoGenerateColumns="False" SelectionMode="Extended" SelectionUnit="FullRow" CanUserAddRows="false" Margin="63,164,25,10" FontFamily="Arial" FontSize="18" SelectionChanged="gridBebidas_SelectionChanged" >
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Binding="{Binding Path=BebidaID}"/>
+                <DataGridTextColumn Header="Bebida" Binding="{Binding Path=Nome}"/>
+                <DataGridTextColumn Header="Preço" Binding="{Binding Path=Preco}"/>
+                <DataGridTemplateColumn Header="Bebida escolhida">
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <CheckBox IsChecked="{Binding IsActive}"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Label Content="Pedido de Bebidas" HorizontalAlignment="Left" Margin="207,10,0,0" VerticalAlignment="Top" FontFamily="Arial Black" FontSize="22"/>
+        <Label Content="Telefone Cliente" HorizontalAlignment="Left" Margin="301,52,0,0" VerticalAlignment="Top" FontFamily="Arial" FontSize="16"/>
+        <TextBlock x:Name="blockCliente" HorizontalAlignment="Left" Margin="37,80,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="23" Width="118" FontFamily="Arial" FontSize="16"/>
+        <TextBlock x:Name="blockTele" HorizontalAlignment="Left" Margin="301,80,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="26" Width="121" FontFamily="Arial" FontSize="16"/>
+        <TextBlock x:Name="blockValorTotal" Grid.Column="1" HorizontalAlignment="Left" Margin="69,100,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontFamily="Arial" FontSize="16" Width="117" Height="24"/>
+        <Label Content="Valor Total" Grid.Column="1" HorizontalAlignment="Left" Margin="69,67,0,0" VerticalAlignment="Top" FontFamily="Arial" FontSize="16"/>
+        <Button x:Name="btnCancelar" Content="Cancelar Pedido" Grid.Column="1" HorizontalAlignment="Left" Margin="36,298,0,0" VerticalAlignment="Top" Width="163" Height="47" FontFamily="Arial" FontSize="16" Click="btnCancelar_Click"/>
+        <Button x:Name="btnConfirmar" Content="Confirmar Pedido" Grid.Column="1" HorizontalAlignment="Left" Margin="36,201,0,0" VerticalAlignment="Top" Width="163" Height="48" FontFamily="Arial" FontSize="16" Click="btnConfirmar_Click"/>
+        <Button x:Name="btnMostrar" Content="Mostrar bebidas cadastradas" HorizontalAlignment="Left" VerticalAlignment="Top" Width="237" Margin="107,115,0,0" Height="33" FontFamily="Arial" FontSize="16" Click="btnMostrar_Click"/>
+    </Grid>
+</Window>
