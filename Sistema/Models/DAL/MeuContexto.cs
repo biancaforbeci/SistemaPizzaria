@@ -13,6 +13,7 @@ namespace Sistema.Models.DAL
         public MeuContexto() : base("strConn")
         {
             Database.SetInitializer( new DropCreateDatabaseIfModelChanges<MeuContexto>());
+            this.Configuration.LazyLoadingEnabled = false;
         }
 
         public DbSet<Cliente> TblClientes { get; set; }

@@ -24,8 +24,7 @@ namespace WpfView
     {
         public Bebidas()
         {
-            InitializeComponent();
-            LimparDados();
+            InitializeComponent();           
         }
 
         private void btnListarBebidas_Click(object sender, RoutedEventArgs e)
@@ -44,8 +43,7 @@ namespace WpfView
         private void btnSalvarBebida_Click(object sender, RoutedEventArgs e)
         {
             Bebida bebida=SalvarBebida();
-            BebibasController.SalvarBebidas(bebida);
-            LimparDados();
+            BebibasController.SalvarBebidas(bebida);            
         }
 
         private Bebida SalvarBebida()
@@ -56,25 +54,26 @@ namespace WpfView
             return b;
         }
 
-        private void LimparDados()
-        {
-            btnEditar.IsEnabled = false;
-            txtBebida.Text = "";
-            txtPreco.Text = "";
-
-        }
-
         private void GridMostrarBebida_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            DataGrid Dg = (DataGrid)sender;
-            DataRowView linha = Dg.SelectedItem as DataRowView;
-            btnSalvarBebida.IsEnabled = false;
-
-            if (linha != null)
+            if (GridMostrarBebida.SelectedItem != null)
             {
-                txtBebida.Text = linha["Nome"].ToString();
-                txtPreco.Text = linha["Preco"].ToString();
-                btnEditar.IsEnabled = true;
+                MessageBoxResult result = MessageBox.Show("Deseja editar a bebida " + ((Bebida)GridMostrarBebida.SelectedItem).Nome + " ?", "Edição", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                if (result == MessageBoxResult.Yes)
+                {
+                    try
+                    {
+                        Bebida bebida = ((Bebida)GridMostrarBebida.SelectedItem);
+                        EditarProdutos edit = new EditarProdutos();
+                        edit.ProdutoEditarBebida(bebida,2);
+                        this.Close();
+                        edit.ShowDialog();
+                    }
+                    catch (Exception erro)
+                    {
+                        MessageBox.Show("ERRO: " + erro);
+                    }
+                }
             }
         }
 

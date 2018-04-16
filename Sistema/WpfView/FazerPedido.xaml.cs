@@ -45,7 +45,7 @@ namespace WpfView
 
         private void btnMostrar_Click(object sender, RoutedEventArgs e)
         {
-            List<Pizza> list = BebidaController.ListarTodasPizzas();
+            List<Pizza> list = PizzaController.ListarTodasPizzas();
 
             if (list != null)
             {

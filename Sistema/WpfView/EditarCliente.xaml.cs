@@ -31,7 +31,7 @@ namespace WpfView
         {
             Endereco end = SalvarEndereco(txtRua.Text, int.Parse(txtNumero.Text), txtBairro.Text, txtComplemento.Text, txtReferencia.Text);
             Cliente cli = SalvarCliente(txtNome.Text,txtCPF.Text,txtTelefone.Text,end.EnderecoID);
-            ClienteController.EditarCliente(cli.PessoaID,cli);
+            ClienteController.EditarCliente(cli.ClienteID,cli);
             MessageBox.Show("Cliente editado");
             FazerPedido pedido = new FazerPedido();
             pedido.MostrarCliente(cli);

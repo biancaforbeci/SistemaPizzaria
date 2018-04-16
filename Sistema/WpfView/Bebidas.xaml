@@ -7,18 +7,18 @@
         mc:Ignorable="d"
         Title="Bebidas" Style="{StaticResource estiloJanela}" >
     <Grid>
-        <Label Content="Cadastro e Edição de Bebidas" HorizontalAlignment="Left" Margin="145,10,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.418,0.13" Width="402" FontFamily="Arial Black" FontSize="24"/>
-        <Button x:Name="btnSalvarBebida" Content="Salvar" HorizontalAlignment="Left" Margin="334,107,0,0" VerticalAlignment="Top" Width="75" FontFamily="Arial Black" FontSize="18" Click="btnSalvarBebida_Click" />
+        <Label Content="Cadastro de Bebidas" HorizontalAlignment="Left" Margin="216,10,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.418,0.13" Width="402" FontFamily="Arial Black" FontSize="24"/>
+        <Button x:Name="btnSalvarBebida" Content="Salvar" HorizontalAlignment="Left" Margin="375,110,0,0" VerticalAlignment="Top" Width="75" FontFamily="Arial Black" FontSize="18" Click="btnSalvarBebida_Click" />
         <Button x:Name="btnListarBebidas" Content="Mostrar Bebidas Cadastradas" HorizontalAlignment="Left" Margin="43,106,0,0" VerticalAlignment="Top" Width="244" Height="26" FontFamily="Arial Black" FontSize="14" Click="btnListarBebidas_Click" />
-        <DataGrid x:Name="GridMostrarBebida" HorizontalAlignment="Left" Height="221" Margin="43,154,0,0" VerticalAlignment="Top" Width="596" SelectionChanged="GridMostrarBebida_SelectionChanged" />
+        <DataGrid x:Name="GridMostrarBebida" HorizontalAlignment="Left" Height="209" Margin="43,166,0,0" VerticalAlignment="Top" Width="596" SelectionChanged="GridMostrarBebida_SelectionChanged" />
         <Canvas HorizontalAlignment="Left" Height="60" Margin="22,41,0,0" VerticalAlignment="Top" Width="638">
             <Label Content="Nome" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Top="17" RenderTransformOrigin="0.509,0.887" Canvas.Left="76"/>
             <TextBox x:Name="txtBebida" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Canvas.Left="169" Canvas.Top="19" RenderTransformOrigin="0.483,1.003"/>
             <Label Content="Preço" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="-0.094,0.659" Canvas.Left="351" Canvas.Top="19"/>
             <TextBox x:Name="txtPreco" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Canvas.Left="432" Canvas.Top="22"/>
         </Canvas>
-        <Button x:Name="btnEditar" Content="Editar" HorizontalAlignment="Left" Margin="431,109,0,0" VerticalAlignment="Top" Width="94" FontFamily="Arial Black" FontSize="18" Height="23" Click="btnEditar_Click" />
-        <Button x:Name="btnVoltar" Content="Voltar" HorizontalAlignment="Left" Margin="545,106,0,0" VerticalAlignment="Top" Width="94" Height="26" FontFamily="Arial Black" FontSize="22" Click="btnVoltar_Click"/>
+        <Button x:Name="btnVoltar" Content="Voltar" HorizontalAlignment="Left" Margin="524,106,0,0" VerticalAlignment="Top" Width="94" Height="26" FontFamily="Arial Black" FontSize="22" Click="btnVoltar_Click" RenderTransformOrigin="-0.024,0.582"/>
+        <Label Content="Clique na bebida desejada para editar." HorizontalAlignment="Left" Margin="150,135,0,0" VerticalAlignment="Top" Width="402" FontFamily="Arial" FontSize="22"/>
 
     </Grid>
 </Window>

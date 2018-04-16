@@ -8,6 +8,7 @@ namespace Models
 {
     public class Endereco
     {
+       
         public int EnderecoID { get; set; }
         public String Rua { get; set; }
         public int Numero { get; set; }

@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace Controllers
 {
-    public class BebidaController
+    public class PizzaController
     {
 
         // INSERT
@@ -34,7 +34,7 @@ namespace Controllers
             }
         }
 
-        public static void EditarCliente(int id, Pizza novaPizza)
+        public static void EditarPizza(int id, Pizza novaPizza)
         {
 
             Pizza pizzaEdit = PesquisarPorID(id);

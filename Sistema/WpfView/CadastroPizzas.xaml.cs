@@ -25,15 +25,14 @@ namespace WpfView
         public CadastroPizzas()
         {
             InitializeComponent();
-            LimparDados();
         }
 
         private void btnListarPizzas_Click(object sender, RoutedEventArgs e)
         {
-            List<Pizza> list = BebidaController.ListarTodasPizzas();
+            List<Pizza> list = PizzaController.ListarTodasPizzas();
             if (list!= null)
             {
-                GridMostrarPizza.ItemsSource = list;
+                gridPizza.ItemsSource = list;
             }
             else
             {
@@ -44,8 +43,7 @@ namespace WpfView
         private void btnSalvarPizza_Click(object sender, RoutedEventArgs e)
         {
             Pizza pizza = SalvarPizza();
-            BebidaController.SalvarPizza(pizza);
-            LimparDados();
+            PizzaController.SalvarPizza(pizza);
         }
 
         private Pizza SalvarPizza()
@@ -58,34 +56,29 @@ namespace WpfView
             return p;
         }
 
-        private void LimparDados()
-        {
-            btnEditar.IsEnabled = false;
-            txtPizza.Text = "";
-            txtIngredientes.Text = "";
-            txtPreco.Text = "";
-
-        }
-
         private void GridMostrarPizza_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            DataGrid Dg = (DataGrid)sender;
-            DataRowView linha = Dg.SelectedItem as DataRowView;
-            btnSalvarPizza.IsEnabled = false;
-
-            if (linha != null)
+            if (gridPizza.SelectedItem != null)
             {
-                txtPizza.Text = linha["Nome"].ToString();
-                txtIngredientes.Text = linha["Ingredientes"].ToString();
-                txtPreco.Text = linha["Preco"].ToString();
-                btnEditar.IsEnabled = true;
+                MessageBoxResult result = MessageBox.Show("Deseja editar a pizza " + ((Pizza)gridPizza.SelectedItem).Nome + " ?", "Edição", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                if (result == MessageBoxResult.Yes)
+                {
+                    try
+                    {
+                        Pizza pizza = ((Pizza)gridPizza.SelectedItem);
+                        EditarProdutos edit = new EditarProdutos();
+                        edit.ProdutoEditarPizza(pizza,1);
+                        this.Close();
+                        edit.ShowDialog();
+                    }
+                    catch (Exception erro)
+                    {
+                        MessageBox.Show("ERRO: " + erro);
+                    }
+                }
             }
         }
-
-        private void btnEditar_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
+        
 
         private void btnVoltar_Click(object sender, RoutedEventArgs e)
         {

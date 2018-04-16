@@ -86,13 +86,13 @@ namespace WpfView
             {
                 if (gridPizza.SelectedItem != null)
                 {
-                    MessageBoxResult result = MessageBox.Show("Confirma a exclusão do item " + ((Pizza)gridBebida.SelectedItem).Nome + " ?", "Exclusão", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                    MessageBoxResult result = MessageBox.Show("Confirma a exclusão do item " + ((Pizza)gridPizza.SelectedItem).Nome + " ?", "Exclusão", MessageBoxButton.YesNo, MessageBoxImage.Question);
                     if (result == MessageBoxResult.Yes)
                     {
                         try
                         {      //Se confirmado a exclusão é pego o ID da linha selecionada.
                             int id = ((Pizza)gridPizza.SelectedItem).PizzaID;
-                            BebidaController.ExcluirPizza(id);
+                            PizzaController.ExcluirPizza(id);
                             MessageBox.Show("Pizza excluída com sucesso");
                         }
                         catch (Exception erro)
@@ -107,7 +107,7 @@ namespace WpfView
             {
                 if (gridCliente.SelectedItem != null)
                 {
-                    MessageBoxResult result = MessageBox.Show("Confirma a exclusão do item " + ((Cliente)gridBebida.SelectedItem).Nome + " ?", "Exclusão", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                    MessageBoxResult result = MessageBox.Show("Confirma a exclusão do item " + ((Cliente)gridCliente.SelectedItem).Nome + " ?", "Exclusão", MessageBoxButton.YesNo, MessageBoxImage.Question);
                     if (result == MessageBoxResult.Yes)
                     {
                         try
@@ -153,7 +153,7 @@ namespace WpfView
         {
             if(txtPizza.Text != null || (Regex.IsMatch(txtBebida.Text, @"^[a-zA-Z]+$") ))
             {
-              List<Pizza> pizza= BebidaController.PesquisarPorNome(txtPizza.Text);
+              List<Pizza> pizza= PizzaController.PesquisarPorNome(txtPizza.Text);
                 if (pizza != null)
                 {  
                     gridPizza.ItemsSource = pizza;

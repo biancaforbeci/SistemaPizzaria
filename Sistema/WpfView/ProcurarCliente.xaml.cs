@@ -53,7 +53,7 @@ namespace WpfView
                 }
                 else
                 {
-
+                    MessageBox.Show("Cliente não encontrado");
                 }
             }
             else

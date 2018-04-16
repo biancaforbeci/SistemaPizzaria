@@ -64,7 +64,7 @@ namespace WpfView
             }
         }
 
-        private void gridPizza_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void gridBebidas_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             double valor = ((Bebida)gridBebidas.SelectedItem).Preco;
             valorTotal += valor;

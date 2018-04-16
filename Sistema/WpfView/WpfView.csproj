@@ -88,6 +88,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="EditarProdutos.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="FazerPedido.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -117,6 +121,9 @@
     </Compile>
     <Compile Include="EditarCliente.xaml.cs">
       <DependentUpon>EditarCliente.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="EditarProdutos.xaml.cs">
+      <DependentUpon>EditarProdutos.xaml</DependentUpon>
     </Compile>
     <Compile Include="FazerPedido.xaml.cs">
       <DependentUpon>FazerPedido.xaml</DependentUpon>

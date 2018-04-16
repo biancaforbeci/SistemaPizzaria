@@ -53,8 +53,8 @@ namespace Controllers
         {
 
             var c = (from x in ContextoSingleton.Instancia.TblClientes
-                    where x.Nome.ToLower().Equals(nome.ToLower())
-                    select x).ToList();
+                     where x.Nome.ToLower().Equals(nome.ToLower())
+                     select x).ToList();
 
             if (c.Count > 0)
             {
@@ -73,8 +73,9 @@ namespace Controllers
 
         public static List<Cliente> PesquisarPorTelefone(string tel)
         {
+            
             var c = (from x in ContextoSingleton.Instancia.TblClientes
-                     where x.Telefone.Contains(tel)
+                     where x.Telefone.Contains(tel) && x._Endereco.EnderecoID == x.EnderecoID
                      select x).ToList();
 
             if (c.Count > 0)
@@ -90,8 +91,9 @@ namespace Controllers
         public static List<Cliente> PesquisaPorIDLista(int id)
         {
             var c = (from x in ContextoSingleton.Instancia.TblClientes
-                     where x.ClienteID.Equals(id)
+                     where x.ClienteID.Equals(id) && x._Endereco.EnderecoID==x.EnderecoID 
                      select x).ToList();
+            
 
             if (c.Count > 0)
             {
