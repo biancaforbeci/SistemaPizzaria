@@ -53,7 +53,12 @@ namespace WpfView
                 }
                 else
                 {
-                    MessageBox.Show("Cliente não encontrado");
+                   if (MessageBox.Show("Cliente não encontrado, deseja cadastrar novo cliente ?","Cliente não encontrado",MessageBoxButton.YesNo,MessageBoxImage.Question) == MessageBoxResult.Yes)
+                    {
+                        CadastrarCliente cad = new CadastrarCliente();
+                        this.Close();
+                        cad.ShowDialog();
+                    }
                 }
             }
             else

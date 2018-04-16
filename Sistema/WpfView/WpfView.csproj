@@ -136,6 +136,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="PedidosStatus.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="ProcurarCliente.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -148,6 +152,9 @@
   <ItemGroup>
     <Compile Include="PedidoBebidas.xaml.cs">
       <DependentUpon>PedidoBebidas.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="PedidosStatus.xaml.cs">
+      <DependentUpon>PedidosStatus.xaml</DependentUpon>
     </Compile>
     <Compile Include="ProcurarCliente.xaml.cs">
       <DependentUpon>ProcurarCliente.xaml</DependentUpon>

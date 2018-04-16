@@ -1,0 +1,25 @@
+﻿<Window x:Class="WpfView.PedidosStatus"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfView"
+        mc:Ignorable="d"
+        Title="PedidosStatus" Style="{StaticResource estiloJanela}">
+    <Grid>
+        <Label Content="Controle de Status dos Pedidos" HorizontalAlignment="Left" Margin="169,19,0,0" VerticalAlignment="Top" Width="386" FontFamily="Arial" FontSize="24"/>
+        <DataGrid x:Name="gridPedidos" IsReadOnly="True" AutoGenerateColumns="False" SelectionMode="Single" CanUserAddRows="false" Margin="78,152,61,21" SelectionChanged="gridPedidos_SelectionChanged">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Binding="{Binding Path=PedidoID}"/>
+                <DataGridTextColumn Header="ClientePizzasID" Binding="{Binding Path=ClientesPizzasID}"/>
+                <DataGridTextColumn Header="Status" Binding="{Binding Path=Status}"/>
+                <DataGridTextColumn Header="Valor Total" Binding="{Binding Path=ValorTotal}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button x:Name="btnAndamento" Content="Em Andamento " HorizontalAlignment="Left" Margin="78,74,0,0" VerticalAlignment="Top" Width="148" Height="33"/>
+        <Button x:Name="btnFinalizados" Content="Pedidos Finalizados" HorizontalAlignment="Left" Margin="275,74,0,0" VerticalAlignment="Top" Width="147" Height="33"/>
+        <Button HorizontalAlignment="Left" VerticalAlignment="Top" Width="75"/>
+        <Button x:Name="btnVoltar" Content="Voltar" HorizontalAlignment="Left" VerticalAlignment="Top" Width="124" Margin="485,74,0,0" Height="33" Click="btnVoltar_Click"/>
+
+    </Grid>
+</Window>

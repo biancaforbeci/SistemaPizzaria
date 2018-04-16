@@ -8,10 +8,11 @@ namespace Models
 {
     public class Pedido
     {
-        public int PedidoID { get; set; }
-        public int Quantidade { get; set; }
-        public int Produto_ID { get; set; }   //lista de pedidos de pizza
-        public double ValorTotal { get; set; }
-
+        public int PedidoID { get; set;}
+        public ClientesPizzas _ClientesPizzas { get; set; }
+        public int ClientesPizzasID { get; set; }
+        public int NumPedido { get; set; }
+        public double ValorTotal { get; set;}        
+        public string Status { get; set; }
     }
 }

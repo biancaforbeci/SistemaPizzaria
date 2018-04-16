@@ -23,6 +23,7 @@ namespace WpfView
     {
         private static double valorTotal = 0;
         private static Cliente clientePedido = null;
+        private static List<Pizza> Selecionados = null;
 
         public FazerPedido()
         {
@@ -59,9 +60,16 @@ namespace WpfView
 
         private void gridPizza_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            Pizza pizza = ((Pizza)gridPizza.SelectedItem);
             double valor = ((Pizza)gridPizza.SelectedItem).Preco;
+            Selecionados.Add(pizza);
             valorTotal += valor;
-            blockValorTotal.Text = Convert.ToString(valorTotal);
+            blockValorTotal.Text = Convert.ToString(valorTotal);            
+        }
+
+        private void DeselectGrid()
+        {
+            //if(gridPizza.SelectedCells.)
         }
 
         private void btnConfirmar_Click(object sender, RoutedEventArgs e)
@@ -75,9 +83,28 @@ namespace WpfView
 
         private void SalvarPedido()
         {
-            Pedido novoPedido = new Pedido();
-            novoPedido.ValorTotal = valorTotal;
-           // novoPedido.Produto_ID=
+            ClientesPizzas x = new ClientesPizzas();
+            foreach (var item in Selecionados)
+            {
+                x.ClienteID = clientePedido.ClienteID;
+                x.PizzaID = item.PizzaID;
+                x.data = DateTime.Today;
+                ClientesPizzasController.SalvarItem(x);
+            }
+            SalvandoNosPedidosTabela();
+        }
+
+        private void SalvandoNosPedidosTabela()
+        {
+            List<ClientesPizzas>list=ClientesPizzasController.PesquisarPorClientePedidos(clientePedido.ClienteID);
+            Pedido novoPed = new Pedido();
+            
+            foreach (var item in list)
+            {
+                novoPed.Status = "Em andamento";
+                novoPed.ClientesPizzasID = item.ClientesPizzasID;
+                PedidoController.SalvarPedido(novoPed);
+            }
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

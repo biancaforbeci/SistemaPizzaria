@@ -62,5 +62,12 @@ namespace WpfView
             this.Close();
             ad.ShowDialog();
         }
+
+        private void ItemPedidoAndamento_Click(object sender, RoutedEventArgs e)
+        {
+            PedidosStatus tela = new PedidosStatus();
+            this.Close();
+            tela.ShowDialog();
+        }
     }
 }

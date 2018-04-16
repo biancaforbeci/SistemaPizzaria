@@ -52,7 +52,7 @@
             </MenuItem>
 
             <MenuItem Header="Pedidos" FontFamily="Arial" FontSize="16">
-                <MenuItem x:Name="ItemPedidoAndamento" Header="Andamento"/>
+                <MenuItem x:Name="ItemPedidoAndamento" Header="Andamento" Click="ItemPedidoAndamento_Click"/>
                 <MenuItem x:Name="ItemListaPedidos" Header="Lista de Pedidos"/>
             </MenuItem>
 
