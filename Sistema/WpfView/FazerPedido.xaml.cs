@@ -24,7 +24,7 @@ namespace WpfView
         private static double valorTotal = 0;
         private static Cliente clientePedido = null;
         private static List<Pizza> Selecionados = null;
-        private int qtdMaxPizza = 0;
+        //private int qtdMaxPizza = 0;
 
         public FazerPedido()
         {
@@ -38,8 +38,9 @@ namespace WpfView
             w.ShowDialog();
         }
 
-        public void MostrarCliente(Cliente cli)
+        public void MostrarCliente(int id)
         {
+            Cliente cli =ClienteController.PesquisarPorID(id);
             blockCliente.Text= cli.Nome;
             blockTele.Text = cli.Telefone;
             clientePedido = cli;
@@ -118,7 +119,7 @@ namespace WpfView
 
         private void CheckBoxBroto_Checked(object sender, RoutedEventArgs e)
         {
-            numPizza = 2;
+            //numPizza = 2;
             checkMedia.IsEnabled= false;
             checkGrande.IsEnabled = false;
         }

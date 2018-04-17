@@ -27,10 +27,10 @@
                 <DataGridTextColumn Header="CPF" Binding="{Binding Path=Cpf}"/>
                 <DataGridTextColumn Header="Telefone" Binding="{Binding Path=Telefone}"/>
                 <DataGridTextColumn Header="Rua" Binding="{Binding Path=_Endereco.Rua}"/>
-                <DataGridTextColumn Header="Número" Binding="{Binding Path=Numero}"/>
-                <DataGridTextColumn Header="Bairro" Binding="{Binding Path=Bairro}"/>
-                <DataGridTextColumn Header="Complemento" Binding="{Binding Path=Complemento}"/>
-                <DataGridTextColumn Header="Referência" Binding="{Binding Path=Referencia}"/>
+                <DataGridTextColumn Header="Número" Binding="{Binding Path=_Endereco.Numero}"/>
+                <DataGridTextColumn Header="Bairro" Binding="{Binding Path=_Endereco.Bairro}"/>
+                <DataGridTextColumn Header="Complemento" Binding="{Binding Path=_Endereco.Complemento}"/>
+                <DataGridTextColumn Header="Referência" Binding="{Binding Path=_Endereco.Referencia}"/>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

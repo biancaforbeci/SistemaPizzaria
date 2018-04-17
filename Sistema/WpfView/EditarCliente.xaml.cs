@@ -22,6 +22,8 @@ namespace WpfView
     /// </summary>
     public partial class EditarCliente : Window
     {
+        private Cliente cliEdicao;
+
         public EditarCliente()
         {
             InitializeComponent();            
@@ -29,12 +31,11 @@ namespace WpfView
 
         private void btnEditar_Click(object sender, RoutedEventArgs e)
         {
-            Endereco end = SalvarEndereco(txtRua.Text, int.Parse(txtNumero.Text), txtBairro.Text, txtComplemento.Text, txtReferencia.Text);
-            Cliente cli = SalvarCliente(txtNome.Text,txtCPF.Text,txtTelefone.Text,end.EnderecoID);
-            ClienteController.EditarCliente(cli.ClienteID,cli);
+            EditarEndereco(txtRua.Text, int.Parse(txtNumero.Text), txtBairro.Text, txtComplemento.Text, txtReferencia.Text,cliEdicao.EnderecoID);
+            EnviarClienteEditado(txtNome.Text, txtCPF.Text, txtTelefone.Text);
             MessageBox.Show("Cliente editado");
             FazerPedido pedido = new FazerPedido();
-            pedido.MostrarCliente(cli);
+            pedido.MostrarCliente(cliEdicao.ClienteID);
             this.Close();
             pedido.ShowDialog();
         }
@@ -51,25 +52,25 @@ namespace WpfView
             txtNome.Text = cli.Nome;
             txtCPF.Text = cli.Cpf;
             txtTelefone.Text = cli.Telefone;
-            //txtRua.Text=
-            //txtNumero.Text=
-            //txtBairro.Text=
-            //txtComplemento.Text=
-            //txtReferencia.Text=
+            txtRua.Text = cli._Endereco.Rua;
+            txtNumero.Text = Convert.ToString(cli._Endereco.Numero);
+            txtBairro.Text = cli._Endereco.Bairro;
+            txtComplemento.Text = cli._Endereco.Complemento;
+            txtReferencia.Text = cli._Endereco.Referencia;
+            cliEdicao = cli;
         }
 
-        private Cliente SalvarCliente(string Nome, string CPF, string Telefone, int ID)
+        private void EnviarClienteEditado(string Nome, string CPF, string Telefone)
         {
             Cliente cli = new Cliente();
             cli.Nome = Nome;
             cli.Cpf = CPF;
             cli.Telefone = Telefone;
-            cli.EnderecoID = ID;
 
-            return cli;
+            ClienteController.EditarCliente(cliEdicao.ClienteID,cli);            
         }
 
-        private Endereco SalvarEndereco(string Rua, int Num, string Bairro, string Compl, string Refe)
+        private Endereco EditarEndereco(string Rua, int Num, string Bairro, string Compl, string Refe,int id)
         {
             Endereco end = new Endereco();
             end.Rua = Rua;
@@ -78,7 +79,7 @@ namespace WpfView
             end.Complemento = Compl;
             end.Referencia = Refe;
 
-            EnderecoController.SalvarEndereco(end);
+            EnderecoController.EditarEndereco(id,end);
 
             return end;
         }

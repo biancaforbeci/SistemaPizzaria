@@ -95,9 +95,8 @@ namespace WpfView
                 }
                 else
                 {
-                    FazerPedido pedido = new FazerPedido();
-                    Cliente cli = ((Cliente)GridMostrar.SelectedItem);
-                    pedido.MostrarCliente(cli);
+                    FazerPedido pedido = new FazerPedido();                    
+                    pedido.MostrarCliente(((Cliente)GridMostrar.SelectedItem).ClienteID);
                     this.Close();
                     pedido.ShowDialog();
                 }
