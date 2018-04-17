@@ -19,7 +19,6 @@ namespace WpfView
     public partial class CadastrarCliente : Window
     {
 
-
         public CadastrarCliente()
         {
             InitializeComponent();
@@ -32,6 +31,7 @@ namespace WpfView
                 Endereco end = SalvarEndereco(txtRua.Text, int.Parse(txtNumero.Text.Trim()), txtBairro.Text, txtComplemento.Text, txtReferencia.Text);
                 Cliente clinovo = SalvarCliente(txtNome.Text, txtCPF.Text.Trim(), txtTelefone.Text.Trim(), end.EnderecoID);
                 ClienteController.SalvarCliente(clinovo);
+                MessageBox.Show("Cliente salvo com sucesso");
             }
         }
 

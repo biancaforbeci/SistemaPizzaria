@@ -34,9 +34,9 @@ namespace WpfView
                 if (result == MessageBoxResult.Yes)
                 {
                     try
-                    {      //Se confirmado a exclusão é pego o ID da linha selecionada.
-                        int id = ((Cliente)gridPedidos.SelectedItem).ClienteID;
-                       // PedidoController.MudarStatus(id);
+                    {
+                        Cliente cli = ((Cliente)gridPedidos.SelectedItem);
+                        //PedidoController.MudarStatus(cli);
                         MessageBox.Show("Pedido mudado para finalizado com sucesso");
                     }
                     catch (Exception erro)
@@ -54,5 +54,30 @@ namespace WpfView
             tela.ShowDialog();
         }
 
+        private void btnFinalizados_Click(object sender, RoutedEventArgs e)
+        {
+            List<Pedido> ped=PedidoController.ProcuraPedidoFinalizados();
+            if (ped!=null)
+            {
+                gridPedidos.ItemsSource = ped;
+            }
+            else
+            {
+                MessageBox.Show("Nada encontrado nos pedidos finalizados");
+            }
+        }
+
+        private void btnAndamento_Click(object sender, RoutedEventArgs e)
+        {
+            List<Pedido> ped = PedidoController.ProcuraPedidoPendentes();
+            if (ped != null)
+            {
+                gridPedidos.ItemsSource = ped;
+            }
+            else
+            {
+                MessageBox.Show("Nada encontrado nos pedidos em andamento");
+            }
+        }
     }
 }

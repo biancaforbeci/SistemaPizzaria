@@ -13,7 +13,7 @@
         </Grid.ColumnDefinitions>
 
         <Label Content="Cliente" HorizontalAlignment="Left" Margin="63,54,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.557,1.265" FontFamily="Arial" FontSize="16"/>
-        <DataGrid x:Name="gridPizza" IsReadOnly="True" AutoGenerateColumns="False" SelectionMode="Extended" SelectionUnit="FullRow" CanUserAddRows="false" Margin="25,180,10,16" FontFamily="Arial" FontSize="18" SelectionChanged="gridPizza_SelectionChanged" >
+        <DataGrid x:Name="gridPizza" IsReadOnly="True" AutoGenerateColumns="False" SelectionMode="Extended" SelectionUnit="FullRow" CanUserAddRows="false" Margin="25,180,240,16" FontFamily="Arial" FontSize="18" SelectionChanged="gridPizza_SelectionChanged" >
             <DataGrid.Columns>
                 <DataGridTextColumn Header="ID" Binding="{Binding Path=PizzaID}"/>
                 <DataGridTextColumn Header="Pizza" Binding="{Binding Path=Nome}"/>
@@ -29,7 +29,7 @@
             </DataGrid.Columns>
         </DataGrid>
         <Label Content="Telefone Cliente" HorizontalAlignment="Left" Margin="316,54,0,0" VerticalAlignment="Top" FontFamily="Arial" FontSize="16"/>
-        <Button x:Name="btnMostrar" Content="Mostrar pizzas" HorizontalAlignment="Left" VerticalAlignment="Top" Width="116" Margin="180,72,0,0" Height="38" FontFamily="Arial" FontSize="16" Click="btnMostrar_Click"/>
+        <Button x:Name="btnMostrar" Content="Mostrar pizzas" HorizontalAlignment="Left" VerticalAlignment="Top" Width="116" Margin="168,62,0,0" Height="38" FontFamily="Arial" FontSize="16" Click="btnMostrar_Click" RenderTransformOrigin="0.328,0.289"/>
         <Label Content="Montagem do Pedido" HorizontalAlignment="Left" Margin="180,10,0,0" VerticalAlignment="Top" Width="257" FontFamily="Arial" FontSize="24" FontWeight="Bold"/>
         <Label Content="Valor Total" Grid.Column="1" HorizontalAlignment="Left" Margin="69,67,0,0" VerticalAlignment="Top" FontFamily="Arial" FontSize="16"/>
         <Button x:Name="btnCancelar" Content="Cancelar Pedido" Grid.Column="1" HorizontalAlignment="Left" Margin="36,310,0,0" VerticalAlignment="Top" Width="163" Height="47" FontFamily="Arial" FontSize="16" Click="btnCancelar_Click"/>
@@ -38,9 +38,10 @@
         <TextBlock x:Name="blockCliente" HorizontalAlignment="Left" Margin="25,87,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="23" Width="118" FontFamily="Arial" FontSize="16"/>
         <TextBlock x:Name="blockTele" HorizontalAlignment="Left" Margin="316,84,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="26" Width="121" FontFamily="Arial" FontSize="16"/>
         <TextBlock x:Name="blockValorTotal" Grid.Column="1" HorizontalAlignment="Left" Margin="69,110,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontFamily="Arial" FontSize="16" Width="117" Height="24"/>
-        <CheckBox Content="Broto" HorizontalAlignment="Left" Margin="43,144,0,0" VerticalAlignment="Top" FontFamily="Arial" FontSize="14"/>
-        <CheckBox Content="Média" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="123,144,0,0" FontFamily="Arial" FontSize="14"/>
-        <CheckBox Content="Grande" HorizontalAlignment="Left" Margin="217,144,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.324,0.667" FontFamily="Arial" FontSize="14"/>
-        <CheckBox Content="Gigante" HorizontalAlignment="Left" Margin="316,144,0,0" VerticalAlignment="Top"/>
+        <CheckBox Content="Broto" HorizontalAlignment="Left" Margin="43,144,0,0" VerticalAlignment="Top" FontFamily="Arial" FontSize="14" Checked="CheckBoxBroto_Checked"/>
+        <CheckBox x:Name="checkMedia" Content="Média" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="123,144,0,0" FontFamily="Arial" FontSize="14"/>
+        <CheckBox x:Name="checkGrande" Content="Grande" HorizontalAlignment="Left" Margin="217,144,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.324,0.667" FontFamily="Arial" FontSize="14"/>
+        <CheckBox x:Name="checkGigante" Content="Gigante" HorizontalAlignment="Left" Margin="316,144,0,0" VerticalAlignment="Top"/>
+        <Label Content=" Tamanho da Pizza" HorizontalAlignment="Left" Margin="168,110,0,0" VerticalAlignment="Top" FontFamily="Arial" FontSize="14"/>
     </Grid>
 </Window>

@@ -24,6 +24,7 @@ namespace WpfView
         private static double valorTotal = 0;
         private static Cliente clientePedido = null;
         private static List<Pizza> Selecionados = null;
+        private int qtdMaxPizza = 0;
 
         public FazerPedido()
         {
@@ -113,6 +114,13 @@ namespace WpfView
             bebidas.ClientePedido(clientePedido, valorTotal);
             this.Close();
             bebidas.ShowDialog();
+        }
+
+        private void CheckBoxBroto_Checked(object sender, RoutedEventArgs e)
+        {
+            numPizza = 2;
+            checkMedia.IsEnabled= false;
+            checkGrande.IsEnabled = false;
         }
     }
 }

@@ -31,7 +31,8 @@ namespace WpfView
 
         private void btnClientes_Click(object sender, RoutedEventArgs e)
         {
-             List<Cliente> dt = ClienteController.ListarTodosClientes();
+             List<Cliente> dt = ClienteController.PesquisaPorIDLista(1);
+             //List<Cliente> dt = ClienteController.ListarTodosClientes();
             if (dt!=null)
             {
                 GridMostrar.ItemsSource = dt;
@@ -55,6 +56,10 @@ namespace WpfView
                 List<Cliente> cli = ClienteController.PesquisaPorIDLista(int.Parse(txtID.Text));
                 if (cli!=null)
                 {
+                    foreach (var c in cli)
+                    {
+                        string rua = c._Endereco.Rua;
+                    }
                     GridMostrar.ItemsSource = cli;
                 }
                 else

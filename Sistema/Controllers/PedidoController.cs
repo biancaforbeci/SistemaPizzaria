@@ -16,6 +16,21 @@ namespace Controllers
             ContextoSingleton.Instancia.SaveChanges();
         }
 
+        public static void MudarStatus(Pedido pedidoAntigo)
+        {
+           // Pedido pedidoEdit = PesquisarPorID(id);
+
+            //if (pedidoEdit != null)
+           // {
+             //   pedidoEdit.Status = pedidoAntigo.Status;
+            //}
+
+            //ContextoSingleton.Instancia.Entry(pedidoEdit).State =
+              //  System.Data.Entity.EntityState.Modified;
+
+    //            ContextoSingleton.Instancia.SaveChanges();
+        }
+
         public static List<Pedido> ListarTodosPedidos()
         {
 

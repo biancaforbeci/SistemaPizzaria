@@ -90,7 +90,9 @@ namespace Controllers
 
         public static List<Cliente> PesquisaPorIDLista(int id)
         {
-            var c = (from x in ContextoSingleton.Instancia.TblClientes
+            
+            var c = (from x in ContextoSingleton.Instancia.TblClientes.Include("_Endereco")
+                     
                      where x.ClienteID.Equals(id) && x._Endereco.EnderecoID==x.EnderecoID 
                      select x).ToList();
             

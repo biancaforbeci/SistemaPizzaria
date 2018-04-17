@@ -16,8 +16,8 @@
                 <DataGridTextColumn Header="Valor Total" Binding="{Binding Path=ValorTotal}"/>
             </DataGrid.Columns>
         </DataGrid>
-        <Button x:Name="btnAndamento" Content="Em Andamento " HorizontalAlignment="Left" Margin="78,74,0,0" VerticalAlignment="Top" Width="148" Height="33"/>
-        <Button x:Name="btnFinalizados" Content="Pedidos Finalizados" HorizontalAlignment="Left" Margin="275,74,0,0" VerticalAlignment="Top" Width="147" Height="33"/>
+        <Button x:Name="btnAndamento" Content="Em Andamento " HorizontalAlignment="Left" Margin="78,74,0,0" VerticalAlignment="Top" Width="148" Height="33" Click="btnAndamento_Click"/>
+        <Button x:Name="btnFinalizados" Content="Pedidos Finalizados" HorizontalAlignment="Left" Margin="275,74,0,0" VerticalAlignment="Top" Width="147" Height="33" Click="btnFinalizados_Click"/>
         <Button HorizontalAlignment="Left" VerticalAlignment="Top" Width="75"/>
         <Button x:Name="btnVoltar" Content="Voltar" HorizontalAlignment="Left" VerticalAlignment="Top" Width="124" Margin="485,74,0,0" Height="33" Click="btnVoltar_Click"/>
 
