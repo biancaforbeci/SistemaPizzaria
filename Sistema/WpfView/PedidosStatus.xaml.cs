@@ -104,6 +104,7 @@ namespace WpfView
 
         private void btnFinalizado_Click(object sender, RoutedEventArgs e)
         {
+            referencia = 2;
             List<Pedido> ped = PedidoController.ProcuraPedidoFinalizado();
             if (ped != null)
             {

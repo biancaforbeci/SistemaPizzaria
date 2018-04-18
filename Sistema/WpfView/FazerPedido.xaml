@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:WpfView"
         mc:Ignorable="d"
         Title="FazerPedido" Style="{StaticResource estiloJanela}" Closing="Window_Closing">
-    <Grid x:Name="checkPequena">
+    <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1.2*" ></ColumnDefinition>
             <ColumnDefinition Width="2*" ></ColumnDefinition>
@@ -16,7 +16,7 @@
         <Label Content="Cliente" HorizontalAlignment="Left" Margin="79,58,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.557,1.265" FontFamily="Arial" FontSize="14" FontWeight="Bold"/>
         <DataGrid x:Name="gridPizza" IsReadOnly="True" AutoGenerateColumns="False" SelectionMode="Extended" SelectionUnit="FullRow" CanUserAddRows="false" Margin="10,139,10,49" FontFamily="Arial" FontSize="14" SelectionChanged="gridPizza_SelectionChanged" Grid.Column="1" >
             <DataGrid.Columns>
-                <DataGridTextColumn Header="ID" Binding="{Binding Path=PizzaID}"/>
+                <DataGridTextColumn Header="ID" Binding="{Binding Path=ProdutoID}"/>
                 <DataGridTextColumn Header="Pizza" Binding="{Binding Path=Nome}"/>
                 <DataGridTextColumn Header="Ingredientes" Binding="{Binding Path=Ingredientes}"/>
                 <DataGridTextColumn Header="Preço" Binding="{Binding Path=Preco}"/>

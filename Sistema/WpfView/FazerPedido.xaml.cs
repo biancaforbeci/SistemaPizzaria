@@ -31,16 +31,14 @@ namespace WpfView
         public FazerPedido()
         {
             InitializeComponent();
-            MostrarGrid();
-            blockValorTotal.Text = Convert.ToString(0);
+            MostrarGrid();            
         }
 
         private void btnCancelar_Click(object sender, RoutedEventArgs e)
         {
             MainWindow w = new MainWindow();
             this.Close();
-            w.ShowDialog();
-            ClientesPizzasController.ExcluirPedidosCliente(clientePedido.ClienteID);
+            w.ShowDialog();            
         }
 
         public void MostrarCliente(int id)
@@ -76,7 +74,6 @@ namespace WpfView
             
             Random random = new Random();
             num = random.Next(0, 2000);
-            MessageBox.Show("" + num);
             retorno = PedidoController.PesquisaNumPedido(num);
             if (retorno == true)
             {
@@ -233,16 +230,11 @@ namespace WpfView
         {
             if (PossuiPizzasCadastradas == true)
             {
-                if (MessageBox.Show("Deseja cancelar pedido e fechar programa ?", "Fechar programa", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+                MainWindow tela = new MainWindow();
+                if (MessageBox.Show("Deseja cancelar pedido ?", "Cancelar pedido", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
                 {
                     ClientesPizzasController.ExcluirPedidosCliente(clientePedido.ClienteID);
-                }
-                else
-                {
-                    MainWindow tela = new MainWindow();
-                    ClientesPizzasController.ExcluirPedidosCliente(clientePedido.ClienteID);
-                    tela.ShowDialog();                  
-                }                
+                }                          
             }
         }
 

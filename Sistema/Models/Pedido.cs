@@ -8,7 +8,7 @@ namespace Models
 {
     public class Pedido
     {
-        public int PedidoID { get; set;}
+        public int ProdutoID { get; set;}
         public ClientesPizzas _ClientesPizzas { get; set; }
         public int ClientesPizzasID { get; set; }
         public int NumPedido { get; set; }
