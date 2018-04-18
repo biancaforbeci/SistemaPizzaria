@@ -193,7 +193,7 @@ namespace WpfView
         {
             CheckPizza.IsEnabled = true;
             CheckCliente.IsEnabled = true;
-           PadraoComponentes();
+            PadraoComponentes();
         }
 
         private void CheckPizza_Unchecked(object sender, RoutedEventArgs e)

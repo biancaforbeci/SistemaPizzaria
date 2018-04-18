@@ -14,5 +14,6 @@ namespace Models
         public int NumPedido { get; set; }
         public double ValorTotal { get; set;}        
         public string Status { get; set; }
+        public string Tamanho_Pizza { get; set; }
     }
 }

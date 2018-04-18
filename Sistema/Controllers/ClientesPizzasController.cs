@@ -15,10 +15,10 @@ namespace Controllers
             ContextoSingleton.Instancia.SaveChanges();
         }
 
-        public static List<ClientesPizzas> PesquisarPorClientePedidos(int id)
+        public static List<ClientesPizzas> PesquisarClientePedidos(int cliID)
         {
-            var c = (from x in ContextoSingleton.Instancia.TblClientesPizzas
-                     where x.ClienteID.Equals(id)
+            var c = (from x in ContextoSingleton.Instancia.TblClientesPizzas.Include("_Cliente")
+                     where x.ClienteID.Equals(cliID)
                      select x).ToList();
 
             if (c.Count > 0)
@@ -30,5 +30,28 @@ namespace Controllers
                 return null;
             }
         }
+
+        public static void ExcluirSelecao(int id)
+        {
+            ClientesPizzas pizzaExcluir = ContextoSingleton.Instancia.TblClientesPizzas.Find(id);
+
+            ContextoSingleton.Instancia.Entry(pizzaExcluir).State =
+                System.Data.Entity.EntityState.Deleted;
+            ContextoSingleton.Instancia.SaveChanges();
+        }
+
+        public static void ExcluirPedidosCliente(int cliID)
+        {
+            var c = (from x in ContextoSingleton.Instancia.TblClientesPizzas.Include("_Cliente")
+                    where x.ClienteID.Equals(cliID)
+                    select x).ToList();
+            foreach (var item in c)
+            {
+                ContextoSingleton.Instancia.Entry(item).State =
+               System.Data.Entity.EntityState.Deleted;
+                ContextoSingleton.Instancia.SaveChanges();
+            }            
+        }
+        
     }
 }

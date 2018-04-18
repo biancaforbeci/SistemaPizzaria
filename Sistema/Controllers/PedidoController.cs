@@ -56,7 +56,7 @@ namespace Controllers
         public static List<Pedido> ProcuraPedidoFinalizados()
         {
             var c = (from x in ContextoSingleton.Instancia.TblPedido
-                     where x.Status.Contains("Finalizado")
+                     where x.Status.Contains("ENTREGUE")
                      select x).ToList();
 
             if (c.Count > 0)
@@ -72,7 +72,7 @@ namespace Controllers
         public static List<Pedido> ProcuraPedidoPendentes()
         {
             var c = (from x in ContextoSingleton.Instancia.TblPedido
-                     where x.Status.Contains("Em andamento")
+                     where x.Status.Contains("EM PRODUÇÃO")
                      select x).ToList();
 
             if (c.Count > 0)
