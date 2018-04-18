@@ -119,6 +119,10 @@ namespace WpfView
             if(MessageBox.Show("Confirmar pedido ?", "Confirma Pedido", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
             {
                 SalvandoNaTabelaPedidos();
+                MessageBox.Show("Pedido finalizado");
+                MainWindow tela = new MainWindow();
+                this.Close();
+                tela.ShowDialog();
             }                   
         }
 

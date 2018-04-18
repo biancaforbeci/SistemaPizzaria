@@ -30,9 +30,8 @@ namespace WpfView
         private void btnRealizarPedido_Click(object sender, RoutedEventArgs e)
         {         
                 ProcurarCliente  cl = new ProcurarCliente();
-                cl.ShowDialog();
-            
-            // *****************************//
+                this.Close();
+                cl.ShowDialog();          
         }
 
         private void btnCadastrar_Click(object sender, RoutedEventArgs e)
@@ -66,6 +65,13 @@ namespace WpfView
         private void ItemPedidoAndamento_Click(object sender, RoutedEventArgs e)
         {
             PedidosStatus tela = new PedidosStatus();
+            this.Close();
+            tela.ShowDialog();
+        }
+
+        private void ItemListaPedidos_Click(object sender, RoutedEventArgs e)
+        {
+            ListaPedidos tela = new ListaPedidos();
             this.Close();
             tela.ShowDialog();
         }
