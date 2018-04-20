@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfView"
         mc:Ignorable="d"
-        Title="AreaExclusao" Style="{StaticResource estiloJanela}">
+        Title="AreaExclusao" Style="{StaticResource estiloJanela}"  >
     <Grid>
 
         <Grid.ColumnDefinitions>
@@ -25,7 +25,7 @@
                 <DataGridTextColumn Header="Preço" Binding="{Binding Path=Preco}"/>
             </DataGrid.Columns>
         </DataGrid>
-        <Button x:Name="btnVoltar" Content="Voltar" Canvas.Left="484" Canvas.Top="328" Width="119" FontFamily="Arial" FontSize="22" Click="btnVoltar_Click" Grid.Column="1" Margin="42,363,63,10"/>
+        <Button x:Name="btnVoltar" Content="Voltar" Canvas.Left="484" Canvas.Top="328" Width="119" FontFamily="Arial" FontSize="22" Click="btnVoltar_Click" Grid.Column="1" Margin="55,437,76,10"/>
         <DataGrid x:Name="gridBebida" IsReadOnly="True" AutoGenerateColumns="False" SelectionMode="Single" CanUserAddRows="false" SelectionChanged="gridBebida_SelectionChanged" Margin="10,199,10,45">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="ID" Binding="{Binding Path=BebidaID}"/>
@@ -38,10 +38,10 @@
             <DataGrid.Columns>
                 <DataGridTextColumn Header="ID" Binding="{Binding Path=ClienteID}"/>
                 <DataGridTextColumn Header="Nome" Binding="{Binding Path=Nome}"/>
-                <DataGridTextColumn Header="CPF" Binding="{Binding Path=CPF}"/>
+                <DataGridTextColumn Header="CPF" Binding="{Binding Path=Cpf}"/>
                 <DataGridTextColumn Header="Telefone" Binding="{Binding Path=Telefone}"/>
-                <DataGridTextColumn Header="Rua" Binding="{Binding Path=Rua}"/>
-                <DataGridTextColumn Header="Número" Binding="{Binding Path=Numero}"/>
+                <DataGridTextColumn Header="Rua" Binding="{Binding Path=_Endereco.Rua}"/>
+                <DataGridTextColumn Header="Número" Binding="{Binding Path=_Endereco.Numero}"/>
             </DataGrid.Columns>
         </DataGrid>
         <TextBox x:Name="txtBebida" HorizontalAlignment="Left" Height="23" Margin="46,109,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>

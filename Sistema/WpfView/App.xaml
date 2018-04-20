@@ -5,8 +5,8 @@
              StartupUri="MainWindow.xaml">
     <Application.Resources>
         <Style TargetType="Window" x:Key="estiloJanela">
-            <Setter Property="Height" Value="430.673" />
-            <Setter Property="Width" Value="677.659"/>
+            <Setter Property="Height" Value="507.673" /> 
+            <Setter Property="Width" Value="754.659"/>
         </Style>
         <Style TargetType="Button" x:Key="estiloButton">
             <Setter Property="Width" Value="127"/>

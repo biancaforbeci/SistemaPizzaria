@@ -44,7 +44,7 @@
         </StackPanel>
         <StackPanel Orientation="Horizontal" Margin="10,233,-10,95">
             <Button x:Name="btnEditar" Content="Editar"   Width="100" Height="30" FontFamily="Arial" FontSize="18" Click="btnEditar_Click"/>
-            <Button x:Name="btnCancelar" Content="Limpar Campos" Width="144" Height="30" FontFamily="Arial" FontSize="18" Margin="0,9"/>
+            <Button x:Name="btnLimpar" Content="Limpar Campos" Width="144" Height="30" FontFamily="Arial" FontSize="18" Margin="0,9" Click="btnLimparCampos_Click"/>
             <Button x:Name="btnVoltar" Content="Voltar" Width="80" Height="30" FontFamily="Arial" FontSize="18" Margin="0,9" Click="btnVoltar_Click"/>
         </StackPanel>
         <Label Content="Editar Clientes " HorizontalAlignment="Center" Margin="164,22,0,0" Width="345" FontFamily="Arial Black" FontSize="24" VerticalAlignment="Top"/>

@@ -8,7 +8,7 @@
         Title="ListagemClientes" Style="{StaticResource estiloJanela}">
     <Grid>
         <Canvas>
-            <DataGrid x:Name="GridMostrar" AutoGenerateColumns="False" SelectionChanged="GridMostrar_SelectionChanged" Height="267" Canvas.Left="63" Canvas.Top="78" Width="579">
+            <DataGrid x:Name="gridCliente" IsReadOnly="True" AutoGenerateColumns="False" SelectionMode="Single" CanUserAddRows="false"  Height="238" Width="521" Canvas.Left="100" Canvas.Top="81">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="ID" Binding="{Binding Path=ClienteID}"/>
                     <DataGridTextColumn Header="Nome" Binding="{Binding Path=Nome}"/>

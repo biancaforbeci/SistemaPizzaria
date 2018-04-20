@@ -7,7 +7,13 @@
         mc:Ignorable="d"
         Title="MainWindow" Style="{StaticResource estiloJanela}" Background="{x:Null}" WindowStyle="ThreeDBorderWindow" ScrollViewer.VerticalScrollBarVisibility="Auto" WindowStartupLocation="CenterScreen" >
 
-    <Grid Margin="0,0,2,-2" Background="#FFF3F1F1">
+    <Grid Margin="0,0,2,-2">
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="#FF92ADC3" Offset="0.009"/>
+                <GradientStop Color="White" Offset="0.5"/>
+            </LinearGradientBrush>
+        </Grid.Background>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="2*" ></ColumnDefinition>
             <ColumnDefinition Width="2*" ></ColumnDefinition>
@@ -19,7 +25,7 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <Menu Width="364" 
+        <Menu Width="590" 
         Height="40"
         Margin="10,10,0,0" 
         VerticalAlignment="Top"
@@ -51,32 +57,28 @@
                 <MenuItem x:Name="ItemBebibas" Header="Bebidas" IsCheckable="true" Click="ItemBebibas_Click"/>
             </MenuItem>
 
-            <MenuItem Header="Busca e Listagem de Clientes" FontFamily="Arial" FontSize="16">
+            <MenuItem x:Name="ItemListagem1" Header="Listagem Clientes Cadastrados" FontFamily="Arial" FontSize="16" Click="ItemListagem_Click" >
                 <MenuItem.ItemsPanel>
                     <ItemsPanelTemplate>
                         <VirtualizingStackPanel Orientation="Vertical"/>
                     </ItemsPanelTemplate>
-
                 </MenuItem.ItemsPanel>
-                <MenuItem x:Name="ItemBusca" Header="Busca por ID" IsCheckable="true" FontSize="16" FontFamily="Arial" Click="ItemPizzas_Click"/>
-                <MenuItem x:Name="ItemListagem" Header="Listagem de todos os clientes" IsCheckable="true" Click="ItemBebibas_Click"/>
             </MenuItem>
 
             <MenuItem Header="Pedido" FontFamily="Arial" FontSize="16">
                 <MenuItem x:Name="ItemPedidoAndamento" Header="Andamento" Click="ItemPedidoAndamento_Click"/>
-                <MenuItem x:Name="ItemListaPedidos" Header="Lista de Pedidos" Click="ItemListaPedidos_Click"/>
             </MenuItem>
 
             <MenuItem Header="Administrativo" FontFamily="Arial" FontSize="16">
                 <MenuItem x:Name="Exclusao" Header="Área de Exclusão" Click="Exclusao_Click" />
-            </MenuItem>           
-            
+            </MenuItem>
+
         </Menu>
 
 
-        <Canvas HorizontalAlignment="Left" Height="317" VerticalAlignment="Top" Width="568" Grid.ColumnSpan="2" Grid.RowSpan="3" Margin="59,81,0,0">
-            <Image Height="206" Width="350" Source="Imagens/pizza.jpg" HorizontalAlignment="Left" Canvas.Left="29" Canvas.Top="99"/>
-            <Button x:Name="btnRealizarPedido" Content="Fazer Pedido" HorizontalAlignment="Left" VerticalAlignment="Top" Width="179" Height="49" Canvas.Left="379" Canvas.Top="176" FontSize="18" Click="btnRealizarPedido_Click">
+        <Canvas HorizontalAlignment="Left" Height="370" VerticalAlignment="Top" Width="657" Grid.ColumnSpan="2" Grid.RowSpan="3" Margin="59,81,0,0">
+            <Image Height="206" Width="257" Source="Imagens/pizza.jpg" HorizontalAlignment="Left" Canvas.Left="58" Canvas.Top="111"/>
+            <Button x:Name="btnRealizarPedido" Content="Fazer Pedido" HorizontalAlignment="Left" VerticalAlignment="Top" Width="179" Height="49" Canvas.Left="424" Canvas.Top="181" FontSize="18" Click="btnRealizarPedido_Click">
                 <Button.Background>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                         <GradientStop Color="#FF577DE0" Offset="0"/>
@@ -84,8 +86,7 @@
                     </LinearGradientBrush>
                 </Button.Background>
             </Button>
-            <Label Content="System Pizza" HorizontalAlignment="Left" Width="487" FontSize="72" VerticalAlignment="Center" Height="114" FontWeight="Bold" FontFamily="Swis721 BdOul BT" FontStyle="Italic" Canvas.Left="29" Canvas.Top="-15"/>
-            <Button x:Name="btnCadastrar" Content="Button" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Click="btnCadastrar_Click" Canvas.Left="441" Canvas.Top="118"/>
+            <Label Content="System Pizza" HorizontalAlignment="Left" Width="487" FontSize="72" VerticalAlignment="Center" Height="114" FontWeight="Bold" FontFamily="Swis721 BdOul BT" FontStyle="Italic" Canvas.Left="97" Canvas.Top="-22"/>
         </Canvas>
 
 

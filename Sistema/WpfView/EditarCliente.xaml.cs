@@ -117,5 +117,16 @@ namespace WpfView
             }
         }
 
+        private void btnLimparCampos_Click(object sender, RoutedEventArgs e)
+        {
+            txtNome.Text = "";
+            txtCPF.Text = "";
+            txtTelefone.Text = "";
+            txtRua.Text = "";
+            txtNumero.Text = "";
+            txtBairro.Text = "";
+            txtComplemento.Text = "";
+            txtReferencia.Text = "";
+        }
     }
 }

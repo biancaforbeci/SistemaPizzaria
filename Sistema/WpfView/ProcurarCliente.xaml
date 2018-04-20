@@ -7,11 +7,11 @@
         mc:Ignorable="d"
         Title="ProcurarCliente" Style="{StaticResource estiloJanela}">
     <Grid>
-        <Canvas HorizontalAlignment="Left" Height="380" Margin="10,10,0,0" VerticalAlignment="Top" Width="650">
-            <TextBlock Text="Telefone" Width="93" FontSize="22" FontFamily="Arial" Canvas.Top="13" Canvas.Left="10"/>
+        <Canvas HorizontalAlignment="Left" Height="457" Margin="10,10,0,0" VerticalAlignment="Top" Width="727">
+            <TextBlock Text="Telefone" Width="93" FontSize="16" FontFamily="Arial" Canvas.Top="84" Canvas.Left="49" FontWeight="Bold"/>
             <TextBlock/>
-            <TextBox x:Name="txtTelefone" Width="182" Canvas.Left="119" Canvas.Top="13" Height="29" />
-            <DataGrid x:Name="gridCliente" IsReadOnly="True" AutoGenerateColumns="False" SelectionMode="Single" CanUserAddRows="false" Canvas.Left="72" Canvas.Top="72" Grid.Column="2" SelectionChanged="gridCliente_SelectionChanged" Height="244" Width="525">
+            <TextBox x:Name="txtTelefone" Width="182" Canvas.Left="147" Canvas.Top="84" Height="21" />
+            <DataGrid x:Name="gridCliente" IsReadOnly="True" AutoGenerateColumns="False" SelectionMode="Single" CanUserAddRows="false" Canvas.Left="112" Canvas.Top="143" Grid.Column="2" SelectionChanged="gridCliente_SelectionChanged" Height="244" Width="525">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="ID" Binding="{Binding Path=ClienteID}"/>
                     <DataGridTextColumn Header="Nome" Binding="{Binding Path=Nome}"/>
@@ -24,9 +24,11 @@
                     <DataGridTextColumn Header="Referência" Binding="{Binding Path=_Endereco.Referencia}"/>
                 </DataGrid.Columns>
             </DataGrid>
-            <Button x:Name="btnProcura" Content="Procurar"  Width="106" Height="26" Canvas.Left="318" Canvas.Top="13" FontFamily="Arial" FontSize="22" Click="btnProcura_Click"/>
-            <Button x:Name="btnProcuraID" Content="Procurar por ID" Width="164" Height="26" Canvas.Left="453" Canvas.Top="13" Click="ProcuraID" RenderTransformOrigin="0.703,0.836" FontFamily="Arial" FontSize="22" />
-            <Button x:Name="btnVoltar" Content="Voltar" Canvas.Left="522" Canvas.Top="327" Width="75" RenderTransformOrigin="0.899,0.378" Height="43" FontFamily="Arial" FontSize="22" Click="btnVoltar_Click"/>
+            <Button x:Name="btnProcura" Content="Procurar"  Width="106" Height="26" Canvas.Left="361" Canvas.Top="80" FontFamily="Arial" FontSize="16" Click="btnProcura_Click"/>
+            <Button x:Name="btnProcuraID" Content="Procurar por ID" Width="164" Height="26" Canvas.Left="494" Canvas.Top="79" Click="ProcuraID" RenderTransformOrigin="0.703,0.836" FontFamily="Arial" FontSize="16" />
+            <Button x:Name="btnVoltar" Content="Voltar" Canvas.Left="519" Canvas.Top="404" Width="91" RenderTransformOrigin="0.899,0.378" Height="43" FontFamily="Arial" FontSize="22" Click="btnVoltar_Click"/>
+            <Label Content="Selecione o cliente para entrar na tela de pedido" Canvas.Left="191" Canvas.Top="110" Width="356" FontFamily="Arial" FontSize="16"/>
+            <Label Content="Procura por Telefone" Canvas.Left="248" Canvas.Top="10" FontFamily="Arial" FontSize="24" FontWeight="Bold"/>
         </Canvas>
 
     </Grid>

@@ -24,20 +24,13 @@ namespace WpfView
     /// </summary>
     public partial class ProcurarClientePorID : Window
     {
+        private Cliente cliEditar = null;
+
         public ProcurarClientePorID()
         {
             InitializeComponent();
             
-        }
-
-        private void btnClientes_Click(object sender, RoutedEventArgs e)
-        {
-             List<Cliente> dt = ClienteController.ListarTodosClientes();
-            if (dt!=null)
-            {
-                //GridMostrar.ItemsSource = dt;
-            }                        
-        }
+        }       
 
         private void btnVoltar_Click(object sender, RoutedEventArgs e)
         {
@@ -54,10 +47,9 @@ namespace WpfView
             if ((Regex.IsMatch(caracter, verifica) || (txtID.Text != null)))
             {
                 Cliente cli = ClienteController.PesquisarPorID(int.Parse(txtID.Text));
-
+                cliEditar = cli;
                 if (cli != null)
-                {
-                    MessageBox.Show("Ola");
+                {                    
                     blockID.Text = Convert.ToString(cli.ClienteID);
                     txtNome.Text = cli.Nome;
                     txtCPF.Text = cli.Cpf;
@@ -80,36 +72,37 @@ namespace WpfView
 
         }
 
-        /* private void GridMostrar_SelectionChanged(object sender, SelectionChangedEventArgs e)
-         {
-             if (GridMostrar.SelectedItem != null)
-             {
-                 MessageBoxResult result = MessageBox.Show("Deseja editar o cliente de nome: " + ((Cliente)GridMostrar.SelectedItem).Nome + " ?", "Editar", MessageBoxButton.YesNo, MessageBoxImage.Question);
-                 if (result == MessageBoxResult.Yes)
-                 {
-                     try
-                     {      
-                         Cliente cli = ((Cliente)GridMostrar.SelectedItem);
-                         EditarCliente edit = new EditarCliente();
-                         edit.EditarNome(cli);
-                         this.Close();
-                         edit.ShowDialog();
-                     }
-                     catch (Exception erro)
-                     {
-                         MessageBox.Show("ERRO: " + erro);
-                     }
-                 }
-                 else
-                 {
-                     FazerPedido pedido = new FazerPedido();                    
-                     pedido.MostrarCliente(((Cliente)GridMostrar.SelectedItem).ClienteID);
-                     this.Close();
-                     pedido.ShowDialog();
-                 }
-             }
-         }*/
+        private void btnEditar_Click(object sender, RoutedEventArgs e)
+        {
+            if (cliEditar!=null)
+            {
+                EditarCliente tela = new EditarCliente();
+                tela.EditarNome(ClienteController.PesquisarPorID(int.Parse(txtID.Text)));
+                this.Close();
+                tela.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Digite um ID válido");
+            }
 
+        }
+
+        private void btnConfirmar_Click(object sender, RoutedEventArgs e)
+        {
+            if (cliEditar != null)
+            {
+                FazerPedido tela = new FazerPedido();
+                tela.MostrarCliente(ClienteController.PesquisarPorID(int.Parse(txtID.Text)).ClienteID);
+                this.Close();
+                tela.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Digite um ID válido");
+            }
+            
+        }
     }
 }
 

@@ -75,5 +75,12 @@ namespace WpfView
             this.Close();
             tela.ShowDialog();
         }
+
+        private void ItemListagem_Click(object sender, RoutedEventArgs e)
+        {
+            ListagemClientes tela = new ListagemClientes();
+            this.Close();
+            tela.ShowDialog();
+        }
     }
 }

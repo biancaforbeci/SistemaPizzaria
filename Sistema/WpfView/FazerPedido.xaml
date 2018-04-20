@@ -13,8 +13,8 @@
             <ColumnDefinition Width="2*" ></ColumnDefinition>
         </Grid.ColumnDefinitions>
 
-        <Label Content="Cliente" HorizontalAlignment="Left" Margin="79,58,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.557,1.265" FontFamily="Arial" FontSize="14" FontWeight="Bold"/>
-        <DataGrid x:Name="gridPizza" IsReadOnly="True" AutoGenerateColumns="False" SelectionMode="Extended" SelectionUnit="FullRow" CanUserAddRows="false" Margin="10,139,10,49" FontFamily="Arial" FontSize="14" SelectionChanged="gridPizza_SelectionChanged" Grid.Column="1" >
+        <Label Content="Cliente" HorizontalAlignment="Left" Margin="87,69,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.557,1.265" FontFamily="Arial" FontSize="16" FontWeight="Bold"/>
+        <DataGrid x:Name="gridPizza" IsReadOnly="True" AutoGenerateColumns="False" SelectionMode="Extended" SelectionUnit="FullRow" CanUserAddRows="false" Margin="10,155,10,82" FontFamily="Arial" FontSize="14" SelectionChanged="gridPizza_SelectionChanged" Grid.Column="1" >
             <DataGrid.Columns>
                 <DataGridTextColumn Header="ID" Binding="{Binding Path=ProdutoID}"/>
                 <DataGridTextColumn Header="Pizza" Binding="{Binding Path=Nome}"/>
@@ -22,20 +22,20 @@
                 <DataGridTextColumn Header="Preço" Binding="{Binding Path=Preco}"/>
             </DataGrid.Columns>
         </DataGrid>
-        <Label Content="Telefone Cliente" HorizontalAlignment="Left" Margin="193,61,0,0" VerticalAlignment="Top" FontFamily="Arial" FontSize="14" Width="127" FontWeight="Bold" Grid.Column="1" Grid.ColumnSpan="2"/>
+        <Label Content="Telefone Cliente" HorizontalAlignment="Left" Margin="193,68,0,0" VerticalAlignment="Top" FontFamily="Arial" FontSize="16" Width="127" FontWeight="Bold" Grid.Column="1" Grid.ColumnSpan="2"/>
         <Label Content="Montagem do Pedido" HorizontalAlignment="Left" Margin="217,10,0,0" VerticalAlignment="Top" Width="257" FontFamily="Arial" FontSize="24" FontWeight="Bold" Grid.ColumnSpan="3"/>
-        <Label Content="Valor Total" HorizontalAlignment="Left" Margin="35,237,0,0" VerticalAlignment="Top" FontFamily="Arial" FontSize="14" FontWeight="Bold"/>
-        <Button x:Name="btnCancelar" Content="Cancelar Pedido" HorizontalAlignment="Left" Margin="14,365,0,0" VerticalAlignment="Top" Width="135" Height="25" FontFamily="Arial" FontSize="14" Click="btnCancelar_Click"/>
-        <Button x:Name="btnConfirmar" Content="Confirmar Pedido" HorizontalAlignment="Left" Margin="74,365,0,0" VerticalAlignment="Top" Width="131" Height="25" FontFamily="Arial" FontSize="14" Click="btnConfirmar_Click" Grid.Column="1"/>
-        <Button Content="Acrescentar bebida" HorizontalAlignment="Left" Margin="60,365,0,0" VerticalAlignment="Top" Width="131" Height="25" FontFamily="Arial" FontSize="14" Click="Bebidas_Click" Grid.Column="2"/>
-        <TextBlock x:Name="blockCliente" HorizontalAlignment="Left" Margin="24,62,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="25" Width="118" FontFamily="Arial" FontSize="16" Grid.Column="1"/>
-        <TextBlock x:Name="blockValorTotal" HorizontalAlignment="Left" Margin="19,283,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontFamily="Arial" FontSize="16" Width="117" Height="24"/>
-        <CheckBox x:Name="checkBroto" Content="Broto" HorizontalAlignment="Left" Margin="39,123,0,0" VerticalAlignment="Top" FontFamily="Arial" FontSize="14" Checked="CheckBoxBroto_Checked" Unchecked="checkBroto_Unchecked"/>
-        <CheckBox x:Name="checkMedia" Content="Média" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="39,143,0,0" FontFamily="Arial" FontSize="14" RenderTransformOrigin="-3.062,0.267" Checked="checkMedia_Checked" Unchecked="checkMedia_Unchecked"/>
-        <CheckBox x:Name="checkGrande" Content="Grande" HorizontalAlignment="Left" Margin="39,161,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.324,0.667" FontFamily="Arial" FontSize="14" Checked="checkGrande_Checked" Unchecked="checkGrande_Unchecked"/>
-        <CheckBox x:Name="checkGigante" Content="Gigante" HorizontalAlignment="Left" Margin="39,181,0,0" VerticalAlignment="Top" Width="77" FontFamily="Arial" FontSize="14" Checked="checkGigante_Checked" Unchecked="checkGigante_Unchecked"/>
-        <Label Content=" Tamanho da Pizza" HorizontalAlignment="Left" Margin="2,92,0,0" VerticalAlignment="Top" FontFamily="Arial" FontSize="14" FontWeight="Bold"/>
-        <DataGrid x:Name="gridPizzasEscolhidas"  AutoGenerateColumns="False" SelectionMode="Single" CanUserAddRows="false" Margin="10,139,21,49" Grid.Column="2" SelectionChanged="gridPizzasEscolhidas_SelectionChanged" FontFamily="Arial" FontSize="14">
+        <Label Content="Valor Total" HorizontalAlignment="Left" Margin="39,300,0,0" VerticalAlignment="Top" FontFamily="Arial" FontSize="16" FontWeight="Bold"/>
+        <Button x:Name="btnCancelar" Content="Cancelar Pedido" HorizontalAlignment="Left" Margin="27,425,0,0" VerticalAlignment="Top" Width="135" Height="25" FontFamily="Arial" FontSize="14" Click="btnCancelar_Click"/>
+        <Button x:Name="btnConfirmar" Content="Confirmar Pedido" HorizontalAlignment="Left" Margin="95,425,0,0" VerticalAlignment="Top" Width="131" Height="25" FontFamily="Arial" FontSize="14" Click="btnConfirmar_Click" Grid.Column="1"/>
+        <Button Content="Acrescentar bebida" HorizontalAlignment="Left" Margin="90,425,0,0" VerticalAlignment="Top" Width="131" Height="25" FontFamily="Arial" FontSize="14" Click="Bebidas_Click" Grid.Column="2"/>
+        <TextBlock x:Name="blockCliente" HorizontalAlignment="Left" Margin="24,69,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="25" Width="118" FontFamily="Arial" FontSize="16" Grid.Column="1"/>
+        <TextBlock x:Name="blockValorTotal" HorizontalAlignment="Left" Margin="27,346,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontFamily="Arial" FontSize="20" Width="117" Height="24" FontWeight="Bold" TextAlignment="Center"/>
+        <CheckBox x:Name="checkBroto" Content="Broto" HorizontalAlignment="Left" Margin="39,161,0,0" VerticalAlignment="Top" FontFamily="Arial" FontSize="14" Checked="CheckBoxBroto_Checked" Unchecked="checkBroto_Unchecked"/>
+        <CheckBox x:Name="checkMedia" Content="Média" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="39,192,0,0" FontFamily="Arial" FontSize="14" RenderTransformOrigin="-3.062,0.267" Checked="checkMedia_Checked" Unchecked="checkMedia_Unchecked"/>
+        <CheckBox x:Name="checkGrande" Content="Grande" HorizontalAlignment="Left" Margin="39,224,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.324,0.667" FontFamily="Arial" FontSize="14" Checked="checkGrande_Checked" Unchecked="checkGrande_Unchecked"/>
+        <CheckBox x:Name="checkGigante" Content="Gigante" HorizontalAlignment="Left" Margin="39,254,0,0" VerticalAlignment="Top" Width="77" FontFamily="Arial" FontSize="14" Checked="checkGigante_Checked" Unchecked="checkGigante_Unchecked"/>
+        <Label Content=" Tamanho da Pizza" HorizontalAlignment="Left" Margin="10,117,0,0" VerticalAlignment="Top" FontFamily="Arial" FontSize="16" FontWeight="Bold"/>
+        <DataGrid x:Name="gridPizzasEscolhidas"  AutoGenerateColumns="False" SelectionMode="Single" CanUserAddRows="false" Margin="10,155,21,82" Grid.Column="2" SelectionChanged="gridPizzasEscolhidas_SelectionChanged" FontFamily="Arial" FontSize="14">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Cliente" Binding="{Binding Path=_Cliente.Nome}"/>
                 <DataGridTextColumn Header="Pizza Escolhida" Binding="{Binding Path=_Pizza.Nome}"/>
@@ -43,8 +43,8 @@
                 <DataGridTextColumn Header="Preço" Binding="{Binding Path=Preco}"/>
             </DataGrid.Columns>
         </DataGrid>
-        <TextBlock x:Name="blockTelefone" Grid.Column="2" Margin="95,61,67,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="23" FontFamily="Arial" FontSize="16"/>
-        <Label Content="Clique no item que deseja retirar do pedido" Grid.Column="2" HorizontalAlignment="Left" Margin="8,107,0,0" VerticalAlignment="Top" FontFamily="Arial"/>
-        <Label Content="Clique na pizza que deseja adicionar no pedido" HorizontalAlignment="Left" Margin="151,107,0,0" VerticalAlignment="Top" Grid.ColumnSpan="2" FontFamily="Arial" Width="262"/>
+        <TextBlock x:Name="blockTelefone" Grid.Column="2" Margin="73,69,89,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="23" FontFamily="Arial" FontSize="16"/>
+        <Label Content="Clique no item que deseja retirar do pedido" Grid.Column="2" HorizontalAlignment="Left" Margin="10,119,0,0" VerticalAlignment="Top" FontFamily="Arial"/>
+        <Label Content="Clique na pizza que deseja adicionar no pedido" HorizontalAlignment="Left" Margin="10,119,0,0" VerticalAlignment="Top" FontFamily="Arial" Width="262" Grid.Column="1"/>
     </Grid>
 </Window>
