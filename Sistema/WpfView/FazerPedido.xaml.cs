@@ -228,9 +228,10 @@ namespace WpfView
             if (PossuiPizzasCadastradas == true && referenciaButton==0)
             {
                 MainWindow tela = new MainWindow();
-                if (MessageBox.Show("Deseja cancelar pedido ?", "Cancelar pedido", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+                if (MessageBox.Show("Pedido será cancelado", "Cancelar pedido", MessageBoxButton.OK, MessageBoxImage.Exclamation) == MessageBoxResult.OK)
                 {
                     ClientesPizzasController.ExcluirPedidosCliente(clientePedido.ClienteID);
+                    Environment.Exit(0);
                 }                          
             }
         }

@@ -44,7 +44,7 @@ namespace WpfView
             blockCliente.Text = cli.Nome;
             blockTelefone.Text = cli.Telefone;
             clientePedido = cli;
-            blockValorTotal.Text = Convert.ToString(total);
+            blockValorTotal.Text = Convert.ToString(total.ToString("C2"));
             valorTotal = total;
             numPedido = num;
             list = listPizzas;
@@ -77,7 +77,7 @@ namespace WpfView
             Bebida bebidaEscolhida = ((Bebida)gridBebida.SelectedItem);
             SalvarPedido(bebidaEscolhida);
             valorTotal += ((Bebida)gridBebida.SelectedItem).Preco;
-            blockValorTotal.Text = Convert.ToString(valorTotal);
+            blockValorTotal.Text = Convert.ToString(valorTotal.ToString("C2"));
         }
 
         private void btnConfirmar_Click(object sender, RoutedEventArgs e)
@@ -144,7 +144,7 @@ namespace WpfView
         {
             if (gridBebidasEscolhidas.SelectedItem != null)
             {
-                MessageBoxResult result = MessageBox.Show("Confirma a exclusão do item " + ((ClientesBebidas)gridBebidasEscolhidas.SelectedItem).ClientesBebidasID + " ?", "Exclusão", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                MessageBoxResult result = MessageBox.Show("Confirma a exclusão do item " + ((ClientesBebidas)gridBebidasEscolhidas.SelectedItem)._Bebida.Nome + " ?", "Exclusão", MessageBoxButton.YesNo, MessageBoxImage.Question);
                 if (result == MessageBoxResult.Yes)
                 {
                     try
@@ -153,7 +153,7 @@ namespace WpfView
                         ClientesBebidasController.ExcluirSelecao(id);
                         MessageBox.Show("Item excluído com sucesso");
                         valorTotal -= ((ClientesBebidas)gridBebidasEscolhidas.SelectedItem).Preco;
-                        blockValorTotal.Text = Convert.ToString(valorTotal);
+                        blockValorTotal.Text = Convert.ToString(valorTotal.ToString("C2"));
                         MostrarGrid();
                         MostrarGridBebidasEscolhidas();
                     }
@@ -172,6 +172,7 @@ namespace WpfView
                 if (MessageBox.Show("Deseja cancelar pedido ?", "Cancelar pedido", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
                 {
                     ClientesPizzasController.ExcluirPedidosCliente(clientePedido.ClienteID);
+                    Environment.Exit(0);
                 }
             
         }
