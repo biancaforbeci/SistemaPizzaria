@@ -8,9 +8,9 @@
         Title="CadastroPizzas" Style="{StaticResource estiloJanela}">
     <Grid>
         <Label Content="Cadastro de Pizzas" HorizontalAlignment="Left" Margin="223,14,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.418,0.13" Width="402" FontFamily="Arial Black" FontSize="24"/>
-        <Button x:Name="btnSalvarPizza" Content="Salvar" HorizontalAlignment="Left" Margin="351,108,0,0" VerticalAlignment="Top" Width="90" FontFamily="Arial Black" FontSize="18" Click="btnSalvarPizza_Click" RenderTransformOrigin="0.075,0.443" Height="26"/>
-        <Button x:Name="btnListarPizzas" Content="Mostrar Pizzas Cadastradas" HorizontalAlignment="Left" Margin="43,108,0,0" VerticalAlignment="Top" Width="225" Height="26" FontFamily="Arial Black" FontSize="14" Click="btnListarPizzas_Click"/>
-        <DataGrid x:Name="gridPizza" IsReadOnly="True" AutoGenerateColumns="False" SelectionMode="Single" CanUserAddRows="false" Margin="10,172,22,32" SelectionChanged="GridMostrarPizza_SelectionChanged">
+        <Button x:Name="btnSalvarPizza" Content="Salvar" HorizontalAlignment="Left" Margin="351,108,0,0" VerticalAlignment="Top" Width="90" FontFamily="Arial" FontSize="14" Click="btnSalvarPizza_Click" RenderTransformOrigin="0.075,0.443" Height="26"/>
+        <Button x:Name="btnListarPizzas" Content="Mostrar Pizzas Cadastradas" HorizontalAlignment="Left" Margin="43,108,0,0" VerticalAlignment="Top" Width="225" Height="26" FontFamily="Arial" FontSize="14" Click="btnListarPizzas_Click"/>
+        <DataGrid x:Name="gridPizza" IsReadOnly="True" AutoGenerateColumns="False" SelectionMode="Single" CanUserAddRows="false" Margin="22,175,10,29" SelectionChanged="GridMostrarPizza_SelectionChanged">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="ID" Binding="{Binding Path=PizzaID}"/>
                 <DataGridTextColumn Header="Pizza" Binding="{Binding Path=Nome}"/>
@@ -26,7 +26,7 @@
             <Label Content="Preço" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="-0.094,0.659" Canvas.Left="448" Canvas.Top="17"/>
             <TextBox x:Name="txtPreco" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Canvas.Left="493" Canvas.Top="17"/>
         </Canvas>
-        <Button x:Name="btnVoltar" Content="Voltar" HorizontalAlignment="Left" Margin="525,108,0,0" VerticalAlignment="Top" Width="86" FontFamily="Arial Black" FontSize="22" Height="25" Click="btnVoltar_Click"/>
-        <Label Content="Clique na pizza desejada para editar." HorizontalAlignment="Left" Margin="150,135,0,0" VerticalAlignment="Top" Width="402" FontFamily="Arial" FontSize="22"/>
+        <Button x:Name="btnVoltar" Content="Voltar" HorizontalAlignment="Left" Margin="525,108,0,0" VerticalAlignment="Top" Width="86" FontFamily="Arial" FontSize="14" Height="27" Click="btnVoltar_Click"/>
+        <Label Content="Clique na pizza desejada para editar." HorizontalAlignment="Left" Margin="192,139,0,0" VerticalAlignment="Top" Width="402" FontFamily="Arial" FontSize="18"/>
     </Grid>
 </Window>

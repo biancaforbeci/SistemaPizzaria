@@ -16,7 +16,7 @@
         <Label Content="Cliente" HorizontalAlignment="Left" Margin="81,68,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.557,1.265" FontFamily="Arial" FontSize="16" FontWeight="Bold"/>
         <DataGrid x:Name="gridPizza" IsReadOnly="True" AutoGenerateColumns="False" SelectionMode="Extended" SelectionUnit="FullRow" CanUserAddRows="false" Margin="10,155,10,82" FontFamily="Arial" FontSize="14" SelectionChanged="gridPizza_SelectionChanged" Grid.Column="1" >
             <DataGrid.Columns>
-                <DataGridTextColumn Header="ID" Binding="{Binding Path=ProdutoID}"/>
+                <DataGridTextColumn Header="ID" Binding="{Binding Path=PizzaID}"/>
                 <DataGridTextColumn Header="Pizza" Binding="{Binding Path=Nome}"/>
                 <DataGridTextColumn Header="Ingredientes" Binding="{Binding Path=Ingredientes}"/>
                 <DataGridTextColumn Header="Preço" Binding="{Binding Path=Preco}"/>
@@ -39,7 +39,7 @@
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Cliente" Binding="{Binding Path=_Cliente.Nome}"/>
                 <DataGridTextColumn Header="Pizza Escolhida" Binding="{Binding Path=_Pizza.Nome}"/>
-                <DataGridTextColumn Header="Data e hora pedido" Binding="{Binding Path=Data}"/>
+                <DataGridTextColumn Header="Tamanho da Pizza" Binding="{Binding Path=Tamanho_Pizza}"/>
                 <DataGridTextColumn Header="Preço" Binding="{Binding Path=Preco}"/>
             </DataGrid.Columns>
         </DataGrid>

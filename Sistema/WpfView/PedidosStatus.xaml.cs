@@ -32,7 +32,7 @@ namespace WpfView
         {
             if (gridPedidos.SelectedItem != null && referencia==0)
             {
-                MessageBoxResult result = MessageBox.Show("Deseja alterar para Saiu Para Entrega o status do pedido " + ((Pedido)gridPedidos.SelectedItem).NumPedido + " ?", "Exclusão", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                MessageBoxResult result = MessageBox.Show("Deseja alterar para Saiu Para Entrega o status do pedido " + ((Pedido)gridPedidos.SelectedItem).NumeroPedidoID+ " ?", "Exclusão", MessageBoxButton.YesNo, MessageBoxImage.Question);
                 if (result == MessageBoxResult.Yes)
                 {
                     try
@@ -49,7 +49,7 @@ namespace WpfView
                 }
              }else if(gridPedidos.SelectedItem != null && referencia == 1)
              {
-                MessageBoxResult result = MessageBox.Show("Deseja alterar para Finalizado o status do pedido " + ((Pedido)gridPedidos.SelectedItem).NumPedido + " ?", "Exclusão", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                MessageBoxResult result = MessageBox.Show("Deseja alterar para Finalizado o status do pedido " + ((Pedido)gridPedidos.SelectedItem).NumeroPedidoID + " ?", "Exclusão", MessageBoxButton.YesNo, MessageBoxImage.Question);
                 if (result == MessageBoxResult.Yes)
                 {
                     try

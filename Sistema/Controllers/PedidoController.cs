@@ -18,7 +18,7 @@ namespace Controllers
 
         public static void MudarStatus(Pedido pedidoAntigo, string status)
         {
-            Pedido pedidoEdit = PesquisarPorID(pedidoAntigo.PedidoID);
+            Pedido pedidoEdit = PesquisarPorID(pedidoAntigo.NumeroPedidoID);
 
            if (pedidoEdit != null)
             {
@@ -34,23 +34,7 @@ namespace Controllers
         {
 
             return ContextoSingleton.Instancia.TblPedido.Include("_ClientesPizzas").Include("_ClientesBebidas").ToList();
-        }
-
-        public static bool PesquisaNumPedido(int num)
-        {
-            var c = (from x in ContextoSingleton.Instancia.TblPedido
-                     where x.NumPedido.Equals(num)
-                     select x).ToList();
-
-            if (c.Count > 0)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
+        }        
 
         public static List<Pedido> ProcuraPedidoSaiuParaEntrega()
         {

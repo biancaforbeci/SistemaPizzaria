@@ -25,6 +25,7 @@ namespace WpfView
         private Cliente clientePedido = null;
         private int numPedido;
         private List<ClientesPizzas> list = null;
+        private int referenciaButton= 0;
 
         public PedidoBebidas()
         {
@@ -34,6 +35,7 @@ namespace WpfView
 
         private void btnCancelar_Click(object sender, RoutedEventArgs e)
         {
+            referenciaButton = 1;
             MainWindow w = new MainWindow();
             this.Close();
             w.ShowDialog();
@@ -82,6 +84,7 @@ namespace WpfView
 
         private void btnConfirmar_Click(object sender, RoutedEventArgs e)
         {
+            referenciaButton = 2;
             if (MessageBox.Show("Confirmar pedido ?", "Confirma Pedido", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
             {
                 SalvandoNaTabelaPedidos();
@@ -119,8 +122,8 @@ namespace WpfView
             foreach (var item in listaBebidas)
             {
                 novoPed.Status = "EM PRODUÇÃO";
-                novoPed.ClientesProdutosEscolhidosID = item.ClientesBebidasID;
-                novoPed.NumPedido = numPedido;
+               // novoPed.ClientesProdutosEscolhidosID = item.ClientesBebidasID;
+               // novoPed.NumPedido = numPedido;
                 novoPed.ValorTotal = double.Parse(blockValorTotal.Text);
                 PedidoController.SalvarPedido(novoPed);
             }
@@ -133,8 +136,8 @@ namespace WpfView
             foreach (var item in list)
             {
                 novoPed.Status = "EM PRODUÇÃO";
-                novoPed.ClientesProdutosEscolhidosID = item.ClientesPizzasID;
-                novoPed.NumPedido = numPedido;
+               // novoPed.ClientesProdutosEscolhidosID = item.ClientesPizzasID;
+               // novoPed.NumPedido = numPedido;
                 novoPed.ValorTotal = double.Parse(blockValorTotal.Text);
                 PedidoController.SalvarPedido(novoPed);
             }
@@ -167,14 +170,20 @@ namespace WpfView
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            
-                MainWindow tela = new MainWindow();
+            if (referenciaButton==0)
+            {
                 if (MessageBox.Show("Deseja cancelar pedido ?", "Cancelar pedido", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
                 {
                     ClientesPizzasController.ExcluirPedidosCliente(clientePedido.ClienteID);
                     Environment.Exit(0);
                 }
-            
+            }else if (referenciaButton == 1)
+            {
+                if (MessageBox.Show("Deseja cancelar pedido ?", "Cancelar pedido", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+                {
+                    ClientesPizzasController.ExcluirPedidosCliente(clientePedido.ClienteID);
+                }
+            }              
         }
 
     }

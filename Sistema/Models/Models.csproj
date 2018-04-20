@@ -55,6 +55,7 @@
     <Compile Include="Endereco.cs" />
     <Compile Include="Motoboy.cs" />
     <Compile Include="Pedido.cs" />
+    <Compile Include="PedidoPizzas.cs" />
     <Compile Include="Pessoa.cs" />
     <Compile Include="Pizza.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -56,6 +56,7 @@
     <Compile Include="ContextoSingleton.cs" />
     <Compile Include="EnderecoController.cs" />
     <Compile Include="PedidoController.cs" />
+    <Compile Include="PedidoPizzasController.cs" />
     <Compile Include="PizzaController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

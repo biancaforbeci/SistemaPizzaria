@@ -25,12 +25,13 @@ namespace WpfView
         public CadastroPizzas()
         {
             InitializeComponent();
+
         }
 
         private void btnListarPizzas_Click(object sender, RoutedEventArgs e)
         {
             List<Pizza> list = PizzaController.ListarTodasPizzas();
-            if (list!= null)
+            if (list != null)
             {
                 gridPizza.ItemsSource = list;
             }
@@ -42,10 +43,9 @@ namespace WpfView
 
         private void btnSalvarPizza_Click(object sender, RoutedEventArgs e)
         {
-            Pizza pizza = SalvarPizza();
-            PizzaController.SalvarPizza(pizza);
+            PizzaController.SalvarPizza(SalvarPizza());
         }
-
+        
         private Pizza SalvarPizza()
         {
             Pizza p = new Pizza();

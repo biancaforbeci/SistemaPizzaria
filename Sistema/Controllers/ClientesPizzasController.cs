@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Controllers
 {
-   public class ClientesPizzasController
+    public class ClientesPizzasController
     {
         public static void SalvarItem(ClientesPizzas novo)
         {
@@ -15,10 +15,10 @@ namespace Controllers
             ContextoSingleton.Instancia.SaveChanges();
         }
 
-        public static List<ClientesPizzas> PesquisarClientePedidos(int cliID)
+        public static List<ClientesPizzas> PesquisarClientePedidos(Cliente cli, int num)
         {
-            var c = (from x in ContextoSingleton.Instancia.TblClientesPizzas.Include("_Cliente")
-                     where x.ClienteID.Equals(cliID)
+            var c = (from x in ContextoSingleton.Instancia.TblClientesPizzas.Include("_Cliente").Include("_Pizza")
+                     where x.ClienteID.Equals(cli.ClienteID) && x.NumReferencia.Equals(num)
                      select x).ToList();
 
             if (c.Count > 0)
@@ -29,6 +29,22 @@ namespace Controllers
             {
                 return null;
             }
+        }
+
+        public static int RetornaUltimo()
+        {
+            var resultado = (from r in ContextoSingleton.Instancia.TblClientesPizzas
+                             orderby r.NumReferencia descending
+                             select r).FirstOrDefault();
+            if (resultado != null)
+            {
+                return resultado.NumReferencia;
+            }
+            else
+            {
+                return -1;
+            }
+            
         }
 
         public static void ExcluirSelecao(int id)

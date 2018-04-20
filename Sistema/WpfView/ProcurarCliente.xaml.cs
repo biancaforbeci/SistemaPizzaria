@@ -104,13 +104,30 @@ namespace WpfView
                 }
                 else
                 {
-                    FazerPedido pedido = new FazerPedido();                    
-                    pedido.MostrarCliente(((Cliente)gridCliente.SelectedItem).ClienteID);
-                    this.Close();
-                    pedido.ShowDialog();
+                    VerificaCadastroPizzas();                
                 }
             }
 
+        }
+
+        private void VerificaCadastroPizzas()
+        {
+            List<Pizza> list= PizzaController.ListarTodasPizzas();
+            
+            if (list != null)
+            {
+                FazerPedido pedido = new FazerPedido();
+                pedido.MostrarCliente(((Cliente)gridCliente.SelectedItem).ClienteID);
+                this.Close();
+                pedido.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Nenhuma pizza cadastrada");
+                CadastroPizzas tela = new CadastroPizzas();
+                this.Close();
+                tela.ShowDialog();
+            }
         }
     }
 }

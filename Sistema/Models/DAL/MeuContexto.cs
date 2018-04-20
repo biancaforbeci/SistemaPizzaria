@@ -12,22 +12,24 @@ namespace Sistema.Models.DAL
     {
         public MeuContexto() : base("strConn")
         {
-            Database.SetInitializer( new DropCreateDatabaseIfModelChanges<MeuContexto>());
+            Database.SetInitializer(new DropCreateDatabaseIfModelChanges<MeuContexto>());
         }
 
         public DbSet<Cliente> TblClientes { get; set; }
 
-        public DbSet<Endereco>TblEnderecos { get; set; }
+        public DbSet<Endereco> TblEnderecos { get; set; }
 
         public DbSet<Pizza> TblPizza { get; set; }
 
-        public DbSet<Pedido> TblPedido {get;set;}
+        public DbSet<Pedido> TblPedido { get; set; }
 
         public DbSet<Bebida> TblBebida { get; set; }
 
         public DbSet<ClientesPizzas> TblClientesPizzas { get; set; }
 
         public DbSet<ClientesBebidas> TblClientesBebidas { get; set; }
+
+        public DbSet<PedidoPizzas> TblPedidoPizzas { get; set; }
 
     }
 }

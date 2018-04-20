@@ -49,7 +49,7 @@ namespace WpfView
                 Cliente cli = ClienteController.PesquisarPorID(int.Parse(txtID.Text));
                 cliEditar = cli;
                 if (cli != null)
-                {                    
+                {
                     blockID.Text = Convert.ToString(cli.ClienteID);
                     txtNome.Text = cli.Nome;
                     txtCPF.Text = cli.Cpf;
@@ -62,7 +62,12 @@ namespace WpfView
                 }
                 else
                 {
-                    MessageBox.Show("ID não encontrado");
+                    if (MessageBox.Show("ID não encontrado, deseja cadastrar novo cliente ?", "Cliente não encontrado", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
+                    {
+                        CadastrarCliente tela = new CadastrarCliente();
+                        this.Close();
+                        tela.ShowDialog();
+                    }
                 }
             }
             else
@@ -92,16 +97,32 @@ namespace WpfView
         {
             if (cliEditar != null)
             {
-                FazerPedido tela = new FazerPedido();
-                tela.MostrarCliente(ClienteController.PesquisarPorID(int.Parse(txtID.Text)).ClienteID);
-                this.Close();
-                tela.ShowDialog();
+                VerificaCadastroPizzas();
             }
             else
             {
                 MessageBox.Show("Digite um ID válido");
             }
             
+        }
+
+        private void VerificaCadastroPizzas()
+        {
+            List<Pizza> list = PizzaController.ListarTodasPizzas();
+            if (list != null)
+            {
+                FazerPedido pedido = new FazerPedido();
+                pedido.MostrarCliente(cliEditar.ClienteID);
+                this.Close();
+                pedido.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Nenhuma pizza cadastrada");
+                CadastroPizzas tela = new CadastroPizzas();
+                this.Close();
+                tela.ShowDialog();
+            }
         }
     }
 }

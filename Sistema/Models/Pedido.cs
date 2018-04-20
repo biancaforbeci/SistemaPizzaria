@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,13 +9,11 @@ namespace Models
 {
     public class Pedido
     {
-        public int PedidoID { get; set;}
-        public ClientesPizzas _ClientesPizzas { get; set; }
-        public int ClientesProdutosEscolhidosID { get; set; }
-        public ClientesBebidas _ClientesBebidas { get; set; }
-        public int NumPedido { get; set; }
+        [Key]
+        public int NumeroPedidoID { get; set;}
         public double ValorTotal { get; set;}        
         public string Status { get; set; }
-        public string Tamanho_Pizza { get; set; }
+        public DateTime Data { get; set; }
+        
     }
 }
