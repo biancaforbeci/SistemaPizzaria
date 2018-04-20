@@ -7,31 +7,49 @@
         mc:Ignorable="d"
         Title="ProcurarClientePorID" Height="450" Width="800">
     <Grid>
-        <Canvas HorizontalAlignment="Left" Height="384" Margin="10,10,0,0" VerticalAlignment="Top" Width="325">
-            <Canvas.Background>
-                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                    <GradientStop Color="#FF88B7E6" Offset="0.126"/>
-                    <GradientStop Color="#FFD1D6DC" Offset="0.7"/>
-                </LinearGradientBrush>
-            </Canvas.Background>
-            <Label Content="ID" Canvas.Left="30" Canvas.Top="153" RenderTransformOrigin="0.492,0.012" Width="38" FontFamily="Arial Black" FontSize="18"/>
-            <TextBox x:Name="txtID" Height="30" Canvas.Left="90" TextWrapping="Wrap" Canvas.Top="154" Width="192"/>
-            <Button x:Name="btnPesquisar" Content="Pesquisar" Canvas.Left="90" Canvas.Top="236" Width="123" FontFamily="Arial" FontSize="22" IsDefault="True" IsCancel="True" Height="30" RenderTransformOrigin="0.606,-0.081" Click="btnPesquisar_Click" />
-            <Button x:Name="btnClientes" Content="Carregar Clientes" Canvas.Left="51" Canvas.Top="59" Width="231" Height="31" Click="btnClientes_Click" FontFamily="Arial Black" FontSize="22"/>
-            <Button x:Name="btnVoltar" Content="Voltar" Canvas.Left="96" Canvas.Top="318" Width="117" Height="27" FontFamily="Arial" FontSize="22" Click="btnVoltar_Click"/>
-        </Canvas>
-        <DataGrid x:Name="GridMostrar" AutoGenerateColumns="False" Margin="340,10,23,25" SelectionChanged="GridMostrar_SelectionChanged">
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="ID" Binding="{Binding Path=ClienteID}"/>
-                <DataGridTextColumn Header="Nome" Binding="{Binding Path=Nome}"/>
-                <DataGridTextColumn Header="CPF" Binding="{Binding Path=Cpf}"/>
-                <DataGridTextColumn Header="Telefone" Binding="{Binding Path=Telefone}"/>
-                <DataGridTextColumn Header="Rua" Binding="{Binding Path=_Endereco.Rua}"/>
-                <DataGridTextColumn Header="Número" Binding="{Binding Path=_Endereco.Numero}"/>
-                <DataGridTextColumn Header="Bairro" Binding="{Binding Path=_Endereco.Bairro}"/>
-                <DataGridTextColumn Header="Complemento" Binding="{Binding Path=_Endereco.Complemento}"/>
-                <DataGridTextColumn Header="Referência" Binding="{Binding Path=_Endereco.Referencia}"/>
-            </DataGrid.Columns>
-        </DataGrid>
+
+        <StackPanel Grid.Row="0" Margin="177,108,174,107">
+            <DockPanel>
+                <TextBlock Text="ID" Width="100" FontSize="16" FontFamily="Arial" />
+                <TextBlock x:Name="blockID"/>
+            </DockPanel>
+            <DockPanel>
+                <TextBlock Text="Nome" Width="100" FontSize="16" FontFamily="Arial" />
+                <TextBlock x:Name="txtNome"/>
+            </DockPanel>
+            <DockPanel>
+                <TextBlock Text="CPF" Width="100" FontFamily="Arial" FontSize="16"/>
+                <TextBlock x:Name="txtCPF"/>
+            </DockPanel>
+            <DockPanel>
+                <TextBlock Text="Telefone" Width="100" FontFamily="Arial" FontSize="16"/>
+                <TextBlock x:Name="txtTelefone" />
+            </DockPanel>
+            <DockPanel>
+                <TextBlock Text="Rua" Width="100" FontFamily="Arial" FontSize="16" Height="18"/>
+                <TextBlock x:Name="txtRua"/>
+            </DockPanel>
+            <DockPanel>
+                <TextBlock Text="Número" Width="100" FontFamily="Arial" FontSize="16" Height="18"/>
+                <TextBlock x:Name="txtNumero"/>
+            </DockPanel>
+            <DockPanel>
+                <TextBlock Text="Bairro" Width="100" FontFamily="Arial" FontSize="16" Height="18"/>
+                <TextBlock x:Name="txtBairro"/>
+            </DockPanel>
+            <DockPanel>
+                <TextBlock Text="Complemento" Width="100" FontFamily="Arial" FontSize="16" Height="18"/>
+                <TextBlock x:Name="txtComplemento"/>
+            </DockPanel>
+            <DockPanel>
+                <TextBlock Text="Referência" Width="100" FontFamily="Arial" FontSize="16" Height="18"/>
+                <TextBlock x:Name="txtReferencia"/>
+            </DockPanel>
+        </StackPanel>
+        <Label Content="" HorizontalAlignment="Left" Margin="231,36,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.566,0.231"/>
+        <Button x:Name="btnProcurar" Content="Procurar" HorizontalAlignment="Left" Margin="432,36,0,0" VerticalAlignment="Top" Width="98" Height="31" Click="btnProcurar_Click"/>
+        <TextBox x:Name="txtID" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Margin="272,43,0,0" />
+        <Label Content="ID" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="203,39,0,0"/>
+        <Button x:Name="btnVoltar" Content="Voltar" HorizontalAlignment="Left" VerticalAlignment="Top" Width="104" Margin="317,333,0,0" Height="35" Click="btnVoltar_Click"/>
     </Grid>
 </Window>

@@ -22,11 +22,12 @@ namespace WpfView
     /// </summary>
     public partial class FazerPedido : Window
     {
-        private static double valorTotal = 0;
-        private static Cliente clientePedido;       
+        private double valorTotal = 0;
+        private Cliente clientePedido;       
         private int qtdMaxPizza = 0;
         private string TamPizza;
         private bool PossuiPizzasCadastradas=true;
+        private int numPedido=0;
 
         public FazerPedido()
         {
@@ -67,7 +68,7 @@ namespace WpfView
             }
         }
 
-        private int GerarNumPedido()
+        private void GerarNumPedido()
         {
             int num;
             bool retorno;
@@ -80,7 +81,7 @@ namespace WpfView
                 GerarNumPedido();
             }
 
-            return num;
+            numPedido=num;
         }
 
         private void gridPizza_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -149,8 +150,8 @@ namespace WpfView
             foreach (var item in list)
            {
              novoPed.Status = "EM PRODUÇÃO";
-             novoPed.ClientesPizzasID = item.ClientesPizzasID;
-             novoPed.NumPedido = GerarNumPedido();
+             novoPed.ClientesProdutosEscolhidosID= item.ClientesPizzasID;
+             novoPed.NumPedido = numPedido;
              novoPed.ValorTotal = double.Parse(blockValorTotal.Text);
              novoPed.Tamanho_Pizza = TamPizza;
              PedidoController.SalvarPedido(novoPed);
@@ -160,7 +161,8 @@ namespace WpfView
         private void Bebidas_Click(object sender, RoutedEventArgs e)
         {
             PedidoBebidas bebidas = new PedidoBebidas();
-            bebidas.ClientePedido(clientePedido, valorTotal);
+            List<ClientesPizzas> list = ClientesPizzasController.PesquisarClientePedidos(clientePedido.ClienteID);
+            bebidas.MostrarClienteParteBebidas(clientePedido, valorTotal,numPedido,list);
             this.Close();
             bebidas.ShowDialog();
         }

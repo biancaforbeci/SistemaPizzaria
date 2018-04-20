@@ -33,7 +33,7 @@ namespace Controllers
         public static List<Pedido> ListarTodosPedidos()
         {
 
-            return ContextoSingleton.Instancia.TblPedido.Include("_ClientesPizzas").ToList();
+            return ContextoSingleton.Instancia.TblPedido.Include("_ClientesPizzas").Include("_ClientesBebidas").ToList();
         }
 
         public static bool PesquisaNumPedido(int num)
@@ -54,7 +54,7 @@ namespace Controllers
 
         public static List<Pedido> ProcuraPedidoSaiuParaEntrega()
         {
-            var c = (from x in ContextoSingleton.Instancia.TblPedido.Include("_ClientesPizzas")
+            var c = (from x in ContextoSingleton.Instancia.TblPedido.Include("_ClientesPizzas").Include("_ClientesBebidas")
                      where x.Status.Contains("SAIU PARA ENTREGA")
                      select x).ToList();
 
@@ -70,7 +70,7 @@ namespace Controllers
 
         public static List<Pedido> ProcuraPedidoPendentes()
         {
-            var c = (from x in ContextoSingleton.Instancia.TblPedido.Include("_ClientesPizzas")
+            var c = (from x in ContextoSingleton.Instancia.TblPedido.Include("_ClientesPizzas").Include("_ClientesBebidas")
                      where x.Status.Contains("EM PRODUÇÃO")
                      select x).ToList();
 
@@ -86,7 +86,7 @@ namespace Controllers
 
         public static List<Pedido> ProcuraPedidoFinalizado()
         {
-            var c = (from x in ContextoSingleton.Instancia.TblPedido.Include("_ClientesPizzas")
+            var c = (from x in ContextoSingleton.Instancia.TblPedido.Include("_ClientesPizzas").Include("_ClientesBebidas")
                      where x.Status.Contains("FINALIZADO")
                      select x).ToList();
 

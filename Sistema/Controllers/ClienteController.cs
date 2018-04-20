@@ -17,7 +17,7 @@ namespace Controllers
         public static List<Cliente> ListarTodosClientes()
         {
            
-            return ContextoSingleton.Instancia.TblClientes.ToList(); //IQueryable
+            return ContextoSingleton.Instancia.TblClientes.Include("_Endereco").ToList(); //IQueryable
         }
 
         public static void EditarCliente(int id, Cliente novoCliente)
@@ -67,8 +67,8 @@ namespace Controllers
         }
 
         public static Cliente PesquisarPorID(int IDCliente)
-        {            
-            return ContextoSingleton.Instancia.TblClientes.Find(IDCliente);
+        {
+            return ContextoSingleton.Instancia.TblClientes.Include("_Endereco").SingleOrDefault(x => x.ClienteID == IDCliente && x._Endereco.EnderecoID==x.EnderecoID);
         }
 
         public static List<Cliente> PesquisarPorTelefone(string tel)
@@ -86,23 +86,6 @@ namespace Controllers
                 return null;
             }
         }
-
-        public static List<Cliente> PesquisaPorIDLista(int id)
-        {
-            
-            var c = (from x in ContextoSingleton.Instancia.TblClientes.Include("_Endereco")                     
-                     where x.ClienteID.Equals(id) && x._Endereco.EnderecoID==x.EnderecoID 
-                     select x).ToList();
-            
-
-            if (c.Count > 0)
-            {
-                return c;
-            }
-            else
-            {
-                return null;
-            }
-        }
+        
     }
 }

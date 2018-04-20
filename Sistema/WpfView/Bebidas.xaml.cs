@@ -29,7 +29,7 @@ namespace WpfView
 
         private void btnListarBebidas_Click(object sender, RoutedEventArgs e)
         {
-            List<Bebida> list = BebibasController.ListarTodasBebidas();
+            List<Bebida> list = BebidasController.ListarTodasBebidas();
             if (list != null)
             {
                 GridMostrarBebida.ItemsSource = list;
@@ -43,7 +43,7 @@ namespace WpfView
         private void btnSalvarBebida_Click(object sender, RoutedEventArgs e)
         {
             Bebida bebida=SalvarBebida();
-            BebibasController.SalvarBebidas(bebida);            
+            BebidasController.SalvarBebidas(bebida);            
         }
 
         private Bebida SalvarBebida()

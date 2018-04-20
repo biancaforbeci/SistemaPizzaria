@@ -49,8 +49,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AdministradorController.cs" />
-    <Compile Include="BebibasController.cs" />
+    <Compile Include="BebidasController.cs" />
     <Compile Include="ClienteController.cs" />
+    <Compile Include="ClientesBebidasController.cs" />
     <Compile Include="ClientesPizzasController.cs" />
     <Compile Include="ContextoSingleton.cs" />
     <Compile Include="EnderecoController.cs" />

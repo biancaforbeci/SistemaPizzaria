@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace Controllers
 {
-    public class BebibasController
+    public class BebidasController
     {
         // INSERT
         public static void SalvarBebidas(Bebida bebida )

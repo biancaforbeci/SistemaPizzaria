@@ -49,6 +49,7 @@
   <ItemGroup>
     <Compile Include="Bebida.cs" />
     <Compile Include="Cliente.cs" />
+    <Compile Include="ClientesBebidas.cs" />
     <Compile Include="ClientesPizzas.cs" />
     <Compile Include="DAL\MeuContexto.cs" />
     <Compile Include="Endereco.cs" />

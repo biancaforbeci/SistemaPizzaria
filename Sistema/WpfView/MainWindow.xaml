@@ -51,14 +51,26 @@
                 <MenuItem x:Name="ItemBebibas" Header="Bebidas" IsCheckable="true" Click="ItemBebibas_Click"/>
             </MenuItem>
 
-            <MenuItem Header="Pedidos" FontFamily="Arial" FontSize="16">
+            <MenuItem Header="Busca e Listagem de Clientes" FontFamily="Arial" FontSize="16">
+                <MenuItem.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <VirtualizingStackPanel Orientation="Vertical"/>
+                    </ItemsPanelTemplate>
+
+                </MenuItem.ItemsPanel>
+                <MenuItem x:Name="ItemBusca" Header="Busca por ID" IsCheckable="true" FontSize="16" FontFamily="Arial" Click="ItemPizzas_Click"/>
+                <MenuItem x:Name="ItemListagem" Header="Listagem de todos os clientes" IsCheckable="true" Click="ItemBebibas_Click"/>
+            </MenuItem>
+
+            <MenuItem Header="Pedido" FontFamily="Arial" FontSize="16">
                 <MenuItem x:Name="ItemPedidoAndamento" Header="Andamento" Click="ItemPedidoAndamento_Click"/>
                 <MenuItem x:Name="ItemListaPedidos" Header="Lista de Pedidos" Click="ItemListaPedidos_Click"/>
             </MenuItem>
 
             <MenuItem Header="Administrativo" FontFamily="Arial" FontSize="16">
                 <MenuItem x:Name="Exclusao" Header="Área de Exclusão" Click="Exclusao_Click" />
-            </MenuItem>
+            </MenuItem>           
+            
         </Menu>
 
 

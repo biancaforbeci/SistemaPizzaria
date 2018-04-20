@@ -2,6 +2,7 @@
 using Models;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Data;
 using System.Linq;
 using System.Text;
@@ -31,11 +32,10 @@ namespace WpfView
 
         private void btnClientes_Click(object sender, RoutedEventArgs e)
         {
-             List<Cliente> dt = ClienteController.PesquisaPorIDLista(1);
-             //List<Cliente> dt = ClienteController.ListarTodosClientes();
+             List<Cliente> dt = ClienteController.ListarTodosClientes();
             if (dt!=null)
             {
-                GridMostrar.ItemsSource = dt;
+                //GridMostrar.ItemsSource = dt;
             }                        
         }
 
@@ -44,23 +44,29 @@ namespace WpfView
             MainWindow m = new MainWindow();
             this.Close();
             m.ShowDialog();
-        }
+        }        
 
-        private void btnPesquisar_Click(object sender, RoutedEventArgs e)
+        private void btnProcurar_Click(object sender, RoutedEventArgs e)
         {
             string caracter = txtID.Text.Substring(0, 1);
             string verifica = "^[0-9]";
 
             if ((Regex.IsMatch(caracter, verifica) || (txtID.Text != null)))
             {
-                List<Cliente> cli = ClienteController.PesquisaPorIDLista(int.Parse(txtID.Text));
-                if (cli!=null)
+                Cliente cli = ClienteController.PesquisarPorID(int.Parse(txtID.Text));
+
+                if (cli != null)
                 {
-                    foreach (var c in cli)
-                    {
-                        string rua = c._Endereco.Rua;
-                    }
-                    GridMostrar.ItemsSource = cli;
+                    MessageBox.Show("Ola");
+                    blockID.Text = Convert.ToString(cli.ClienteID);
+                    txtNome.Text = cli.Nome;
+                    txtCPF.Text = cli.Cpf;
+                    txtTelefone.Text = cli.Telefone;
+                    txtRua.Text = cli._Endereco.Rua;
+                    txtNumero.Text = Convert.ToString(cli._Endereco.Numero);
+                    txtBairro.Text = cli._Endereco.Bairro;
+                    txtComplemento.Text = cli._Endereco.Complemento;
+                    txtReferencia.Text = cli._Endereco.Referencia;
                 }
                 else
                 {
@@ -71,37 +77,38 @@ namespace WpfView
             {
                 MessageBox.Show("Campo inválido, digite apenas números.");
             }
+
         }
 
-        private void GridMostrar_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            if (GridMostrar.SelectedItem != null)
-            {
-                MessageBoxResult result = MessageBox.Show("Deseja editar o cliente de nome: " + ((Cliente)GridMostrar.SelectedItem).Nome + " ?", "Editar", MessageBoxButton.YesNo, MessageBoxImage.Question);
-                if (result == MessageBoxResult.Yes)
-                {
-                    try
-                    {      
-                        Cliente cli = ((Cliente)GridMostrar.SelectedItem);
-                        EditarCliente edit = new EditarCliente();
-                        edit.EditarNome(cli);
-                        this.Close();
-                        edit.ShowDialog();
-                    }
-                    catch (Exception erro)
-                    {
-                        MessageBox.Show("ERRO: " + erro);
-                    }
-                }
-                else
-                {
-                    FazerPedido pedido = new FazerPedido();                    
-                    pedido.MostrarCliente(((Cliente)GridMostrar.SelectedItem).ClienteID);
-                    this.Close();
-                    pedido.ShowDialog();
-                }
-            }
-        }
+        /* private void GridMostrar_SelectionChanged(object sender, SelectionChangedEventArgs e)
+         {
+             if (GridMostrar.SelectedItem != null)
+             {
+                 MessageBoxResult result = MessageBox.Show("Deseja editar o cliente de nome: " + ((Cliente)GridMostrar.SelectedItem).Nome + " ?", "Editar", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                 if (result == MessageBoxResult.Yes)
+                 {
+                     try
+                     {      
+                         Cliente cli = ((Cliente)GridMostrar.SelectedItem);
+                         EditarCliente edit = new EditarCliente();
+                         edit.EditarNome(cli);
+                         this.Close();
+                         edit.ShowDialog();
+                     }
+                     catch (Exception erro)
+                     {
+                         MessageBox.Show("ERRO: " + erro);
+                     }
+                 }
+                 else
+                 {
+                     FazerPedido pedido = new FazerPedido();                    
+                     pedido.MostrarCliente(((Cliente)GridMostrar.SelectedItem).ClienteID);
+                     this.Close();
+                     pedido.ShowDialog();
+                 }
+             }
+         }*/
 
     }
 }

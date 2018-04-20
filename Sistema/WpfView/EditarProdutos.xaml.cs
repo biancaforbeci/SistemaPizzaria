@@ -73,7 +73,7 @@ namespace WpfView
 
         private void btnEditBebida_Click(object sender, RoutedEventArgs e)
         {
-            BebibasController.EditarBebida(bebidaEditar.BebidaID, EditarBebida());
+            BebidasController.EditarBebida(bebidaEditar.BebidaID, EditarBebida());
             MessageBox.Show("Editado com sucesso");
         }       
 

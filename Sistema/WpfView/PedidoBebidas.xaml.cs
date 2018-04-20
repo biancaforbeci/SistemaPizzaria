@@ -21,8 +21,10 @@ namespace WpfView
     /// </summary>
     public partial class PedidoBebidas : Window
     {
-        private static double valorTotal = 0;
-        private static Cliente clientePedido = null;
+        private double valorTotal = 0;
+        private Cliente clientePedido = null;
+        private int numPedido;
+        private List<ClientesPizzas> list = null;
 
         public PedidoBebidas()
         {
@@ -37,57 +39,44 @@ namespace WpfView
             w.ShowDialog();
         }
 
-        public void MostrarCliente(int id)
+        public void MostrarClienteParteBebidas(Cliente cli, double total, int num, List<ClientesPizzas> listPizzas)
         {
-            Cliente cli = ClienteController.PesquisarPorID(id);
             blockCliente.Text = cli.Nome;
             blockTelefone.Text = cli.Telefone;
             clientePedido = cli;
+            blockValorTotal.Text = Convert.ToString(total);
+            valorTotal = total;
+            numPedido = num;
+            list = listPizzas;
         }
 
         private void MostrarGrid()
         {
-            List<Pizza> list = PizzaController.ListarTodasPizzas();
+            List<Bebida> list = BebidasController.ListarTodasBebidas();
 
             if (list != null)
             {
-                gridPizza.ItemsSource = list;
+                gridBebida.ItemsSource = list;
             }
             else
             {
-                MessageBox.Show("Não foi cadastrado nenhuma pizza");
-                PossuiPizzasCadastradas = false;
-                CadastroPizzas tela = new CadastroPizzas();
+                MessageBox.Show("Não foi cadastrado nenhuma bebida");
+                Bebidas tela = new Bebidas();
                 this.Close();
                 tela.ShowDialog();
             }
         }
 
-        private void gridPizza_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void gridBebida_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (gridPizzasEscolhidas.Items.Count < 2 && qtdMaxPizza == 2)
-            {
-                SalvandoTabelaEscolhidos();
-            }
-            else if (gridPizzasEscolhidas.Items.Count < 3 && qtdMaxPizza == 3)
-            {
-                SalvandoTabelaEscolhidos();
-            }
-            else if (gridPizzasEscolhidas.Items.Count < 4 && qtdMaxPizza == 4)
-            {
-                SalvandoTabelaEscolhidos();
-            }
-            else
-            {
-                MessageBox.Show("Quantidade de pizzas excedidas");
-            }
+            SalvandoTabelaEscolhidos();
         }
 
         private void SalvandoTabelaEscolhidos()
         {
-            Pizza pizzaEscolhida = ((Pizza)gridPizza.SelectedItem);
-            SalvarPedido(pizzaEscolhida);
-            valorTotal += ((Pizza)gridPizza.SelectedItem).Preco;
+            Bebida bebidaEscolhida = ((Bebida)gridBebida.SelectedItem);
+            SalvarPedido(bebidaEscolhida);
+            valorTotal += ((Bebida)gridBebida.SelectedItem).Preco;
             blockValorTotal.Text = Convert.ToString(valorTotal);
         }
 
@@ -103,55 +92,70 @@ namespace WpfView
             }
         }
 
-        private void SalvarPedido(Pizza pizza)
+        private void SalvarPedido(Bebida bebida)
         {
-            ClientesPizzas novo = new ClientesPizzas();
+            ClientesBebidas novo = new ClientesBebidas();
             novo.ClienteID = clientePedido.ClienteID;
-            novo.PizzaID = pizza.PizzaID;
-            novo.Preco = pizza.Preco;
+            novo.BebidaID = bebida.BebidaID;
+            novo.Preco = bebida.Preco;
             DateTime data = DateTime.Now;
             novo.Data = data;
-            ClientesPizzasController.SalvarItem(novo);
-            MostrarGridPizzasEscolhidas();
+            ClientesBebidasController.SalvarItem(novo);
+            MostrarGridBebidasEscolhidas();
         }
 
-        private void MostrarGridPizzasEscolhidas()
+        private void MostrarGridBebidasEscolhidas()
         {
-            List<ClientesPizzas> list = ClientesPizzasController.PesquisarClientePedidos(clientePedido.ClienteID);
-            gridPizzasEscolhidas.ItemsSource = list;
+            List<ClientesBebidas> list = ClientesBebidasController.PesquisarClientePedidos(clientePedido.ClienteID);
+            gridBebidasEscolhidas.ItemsSource = list;
         }
 
         private void SalvandoNaTabelaPedidos()
         {
-            List<ClientesPizzas> list = ClientesPizzasController.PesquisarClientePedidos(clientePedido.ClienteID);
+            SalvarPizzasTabelaPedidos();
+            List<ClientesBebidas> listaBebidas = ClientesBebidasController.PesquisarClientePedidos(clientePedido.ClienteID);
+            Pedido novoPed = new Pedido();
+
+            foreach (var item in listaBebidas)
+            {
+                novoPed.Status = "EM PRODUÇÃO";
+                novoPed.ClientesProdutosEscolhidosID = item.ClientesBebidasID;
+                novoPed.NumPedido = numPedido;
+                novoPed.ValorTotal = double.Parse(blockValorTotal.Text);
+                PedidoController.SalvarPedido(novoPed);
+            }
+        }
+
+        private void SalvarPizzasTabelaPedidos()
+        {
             Pedido novoPed = new Pedido();
 
             foreach (var item in list)
             {
                 novoPed.Status = "EM PRODUÇÃO";
-                novoPed.ClientesPizzasID = item.ClientesPizzasID;
-                novoPed.NumPedido = GerarNumPedido();
+                novoPed.ClientesProdutosEscolhidosID = item.ClientesPizzasID;
+                novoPed.NumPedido = numPedido;
                 novoPed.ValorTotal = double.Parse(blockValorTotal.Text);
-                novoPed.Tamanho_Pizza = TamPizza;
                 PedidoController.SalvarPedido(novoPed);
             }
         }
-        private void gridPizzasEscolhidas_SelectionChanged(object sender, SelectionChangedEventArgs e)
+
+        private void gridBebidasEscolhidas_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (gridPizzasEscolhidas.SelectedItem != null)
+            if (gridBebidasEscolhidas.SelectedItem != null)
             {
-                MessageBoxResult result = MessageBox.Show("Confirma a exclusão do item " + ((ClientesPizzas)gridPizzasEscolhidas.SelectedItem).ClientesPizzasID + " ?", "Exclusão", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                MessageBoxResult result = MessageBox.Show("Confirma a exclusão do item " + ((ClientesBebidas)gridBebidasEscolhidas.SelectedItem).ClientesBebidasID + " ?", "Exclusão", MessageBoxButton.YesNo, MessageBoxImage.Question);
                 if (result == MessageBoxResult.Yes)
                 {
                     try
                     {
-                        int id = ((ClientesPizzas)gridPizzasEscolhidas.SelectedItem).ClientesPizzasID;
-                        ClientesPizzasController.ExcluirSelecao(id);
+                        int id = ((ClientesBebidas)gridBebidasEscolhidas.SelectedItem).ClientesBebidasID;
+                        ClientesBebidasController.ExcluirSelecao(id);
                         MessageBox.Show("Item excluído com sucesso");
-                        valorTotal -= ((ClientesPizzas)gridPizzasEscolhidas.SelectedItem).Preco;
+                        valorTotal -= ((ClientesBebidas)gridBebidasEscolhidas.SelectedItem).Preco;
                         blockValorTotal.Text = Convert.ToString(valorTotal);
                         MostrarGrid();
-                        MostrarGridPizzasEscolhidas();
+                        MostrarGridBebidasEscolhidas();
                     }
                     catch (Exception erro)
                     {
@@ -163,14 +167,13 @@ namespace WpfView
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            if (PossuiPizzasCadastradas == true)
-            {
+            
                 MainWindow tela = new MainWindow();
                 if (MessageBox.Show("Deseja cancelar pedido ?", "Cancelar pedido", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
                 {
                     ClientesPizzasController.ExcluirPedidosCliente(clientePedido.ClienteID);
                 }
-            }
+            
         }
 
     }

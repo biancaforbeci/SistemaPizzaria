@@ -71,7 +71,7 @@ namespace WpfView
                     try
                     {      //Se confirmado a exclusão é pego o ID da linha selecionada.
                         int id = ((Bebida)gridBebida.SelectedItem).BebidaID;
-                        BebibasController.ExcluirBebida(id);
+                        BebidasController.ExcluirBebida(id);
                         MessageBox.Show("Bebida excluída com sucesso");
                     }
                     catch (Exception erro)
@@ -133,7 +133,7 @@ namespace WpfView
         {
             if ((txtBebida.Text != null) || (Regex.IsMatch(txtBebida.Text, @"^[a-zA-Z]+$")) )
             {
-                List<Bebida> bebida = BebibasController.PesquisarPorNome(txtBebida.Text);
+                List<Bebida> bebida = BebidasController.PesquisarPorNome(txtBebida.Text);
                 if (bebida != null)
                 {
                     gridBebida.ItemsSource = bebida;

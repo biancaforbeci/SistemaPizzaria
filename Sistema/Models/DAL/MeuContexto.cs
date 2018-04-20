@@ -27,5 +27,7 @@ namespace Sistema.Models.DAL
 
         public DbSet<ClientesPizzas> TblClientesPizzas { get; set; }
 
+        public DbSet<ClientesBebidas> TblClientesBebidas { get; set; }
+
     }
 }

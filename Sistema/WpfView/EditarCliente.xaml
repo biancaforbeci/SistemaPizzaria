@@ -42,7 +42,7 @@
                 <TextBox x:Name="txtReferencia"/>
             </DockPanel>
         </StackPanel>
-        <StackPanel Orientation="Horizontal" Margin="10,233,-10,119" Grid.ColumnSpan="2">
+        <StackPanel Orientation="Horizontal" Margin="10,233,-10,95">
             <Button x:Name="btnEditar" Content="Editar"   Width="100" Height="30" FontFamily="Arial" FontSize="18" Click="btnEditar_Click"/>
             <Button x:Name="btnCancelar" Content="Limpar Campos" Width="144" Height="30" FontFamily="Arial" FontSize="18" Margin="0,9"/>
             <Button x:Name="btnVoltar" Content="Voltar" Width="80" Height="30" FontFamily="Arial" FontSize="18" Margin="0,9" Click="btnVoltar_Click"/>

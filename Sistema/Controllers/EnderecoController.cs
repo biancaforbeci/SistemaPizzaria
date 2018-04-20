@@ -19,20 +19,15 @@ namespace Controllers
             ContextoSingleton.Instancia.SaveChanges();
         }
 
-        public static List<Endereco> ListarTodosClientes()
+        public static List<Endereco> ListarTodosEnderecos()
         {
             return ContextoSingleton.Instancia.TblEnderecos.ToList(); //IQueryable
-        }
-
-        public static Endereco CarregarPorID(int id)
-        {
-            return ContextoSingleton.Instancia.TblEnderecos.Find(id);
-        }
+        }       
 
         public static void EditarEndereco(int id, Endereco novoEnd)
         {
 
-            Endereco end = PesquisarPorID(id);
+            Endereco end = ContextoSingleton.Instancia.TblEnderecos.Find(id);
 
             if (end != null)
             {
@@ -58,11 +53,7 @@ namespace Controllers
                 System.Data.Entity.EntityState.Deleted;
             ContextoSingleton.Instancia.SaveChanges();
 
-        }        
-
-        public static Endereco PesquisarPorID(int ID)
-        {
-            return ContextoSingleton.Instancia.TblEnderecos.Find(ID);
-        }
+        }  
+               
     }
 }

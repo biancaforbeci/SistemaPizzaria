@@ -44,7 +44,11 @@ namespace WpfView
 
         private void btnProcura_Click(object sender, RoutedEventArgs e)
         {
-            if (txtTelefone.Text != null || (Regex.IsMatch(txtTelefone.Text, @"^[a-zA-Z]+$")))
+
+            string caracter = txtTelefone.Text.Substring(0, 1);
+            string verifica = "^[0-9]";                   
+
+            if ((txtTelefone.Text.Length != 0) && (Regex.IsMatch(caracter,verifica)))
             {
                 List<Cliente> cli = ClienteController.PesquisarPorTelefone(txtTelefone.Text);
                 if (cli != null)
