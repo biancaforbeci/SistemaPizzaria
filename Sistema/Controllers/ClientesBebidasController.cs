@@ -15,10 +15,10 @@ namespace Controllers
             ContextoSingleton.Instancia.SaveChanges();
         }
 
-        public static List<ClientesBebidas> PesquisarClientePedidos(int cliID)
+        public static List<ClientesBebidas> PesquisarClientePedidos(int cliID, int num)
         {
             var c = (from x in ContextoSingleton.Instancia.TblClientesBebidas.Include("_Cliente")
-                     where x.ClienteID.Equals(cliID)
+                     where x.ClienteID.Equals(cliID)  && x.NumReferencia.Equals(num)
                      select x).ToList();
 
             if (c.Count > 0)
@@ -40,10 +40,10 @@ namespace Controllers
             ContextoSingleton.Instancia.SaveChanges();
         }
 
-        public static void ExcluirPedidosCliente(int cliID)
+        public static void ExcluirPedidosCliente(int cliID , int num)
         {
             var c = (from x in ContextoSingleton.Instancia.TblClientesBebidas.Include("_Cliente")
-                     where x.ClienteID.Equals(cliID)
+                     where x.ClienteID.Equals(cliID) && x.NumReferencia.Equals(num)
                      select x).ToList();
             foreach (var item in c)
             {

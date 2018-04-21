@@ -16,9 +16,9 @@ namespace Controllers
             ContextoSingleton.Instancia.SaveChanges();
         }
 
-        public static void MudarStatus(Pedido pedidoAntigo, string status)
+        public static void MudarStatus(int  pedidoAntigoID, string status)
         {
-            Pedido pedidoEdit = PesquisarPorID(pedidoAntigo.NumeroPedidoID);
+            Pedido pedidoEdit = PesquisarPorID(pedidoAntigoID);
 
            if (pedidoEdit != null)
             {
@@ -35,55 +35,6 @@ namespace Controllers
 
             return ContextoSingleton.Instancia.TblPedido.Include("_ClientesPizzas").Include("_ClientesBebidas").ToList();
         }        
-
-        public static List<Pedido> ProcuraPedidoSaiuParaEntrega()
-        {
-            var c = (from x in ContextoSingleton.Instancia.TblPedido.Include("_ClientesPizzas").Include("_ClientesBebidas")
-                     where x.Status.Contains("SAIU PARA ENTREGA")
-                     select x).ToList();
-
-            if (c.Count > 0)
-            {
-                return c;
-            }
-            else
-            {
-                return null;
-            }
-        }
-
-        public static List<Pedido> ProcuraPedidoPendentes()
-        {
-            var c = (from x in ContextoSingleton.Instancia.TblPedido.Include("_ClientesPizzas").Include("_ClientesBebidas")
-                     where x.Status.Contains("EM PRODUÇÃO")
-                     select x).ToList();
-
-            if (c.Count > 0)
-            {
-                return c;
-            }
-            else
-            {
-                return null;
-            }
-        }
-
-        public static List<Pedido> ProcuraPedidoFinalizado()
-        {
-            var c = (from x in ContextoSingleton.Instancia.TblPedido.Include("_ClientesPizzas").Include("_ClientesBebidas")
-                     where x.Status.Contains("FINALIZADO")
-                     select x).ToList();
-
-            if (c.Count > 0)
-            {
-                return c;
-            }
-            else
-            {
-                return null;
-            }
-
-        }  
 
         public static Pedido PesquisarPorID(int IDPedido)
         {

@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace Models
 {
-    public class PedidoPizzas
+    public class PedidoBebidas
     {
-        public int PedidoPizzasID { get; set; }
+        public int PedidoBebidasID { get; set; }
         public int NumeroPedidoID { get; set; }
-        public int ClientesPizzasID { get; set; }
+        public int ClientesBebidasID { get; set; }
         public Pedido _Pedido { get; set; }
-        public ClientesPizzas _ClientesPizzas { get; set;}
+        public ClientesBebidas _ClientesBebidas { get; set; }
     }
 }

@@ -53,8 +53,8 @@
     <Compile Include="ClientesPizzas.cs" />
     <Compile Include="DAL\MeuContexto.cs" />
     <Compile Include="Endereco.cs" />
-    <Compile Include="Motoboy.cs" />
     <Compile Include="Pedido.cs" />
+    <Compile Include="PedidoBebidas.cs" />
     <Compile Include="PedidoPizzas.cs" />
     <Compile Include="Pessoa.cs" />
     <Compile Include="Pizza.cs" />

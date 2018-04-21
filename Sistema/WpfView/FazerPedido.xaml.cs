@@ -129,7 +129,6 @@ namespace WpfView
 
         private void MostrarGridPizzasEscolhidas()
         {
-            MessageBox.Show("Ola 3");
             List<ClientesPizzas> list = ClientesPizzasController.PesquisarClientePedidos(clientePedido,NumReferencia);
             gridPizzasEscolhidas.ItemsSource = list;
         }
@@ -137,11 +136,11 @@ namespace WpfView
         private void SalvandoNaTabelaPedidos()
         {
             List<ClientesPizzas> list = ClientesPizzasController.PesquisarClientePedidos(clientePedido,NumReferencia);
-            Pedido novoPed = new Pedido();
+            Pedido novoPed = new Pedido();            
             novoPed.Status = "EM PRODUÇÃO";
             DateTime data = DateTime.Now;
             novoPed.Data = data;
-            novoPed.ValorTotal = double.Parse(blockValorTotal.Text);
+            novoPed.ValorTotal = valorTotal;
             PedidoController.SalvarPedido(novoPed);
             SalvarTabelaPedidoPizzas(novoPed.NumeroPedidoID,list);            
         }
@@ -149,9 +148,9 @@ namespace WpfView
         private void SalvarTabelaPedidoPizzas(int pedidoID, List<ClientesPizzas> list)
         {
             PedidoPizzas novo = new PedidoPizzas();
-            novo.PedidoID = pedidoID;
             foreach (var item in list)
             {
+                novo.NumeroPedidoID = pedidoID;
                 novo.ClientesPizzasID = item.ClientesPizzasID;
             }
             PedidoPizzasController.SalvarPedido(novo);
@@ -164,7 +163,7 @@ namespace WpfView
             {
                 PedidoBebidas bebidas = new PedidoBebidas();
                 List<ClientesPizzas> list = ClientesPizzasController.PesquisarClientePedidos(clientePedido,NumReferencia);
-                bebidas.MostrarClienteParteBebidas(clientePedido, valorTotal, numPedido, list);
+                bebidas.MostrarClienteParteBebidas(clientePedido, valorTotal, numPedido, list, NumReferencia);
                 this.Close();
                 bebidas.ShowDialog();
             }
@@ -241,14 +240,14 @@ namespace WpfView
             {
                 if (MessageBox.Show("Pedido será cancelado", "Cancelar pedido", MessageBoxButton.OK, MessageBoxImage.Exclamation) == MessageBoxResult.OK)
                 {
-                    ClientesPizzasController.ExcluirPedidosCliente(clientePedido.ClienteID);
+                    ClientesPizzasController.ExcluirPedidosCliente(clientePedido.ClienteID,NumReferencia);
                     Environment.Exit(0);
                 }
             } else if (referenciaButton == 1)
             {
                 if (MessageBox.Show("Pedido será cancelado", "Cancelar pedido", MessageBoxButton.OK, MessageBoxImage.Exclamation) == MessageBoxResult.OK)
                 {
-                    ClientesPizzasController.ExcluirPedidosCliente(clientePedido.ClienteID);
+                    ClientesPizzasController.ExcluirPedidosCliente(clientePedido.ClienteID,NumReferencia);
                 }
             }            
         }

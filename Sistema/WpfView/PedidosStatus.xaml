@@ -7,21 +7,23 @@
         mc:Ignorable="d"
         Title="PedidosStatus" Style="{StaticResource estiloJanela}">
     <Grid>
-        <Label Content="Controle de Status dos Pedidos" HorizontalAlignment="Left" Margin="169,19,0,0" VerticalAlignment="Top" Width="386" FontFamily="Arial" FontSize="24"/>
+        <Label Content="Controle de Status dos Pedidos" HorizontalAlignment="Left" Margin="207,10,0,0" VerticalAlignment="Top" Width="386" FontFamily="Arial" FontSize="24"/>
         <DataGrid x:Name="gridPedidos"  IsReadOnly="True" AutoGenerateColumns="False" SelectionMode="Single" CanUserAddRows="false" Margin="78,135,61,38" SelectionChanged="gridPedidos_SelectionChanged">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Número do Pedido" Binding="{Binding Path=NumPedido}"/>
+                <DataGridTextColumn Header="Número do Pedido" Binding="{Binding Path=NumeroPedidoID}"/>
+                <DataGridTextColumn Header="Nome do Cliente" Binding="{Binding Path=_ClientesPizzas._Cliente.Nome}"/>
+                <DataGridTextColumn Header="Data" Binding="{Binding Path=_Pedido.Data}"/>
                 <DataGridTextColumn Header="Produtos escolhidos" Binding="{Binding Path=_ClientesPizzas._Pizza.Nome}"/>
-                <DataGridTextColumn Header="Status" Binding="{Binding Path=Status}"/>
-                <DataGridTextColumn Header="Tamanho da Pizza" Binding="{Binding Path=Tamanho_Pizza}"/>
-                <DataGridTextColumn Header="Valor Total" Binding="{Binding Path=ValorTotal}"/>
+                <DataGridTextColumn Header="Status" Binding="{Binding Path=_Pedido.Status}"/>
+                <DataGridTextColumn Header="Tamanho da Pizza" Binding="{Binding Path=_ClientesPizzas.Tamanho_Pizza}"/>
+                <DataGridTextColumn Header="Valor Total" Binding="{Binding Path=_Pedido.ValorTotal}"/>
             </DataGrid.Columns>
         </DataGrid>
-        <Button x:Name="btnProducao" Content="Em Produção" HorizontalAlignment="Left" Margin="78,74,0,0" VerticalAlignment="Top" Width="108" Height="33" Click="btnAndamento_Click" FontFamily="Arial" FontSize="14"/>
-        <Button x:Name="btnFinalizados" Content="Saiu para Entrega" HorizontalAlignment="Left" Margin="222,74,0,0" VerticalAlignment="Top" Width="127" Height="33" Click="btnSaiuEntrega_Click" FontFamily="Arial" FontSize="14"/>
+        <Button x:Name="btnProducao" Content="Em Produção" HorizontalAlignment="Left" Margin="93,74,0,0" VerticalAlignment="Top" Width="108" Height="33" Click="btnAndamento_Click" FontFamily="Arial" FontSize="14"/>
+        <Button x:Name="btnFinalizados" Content="Saiu para Entrega" HorizontalAlignment="Left" Margin="271,74,0,0" VerticalAlignment="Top" Width="127" Height="33" Click="btnSaiuEntrega_Click" FontFamily="Arial" FontSize="14"/>
         <Button HorizontalAlignment="Left" VerticalAlignment="Top" Width="75"/>
-        <Button x:Name="btnVoltar" Content="Voltar" HorizontalAlignment="Left" VerticalAlignment="Top" Width="78" Margin="531,74,0,0" Height="33" Click="btnVoltar_Click" FontFamily="Arial" FontSize="14"/>
-        <Button x:Name="btnFinalizado" Content="Finalizados" HorizontalAlignment="Left" Margin="397,74,0,0" VerticalAlignment="Top" Width="98" Height="33" FontFamily="Arial" FontSize="14" Click="btnFinalizado_Click"/>
+        <Button x:Name="btnVoltar" Content="Voltar" HorizontalAlignment="Left" VerticalAlignment="Top" Width="78" Margin="608,74,0,0" Height="33" Click="btnVoltar_Click" FontFamily="Arial" FontSize="14" RenderTransformOrigin="1.141,0.485"/>
+        <Button x:Name="btnFinalizado" Content="Finalizados" HorizontalAlignment="Left" Margin="457,74,0,0" VerticalAlignment="Top" Width="98" Height="33" FontFamily="Arial" FontSize="14" Click="btnFinalizado_Click"/>
 
     </Grid>
 </Window>

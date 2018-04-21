@@ -100,10 +100,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="ListaPedidos.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -138,9 +134,6 @@
     </Compile>
     <Compile Include="ListagemClientes.xaml.cs">
       <DependentUpon>ListagemClientes.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="ListaPedidos.xaml.cs">
-      <DependentUpon>ListaPedidos.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>

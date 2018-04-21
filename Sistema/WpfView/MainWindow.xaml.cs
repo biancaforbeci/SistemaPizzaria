@@ -67,14 +67,7 @@ namespace WpfView
             PedidosStatus tela = new PedidosStatus();
             this.Close();
             tela.ShowDialog();
-        }
-
-        private void ItemListaPedidos_Click(object sender, RoutedEventArgs e)
-        {
-            ListaPedidos tela = new ListaPedidos();
-            this.Close();
-            tela.ShowDialog();
-        }
+        }        
 
         private void ItemListagem_Click(object sender, RoutedEventArgs e)
         {

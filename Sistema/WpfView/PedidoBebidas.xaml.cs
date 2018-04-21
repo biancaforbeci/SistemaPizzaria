@@ -24,6 +24,7 @@ namespace WpfView
         private double valorTotal = 0;
         private Cliente clientePedido = null;
         private int numPedido;
+        private int numReferencia = 0;
         private List<ClientesPizzas> list = null;
         private int referenciaButton= 0;
 
@@ -36,17 +37,20 @@ namespace WpfView
         private void btnCancelar_Click(object sender, RoutedEventArgs e)
         {
             referenciaButton = 1;
+            ClientesPizzasController.ExcluirPedidosCliente(clientePedido.ClienteID,numReferencia);
+            ClientesBebidasController.ExcluirPedidosCliente(clientePedido.ClienteID,numReferencia);
             MainWindow w = new MainWindow();
             this.Close();
             w.ShowDialog();
         }
 
-        public void MostrarClienteParteBebidas(Cliente cli, double total, int num, List<ClientesPizzas> listPizzas)
+        public void MostrarClienteParteBebidas(Cliente cli, double total, int num, List<ClientesPizzas> listPizzas, int numRefe)
         {
             blockCliente.Text = cli.Nome;
             blockTelefone.Text = cli.Telefone;
             clientePedido = cli;
             blockValorTotal.Text = Convert.ToString(total.ToString("C2"));
+            numReferencia = numRefe;
             valorTotal = total;
             numPedido = num;
             list = listPizzas;
@@ -77,7 +81,7 @@ namespace WpfView
         private void SalvandoTabelaEscolhidos()
         {
             Bebida bebidaEscolhida = ((Bebida)gridBebida.SelectedItem);
-            SalvarPedido(bebidaEscolhida);
+            SalvarEscolha(bebidaEscolhida);
             valorTotal += ((Bebida)gridBebida.SelectedItem).Preco;
             blockValorTotal.Text = Convert.ToString(valorTotal.ToString("C2"));
         }
@@ -87,7 +91,7 @@ namespace WpfView
             referenciaButton = 2;
             if (MessageBox.Show("Confirmar pedido ?", "Confirma Pedido", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
             {
-                SalvandoNaTabelaPedidos();
+                SalvarTabelaPedidos();
                 MessageBox.Show("Pedido finalizado");
                 MainWindow tela = new MainWindow();
                 this.Close();
@@ -95,7 +99,7 @@ namespace WpfView
             }
         }
 
-        private void SalvarPedido(Bebida bebida)
+        private void SalvarEscolha(Bebida bebida)
         {
             ClientesBebidas novo = new ClientesBebidas();
             novo.ClienteID = clientePedido.ClienteID;
@@ -113,34 +117,40 @@ namespace WpfView
             gridBebidasEscolhidas.ItemsSource = list;
         }
 
-        private void SalvandoNaTabelaPedidos()
+        private void SalvarTabelaPedidos()
         {
-            SalvarPizzasTabelaPedidos();
-            List<ClientesBebidas> listaBebidas = ClientesBebidasController.PesquisarClientePedidos(clientePedido.ClienteID);
             Pedido novoPed = new Pedido();
+            novoPed.Status = "EM PRODUÇÃO";
+            DateTime data = DateTime.Now;
+            novoPed.Data = data;
+            novoPed.ValorTotal = valorTotal;
+            PedidoController.SalvarPedido(novoPed);
+            SalvarTabelaPedidoPizzas(novoPed.NumeroPedidoID,list);
 
-            foreach (var item in listaBebidas)
-            {
-                novoPed.Status = "EM PRODUÇÃO";
-               // novoPed.ClientesProdutosEscolhidosID = item.ClientesBebidasID;
-               // novoPed.NumPedido = numPedido;
-                novoPed.ValorTotal = double.Parse(blockValorTotal.Text);
-                PedidoController.SalvarPedido(novoPed);
-            }
         }
 
-        private void SalvarPizzasTabelaPedidos()
+        private void SalvarTabelaPedidoPizzas(int pedidoID, List<ClientesPizzas> list)
         {
-            Pedido novoPed = new Pedido();
-
+            PedidoPizzas novo = new PedidoPizzas();
             foreach (var item in list)
             {
-                novoPed.Status = "EM PRODUÇÃO";
-               // novoPed.ClientesProdutosEscolhidosID = item.ClientesPizzasID;
-               // novoPed.NumPedido = numPedido;
-                novoPed.ValorTotal = double.Parse(blockValorTotal.Text);
-                PedidoController.SalvarPedido(novoPed);
+                novo.NumeroPedidoID = pedidoID;
+                novo.ClientesPizzasID = item.ClientesPizzasID;
             }
+            PedidoPizzasController.SalvarPedido(novo);
+            List<ClientesBebidas> lista = ClientesBebidasController.PesquisarClientePedidos(clientePedido.ClienteID, numReferencia);
+            SalvarTabelaPedidoBebidas(pedidoID, lista);
+        }
+
+        private void SalvarTabelaPedidoBebidas(int pedidoID, List<ClientesBebidas> listaBebidas)
+        {
+            PedidoBebidas pedidoBebidas = new PedidoBebidas();            
+            foreach (var item in list)
+            {
+                pedidoBebidas.NumeroPedidoID = pedidoID;
+                novo.ClientesPizzasID = item.ClientesPizzasID;
+            }
+            PedidoBebidasController.SalvarPedido(novo);
         }
 
         private void gridBebidasEscolhidas_SelectionChanged(object sender, SelectionChangedEventArgs e)

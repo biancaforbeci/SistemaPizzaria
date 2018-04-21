@@ -55,6 +55,7 @@
     <Compile Include="ClientesPizzasController.cs" />
     <Compile Include="ContextoSingleton.cs" />
     <Compile Include="EnderecoController.cs" />
+    <Compile Include="PedidoBebidasController.cs" />
     <Compile Include="PedidoController.cs" />
     <Compile Include="PedidoPizzasController.cs" />
     <Compile Include="PizzaController.cs" />
