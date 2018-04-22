@@ -23,6 +23,7 @@ namespace WpfView
     {
         private double valorTotal = 0;
         private Cliente clientePedido = null;
+        private int Pizzas;
         private int numRef;
         private List<ClientesPizzas> list = null;
         private int referenciaButton= 0;
@@ -43,7 +44,7 @@ namespace WpfView
             w.ShowDialog();
         }
 
-        public void MostrarClienteBebidas(Cliente cli, double total, int num, List<ClientesPizzas> listPizzas, int numRefe)
+        public void MostrarClienteBebidas(Cliente cli, double total, int num, List<ClientesPizzas> listPizzas, int numRefe, int qtd)
         {
             blockCliente.Text = cli.Nome;
             blockTelefone.Text = cli.Telefone;
@@ -52,6 +53,7 @@ namespace WpfView
             numRef = numRefe;
             valorTotal = total;
             list = listPizzas;
+            Pizzas = qtd;
         }
 
         private void MostrarGrid()
@@ -73,8 +75,15 @@ namespace WpfView
 
         private void gridBebida_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            SalvandoTabelaEscolhidos();
-            MostrarGridBebidasEscolhidas();
+            if(txtQuantidadeBebida.Text == "")
+            {
+                MessageBox.Show("Escolha uma quantidade desse item", "Erro", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            else
+            {
+                SalvandoTabelaEscolhidos();
+                MostrarGridBebidasEscolhidas();
+            }            
         }
 
         private void SalvandoTabelaEscolhidos()
@@ -88,6 +97,7 @@ namespace WpfView
         private void btnConfirma_Click(object sender, RoutedEventArgs e)
         {
             referenciaButton = 2;
+            
             if (gridBebidasEscolhidas.Items.Count > 0)
             {
                 if (MessageBox.Show("Confirmar pedido ?", "Confirma Pedido", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
@@ -103,7 +113,7 @@ namespace WpfView
             }
             else
             {
-                MessageBox.Show("Escolha uma pizza","Erro",MessageBoxButton.OK,MessageBoxImage.Error);
+                MessageBox.Show("Escolha uma bebida","Erro",MessageBoxButton.OK,MessageBoxImage.Error);
             }
         }
 
@@ -124,6 +134,7 @@ namespace WpfView
             cliBebidas.ClienteID = clientePedido.ClienteID;
             cliBebidas.BebidaID = bebida.BebidaID;
             cliBebidas.NumReferencia = numRef;
+            cliBebidas.QtdBebida = int.Parse(txtQuantidadeBebida.Text);
             ClientesBebidasController.SalvarItem(cliBebidas);
         }
 
@@ -141,6 +152,7 @@ namespace WpfView
             DateTime data = DateTime.Now;
             novoPed.Data = data;
             novoPed.ValorTotal = valorTotal;
+            novoPed.QtdPizzas = Pizzas;
             PedidoController.SalvarPedido(novoPed);
             SalvarTabelaPedidoPizzas(novoPed.NumeroPedidoID,list);
             return novoPed.NumeroPedidoID;
@@ -167,10 +179,10 @@ namespace WpfView
                     try
                     {
                         int id = ((ClientesBebidas)gridBebidasEscolhidas.SelectedItem).ClientesBebidasID;
-                        ClientesBebidasController.ExcluirSelecao(id);
-                        MessageBox.Show("Item excluído com sucesso");
                         valorTotal -= ((ClientesBebidas)gridBebidasEscolhidas.SelectedItem)._Bebida.Preco;
                         blockValorTotal.Text = Convert.ToString(valorTotal.ToString("C2"));
+                        ClientesBebidasController.ExcluirSelecao(id);
+                        MessageBox.Show("Item excluído com sucesso");
                         MostrarGrid();
                         MostrarGridBebidasEscolhidas();
                     }

@@ -27,6 +27,7 @@
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Número do Pedido" Binding="{Binding Path=NumeroPedidoID}"/>
                 <DataGridTextColumn Header="Nome do Cliente" Binding="{Binding Path=_ClientesPizzas._Cliente.Nome}"/>
+                <DataGridTextColumn Header="Quantidade" Binding="{Binding Path= _Pedido.QtdPizzas}"/>
                 <DataGridTextColumn Header="Pizzas escolhidas" Binding="{Binding Path=_ClientesPizzas._Pizza.Nome}"/>
                 <DataGridTextColumn Header="Status" Binding="{Binding Path=_Pedido.Status}"/>
                 <DataGridTextColumn Header="Tamanho da Pizza" Binding="{Binding Path=_ClientesPizzas.Tamanho_Pizza}"/>
@@ -43,6 +44,7 @@
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Número do Pedido" Binding="{Binding Path=NumeroPedidoID}"/>
                 <DataGridTextColumn Header="Nome do Cliente" Binding="{Binding Path=_ClientesBebidas._Cliente.Nome}"/>
+                <DataGridTextColumn Header="Quantidade" Binding="{Binding Path=_ClientesBebidas.QtdBebida}"/>
                 <DataGridTextColumn Header="Bebidas escolhidas" Binding="{Binding Path=_ClientesBebidas._Bebida.Nome}"/>
                 <DataGridTextColumn Header="Status" Binding="{Binding Path=_Pedido.Status}"/>
                 <DataGridTextColumn Header="Data" Binding="{Binding Path=_Pedido.Data}"/>

@@ -146,6 +146,7 @@ namespace WpfView
             {
                 MessageBox.Show("Nada encontrado nos pedidos finalizados");
             }
+            BebidasFinalizado();
         }
 
         private void BebidasFinalizado()

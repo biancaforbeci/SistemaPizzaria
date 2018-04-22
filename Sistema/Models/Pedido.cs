@@ -14,6 +14,6 @@ namespace Models
         public double ValorTotal { get; set;}        
         public string Status { get; set; }
         public DateTime Data { get; set; }
-        
+        public int QtdPizzas { get; set; }        
     }
 }

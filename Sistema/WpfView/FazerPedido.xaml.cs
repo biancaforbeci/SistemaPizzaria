@@ -89,6 +89,9 @@ namespace WpfView
             else if (gridPizzasEscolhidas.Items.Count < 4 && qtdMaxPizza == 4)
             {
                 SalvandoTabelaEscolhidos();
+            }else if(qtdMaxPizza == 0)
+            {
+                MessageBox.Show("Escolha uma opção de tamanho antes de selecionar o sabor", "Erro", MessageBoxButton.OK, MessageBoxImage.Stop);
             }
             else
             {
@@ -155,7 +158,10 @@ namespace WpfView
         private void btnConfirmar_Click(object sender, RoutedEventArgs e)
         {
             referenciaButton = 2;
-            if (gridPizzasEscolhidas.Items.Count > 0)
+            if(txtQuantidade.Text == "")
+            {
+                MessageBox.Show("Erro,coloque uma quantidade");
+            }else if (gridPizzasEscolhidas.Items.Count > 0)
             {
                 if (MessageBox.Show("Confirmar pedido ?", "Confirma Pedido", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
                 {
@@ -168,7 +174,7 @@ namespace WpfView
             }
             else
             {
-                MessageBox.Show("Escolha uma pizza", "Erro", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Escolha uma pizza e coloque uma quantidade.", "Erro", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
@@ -198,6 +204,7 @@ namespace WpfView
             DateTime data = DateTime.Now;
             novoPed.Data = data;
             novoPed.ValorTotal = valorTotal;
+            novoPed.QtdPizzas = int.Parse(txtQuantidade.Text);
             PedidoController.SalvarPedido(novoPed);
             SalvarTabelaPedidoPizzas(novoPed.NumeroPedidoID,list);            
         }
@@ -216,11 +223,14 @@ namespace WpfView
         private void Bebidas_Click(object sender, RoutedEventArgs e)
         {
             referenciaButton = 2;
-            if (gridPizzasEscolhidas.Items.Count > 0)
+            if(txtQuantidade.Text == "")
+            {
+                MessageBox.Show("Escolha uma quantidade de pizza.");
+            }else if (gridPizzasEscolhidas.Items.Count > 0)
             {
                 PedidoBebidas bebidas = new PedidoBebidas();
                 List<ClientesPizzas> list = ClientesPizzasController.PesquisarClientePedidos(clientePedido,NumReferencia);
-                bebidas.MostrarClienteBebidas(clientePedido, valorTotal, numPedido, list, NumReferencia);
+                bebidas.MostrarClienteBebidas(clientePedido, valorTotal, numPedido, list, NumReferencia,int.Parse(txtQuantidade.Text));
                 this.Close();
                 bebidas.ShowDialog();
             }
@@ -240,7 +250,7 @@ namespace WpfView
                 }
                 else
                 {
-                    valorTotal -= pizzaTirada._Pizza.PrecoBroto;
+                    valorTotal = valorTotal-pizzaTirada._Pizza.PrecoBroto;
                 }            
             }
             else if (TamPizza.Contains("Média"))
@@ -251,7 +261,7 @@ namespace WpfView
                 }
                 else
                 {
-                    valorTotal -= pizzaTirada._Pizza.PrecoMedia;
+                    valorTotal = valorTotal  - pizzaTirada._Pizza.PrecoMedia;
                 }
             }
             else if (TamPizza.Contains("Grande"))
@@ -262,7 +272,7 @@ namespace WpfView
                 }
                 else
                 {
-                    valorTotal -= pizzaTirada._Pizza.PrecoGrande;
+                    valorTotal = valorTotal - pizzaTirada._Pizza.PrecoGrande;
                 }
             }
             else
@@ -273,7 +283,7 @@ namespace WpfView
                 }
                 else
                 {
-                    valorTotal -= pizzaTirada._Pizza.PrecoGigante;
+                    valorTotal = valorTotal  - pizzaTirada._Pizza.PrecoGigante;
                 }
             }
     }
@@ -288,9 +298,9 @@ namespace WpfView
                     try
                     {
                         int id = ((ClientesPizzas)gridPizzasEscolhidas.SelectedItem).ClientesPizzasID;
-                        ClientesPizzasController.ExcluirSelecao(id);
-                        MessageBox.Show("Item excluído com sucesso");
                         DiminuiValorTotal(((ClientesPizzas)gridPizzasEscolhidas.SelectedItem));
+                        ClientesPizzasController.ExcluirSelecao(id);
+                        MessageBox.Show("Item excluído com sucesso");                     
                         MostrarGrid();
                         MostrarGridPizzasEscolhidas();
                     }
@@ -313,8 +323,7 @@ namespace WpfView
 
         private void checkMedia_Checked(object sender, RoutedEventArgs e)
         {
-            qtdMaxPizza = 3;
-            
+            qtdMaxPizza = 3;            
             checkBroto.IsEnabled = false;
             checkGigante.IsEnabled = false;
             checkGrande.IsEnabled = false;
@@ -324,7 +333,6 @@ namespace WpfView
         private void checkGrande_Checked(object sender, RoutedEventArgs e)
         {
             qtdMaxPizza = 3;
-
             checkBroto.IsEnabled = false;
             checkMedia.IsEnabled = false;
             checkGigante.IsEnabled = false;
@@ -353,9 +361,22 @@ namespace WpfView
             }            
         }
 
+        private void ExcluirSelecaoAposMudarTamanho()
+        {
+            List<ClientesPizzas> listaSelecao = ClientesPizzasController.PesquisarClientePedidos(clientePedido, NumReferencia);
+            foreach (var item in listaSelecao)
+            {
+                ClientesPizzasController.ExcluirSelecao(item.ClientesPizzasID);
+            }
+            MostrarGridPizzasEscolhidas();
+            valorTotal = 0;
+            blockValorTotal.Text=valorTotal.ToString("C2");
+        }
+
         private void checkBroto_Unchecked(object sender, RoutedEventArgs e)
         {
             qtdMaxPizza = 0;
+            ExcluirSelecaoAposMudarTamanho();
             checkMedia.IsEnabled = true;
             checkGigante.IsEnabled = true;
             checkGrande.IsEnabled = true;
@@ -365,6 +386,7 @@ namespace WpfView
         private void checkMedia_Unchecked(object sender, RoutedEventArgs e)
         {
             qtdMaxPizza = 0;
+            ExcluirSelecaoAposMudarTamanho();
             checkBroto.IsEnabled = true;
             checkGigante.IsEnabled = true;
             checkGrande.IsEnabled = true;
@@ -374,6 +396,7 @@ namespace WpfView
         private void checkGrande_Unchecked(object sender, RoutedEventArgs e)
         {
             qtdMaxPizza = 0;
+            ExcluirSelecaoAposMudarTamanho();
             checkBroto.IsEnabled = true;
             checkMedia.IsEnabled = true;
             checkGigante.IsEnabled = true;
@@ -384,6 +407,7 @@ namespace WpfView
         private void checkGigante_Unchecked(object sender, RoutedEventArgs e)
         {
             qtdMaxPizza = 0;
+            ExcluirSelecaoAposMudarTamanho();
             checkBroto.IsEnabled = true;
             checkMedia.IsEnabled = true;
             checkGrande.IsEnabled = true;

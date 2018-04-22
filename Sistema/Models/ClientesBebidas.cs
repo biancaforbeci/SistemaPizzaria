@@ -14,5 +14,6 @@ namespace Models
         public int NumReferencia { get; set; }
         public virtual Bebida _Bebida { get; set; }
         public virtual Cliente _Cliente { get; set; }
+        public int QtdBebida { get; set; }
     }
 }
