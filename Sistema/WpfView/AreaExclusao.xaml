@@ -28,7 +28,10 @@
                 <DataGridTextColumn Header="ID" Binding="{Binding Path=PizzaID}"/>
                 <DataGridTextColumn Header="Pizza" Binding="{Binding Path=Nome}"/>
                 <DataGridTextColumn Header="Ingredientes" Binding="{Binding Path=Ingredientes}"/>
-                <DataGridTextColumn Header="Preço" Binding="{Binding Path=Preco}"/>
+                <DataGridTextColumn Header="Preço Broto" Binding="{Binding Path=PrecoBroto}"/>
+                <DataGridTextColumn Header="Preço Média" Binding="{Binding Path=PrecoMedia}"/>
+                <DataGridTextColumn Header="Preço Grande" Binding="{Binding Path=PrecoGrande}"/>
+                <DataGridTextColumn Header="Preço Gigante" Binding="{Binding Path=PrecoGigante}"/>
             </DataGrid.Columns>
         </DataGrid>
           <Button x:Name="btnVoltar" Content="Voltar" Canvas.Left="484" Canvas.Top="328" FontFamily="Arial" FontSize="14" Click="btnVoltar_Click" Grid.Column="1" Margin="71,437,0,10" HorizontalAlignment="Left" Width="85"/>

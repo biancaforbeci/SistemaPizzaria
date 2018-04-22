@@ -78,8 +78,8 @@
 
 
         <Canvas HorizontalAlignment="Left" Height="370" VerticalAlignment="Top" Width="657" Grid.ColumnSpan="2" Grid.RowSpan="3" Margin="59,81,0,0">
-            <Image Height="206" Width="257" Source="Imagens/pizza.jpg" HorizontalAlignment="Left" Canvas.Left="58" Canvas.Top="111"/>
-            <Button x:Name="btnRealizarPedido" Content="Fazer Pedido" HorizontalAlignment="Left" VerticalAlignment="Top" Width="179" Height="49" Canvas.Left="424" Canvas.Top="181" FontSize="18" Click="btnRealizarPedido_Click">
+            <Image Height="206" Width="257" Source="Imagens/pizza.jpg" HorizontalAlignment="Left" Canvas.Left="75" Canvas.Top="154"/>
+            <Button x:Name="btnRealizarPedido" Content="Fazer Pedido" HorizontalAlignment="Left" VerticalAlignment="Top" Width="179" Height="49" Canvas.Left="440" Canvas.Top="219" FontSize="18" Click="btnRealizarPedido_Click">
                 <Button.Background>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                         <GradientStop Color="#FF577DE0" Offset="0"/>

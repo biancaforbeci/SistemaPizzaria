@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -32,6 +33,9 @@ namespace Sistema.Models.DAL
         public DbSet<PedidoPizzas> TblPedidoPizzas { get; set; }
 
         public DbSet<BebidasPedido> TblPedidoBebidas { get; set; }
+
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder) { modelBuilder.Conventions.Remove<PluralizingTableNameConvention>(); }
 
     }
 }

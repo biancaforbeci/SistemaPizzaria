@@ -34,6 +34,10 @@ namespace WpfView
         {
             txtPizza.Text = pizzaEdit.Nome;
             txtIngredientes.Text = pizzaEdit.Ingredientes;
+            txtBrotoEdit.Text = Convert.ToString(pizzaEdit.PrecoBroto);
+            txtMediaEdit.Text = Convert.ToString(pizzaEdit.PrecoMedia);
+            txtGrandeEdit.Text = Convert.ToString(pizzaEdit.PrecoGrande);
+            txtGiganteEdit.Text = Convert.ToString(pizzaEdit.PrecoGigante);
             pizzaEditar = pizzaEdit;
             referenciaProduto = refer;
             btnEditBebida.IsEnabled = false;           

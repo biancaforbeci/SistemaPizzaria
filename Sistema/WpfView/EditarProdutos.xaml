@@ -18,8 +18,8 @@
         <Label Content="Ingredientes" HorizontalAlignment="Left" Margin="59,148,0,0" VerticalAlignment="Top" FontFamily="Arial" FontSize="18"/>
         <Label Content="Bebida" HorizontalAlignment="Left" Margin="591,72,0,0" VerticalAlignment="Top" FontFamily="Arial" FontSize="18" RenderTransformOrigin="0.589,-0.435"/>
         <Label Content="Preço" HorizontalAlignment="Left" Margin="591,168,0,0" VerticalAlignment="Top" FontFamily="Arial" FontSize="18" RenderTransformOrigin="0.505,-0.589"/>
-        <TextBox x:Name="txtPizza" HorizontalAlignment="Left" Height="31" Margin="48,104,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="txtIngredientes" HorizontalAlignment="Left" Height="31" Margin="48,179,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="txtPizza" HorizontalAlignment="Left" Height="31" Margin="31,104,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="158"/>
+        <TextBox x:Name="txtIngredientes" HorizontalAlignment="Left" Height="31" Margin="31,198,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="158"/>
         <Button x:Name="btnEditPizza" Content="Editar Pizza" HorizontalAlignment="Left" Margin="249,380,0,0" VerticalAlignment="Top" Width="145" Height="40" FontFamily="Arial" FontSize="14" Click="btnEditPizza_Click"/>
         <TextBox x:Name="txtBebida" HorizontalAlignment="Left" Height="30" Margin="561,118,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.496,-0.707"/>
         <TextBox x:Name="txtPreco" HorizontalAlignment="Left" Height="31" Margin="561,204,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>

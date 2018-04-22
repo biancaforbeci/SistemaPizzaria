@@ -40,7 +40,7 @@
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Cliente" Binding="{Binding Path=_Cliente.Nome}"/>
                 <DataGridTextColumn Header="Bebida Escolhida" Binding="{Binding Path=_Bebida.Nome}"/>
-                <DataGridTextColumn Header="Preço" Binding="{Binding Path=Preco}"/>
+                <DataGridTextColumn Header="Preço" Binding="{Binding Path=_Bebida.Preco}"/>
             </DataGrid.Columns>
         </DataGrid>
         <TextBlock x:Name="blockTelefone" Margin="30,246,28,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="23" FontFamily="Arial" FontSize="16" RenderTransformOrigin="0.49,1.304"/>

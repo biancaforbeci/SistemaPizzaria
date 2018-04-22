@@ -25,6 +25,10 @@
                 <DataGridTextColumn Header="ID" Binding="{Binding Path=PizzaID}"/>
                 <DataGridTextColumn Header="Pizza" Binding="{Binding Path=Nome}"/>
                 <DataGridTextColumn Header="Ingredientes" Binding="{Binding Path=Ingredientes}"/>
+                <DataGridTextColumn Header="Preço Broto" Binding="{Binding Path=PrecoBroto}"/>
+                <DataGridTextColumn Header="Preço Média" Binding="{Binding Path=PrecoMedia}"/>
+                <DataGridTextColumn Header="Preço Grande" Binding="{Binding Path=PrecoGrande}"/>
+                <DataGridTextColumn Header="Preço Gigante" Binding="{Binding Path=PrecoGigante}"/>
             </DataGrid.Columns>
         </DataGrid>
         <Label Content="Telefone Cliente" HorizontalAlignment="Left" Margin="145,68,0,0" VerticalAlignment="Top" FontFamily="Arial" FontSize="16" Width="142" FontWeight="Bold" Grid.Column="1"/>

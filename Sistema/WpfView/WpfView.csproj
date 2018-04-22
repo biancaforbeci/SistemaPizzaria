@@ -221,17 +221,5 @@
   <ItemGroup>
     <Resource Include="Imagens\password_userpassword_9564.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Imagens\Pizza-icon_30282.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Imagens\delete_delete_deleteusers_delete_male_user_maleclient_2348.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Imagens\delete_unapprove_discard_remove_x_red_icon-icons.com_55984.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Imagens\menu_editconfig_men_9554.png" />
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

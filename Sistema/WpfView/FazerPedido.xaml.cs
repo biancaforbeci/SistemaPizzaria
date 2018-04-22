@@ -23,7 +23,6 @@ namespace WpfView
     public partial class FazerPedido : Window
     {
         private double valorTotal = 0;
-        private int TamanhoEscolhido = 0;
         private Cliente clientePedido;
         private int qtdMaxPizza = 0;
         private string TamPizza;
@@ -101,18 +100,47 @@ namespace WpfView
         {
             if (TamPizza.Contains("Broto"))
             {
-                valorTotal = pizzaEscolhida.PrecoBroto;
+                if (valorTotal == 0)
+                {
+                    valorTotal = pizzaEscolhida.PrecoBroto;
+                }
+                else
+                {
+                    valorTotal += pizzaEscolhida.PrecoBroto;
+                }                
+                
             } else if (TamPizza.Contains("Média")) 
             {
-                valorTotal = pizzaEscolhida.PrecoMedia;
+                if (valorTotal == 0)
+                {
+                    valorTotal = pizzaEscolhida.PrecoMedia;
+                }
+                else
+                {
+                    valorTotal += pizzaEscolhida.PrecoMedia;
+                }
             }
             else if (TamPizza.Contains("Grande")) 
             {
-                valorTotal = pizzaEscolhida.PrecoGrande;
+                if (valorTotal == 0)
+                {
+                    valorTotal = pizzaEscolhida.PrecoGrande;
+                }
+                else
+                {
+                    valorTotal += pizzaEscolhida.PrecoGrande;
+                }
             }
             else
             {
-                valorTotal = pizzaEscolhida.PrecoGigante;
+                if (valorTotal == 0)
+                {
+                    valorTotal = pizzaEscolhida.PrecoGigante;
+                }
+                else
+                {
+                    valorTotal += pizzaEscolhida.PrecoGigante;
+                }
             }
         }
 
@@ -202,6 +230,54 @@ namespace WpfView
             }            
         }        
 
+        private void DiminuiValorTotal(ClientesPizzas pizzaTirada)
+        {
+            if (TamPizza.Contains("Broto"))
+            {
+                if (gridPizzasEscolhidas.Items.Count == 0)
+                {
+                    valorTotal = 0;
+                }
+                else
+                {
+                    valorTotal -= pizzaTirada._Pizza.PrecoBroto;
+                }            
+            }
+            else if (TamPizza.Contains("Média"))
+            {
+                if (gridPizzasEscolhidas.Items.Count == 0)
+                {
+                    valorTotal = 0;
+                }
+                else
+                {
+                    valorTotal -= pizzaTirada._Pizza.PrecoMedia;
+                }
+            }
+            else if (TamPizza.Contains("Grande"))
+            {
+                if (gridPizzasEscolhidas.Items.Count == 0)
+                {
+                    valorTotal = 0;
+                }
+                else
+                {
+                    valorTotal -= pizzaTirada._Pizza.PrecoGrande;
+                }
+            }
+            else
+            {
+                if (gridPizzasEscolhidas.Items.Count == 0)
+                {
+                    valorTotal = 0;
+                }
+                else
+                {
+                    valorTotal -= pizzaTirada._Pizza.PrecoGigante;
+                }
+            }
+    }
+
         private void gridPizzasEscolhidas_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (gridPizzasEscolhidas.SelectedItem != null)
@@ -214,6 +290,7 @@ namespace WpfView
                         int id = ((ClientesPizzas)gridPizzasEscolhidas.SelectedItem).ClientesPizzasID;
                         ClientesPizzasController.ExcluirSelecao(id);
                         MessageBox.Show("Item excluído com sucesso");
+                        DiminuiValorTotal(((ClientesPizzas)gridPizzasEscolhidas.SelectedItem));
                         MostrarGrid();
                         MostrarGridPizzasEscolhidas();
                     }

@@ -43,5 +43,12 @@ namespace WpfView
             }
 
         }
+
+        private void btnVoltar_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow tela = new MainWindow();
+            this.Close();
+            tela.ShowDialog();
+        }
     }
 }

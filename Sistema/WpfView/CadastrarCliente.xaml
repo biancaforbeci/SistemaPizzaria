@@ -9,13 +9,20 @@
 
     <Grid Margin="0,0,2,3" RenderTransformOrigin="0.508,0.567">
 
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="#FFF1F5F7" Offset="0"/>
+                <GradientStop Color="#FF83C3E0" Offset="0.779"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
 
         <Canvas HorizontalAlignment="Left" Height="377" Margin="10,10,0,0" VerticalAlignment="Top" Width="648"/>
-        <StackPanel Grid.Row="0" Margin="10,70,10,169">
+        <StackPanel Grid.Row="0" Margin="20,132,0,167">
             <DockPanel>
                 <TextBlock Text="Nome" Style="{StaticResource estiloTextBlock}" />
                 <TextBox x:Name="txtNome"/>
@@ -48,13 +55,11 @@
                 <TextBlock Text="Referência" Style="{StaticResource estiloTextBlock}"/>
                 <TextBox x:Name="txtReferencia"/>
             </DockPanel>
-        </StackPanel>
-        <StackPanel Orientation="Horizontal" Margin="10,233,-10,119" Grid.ColumnSpan="2">
+        </StackPanel>        
+        <StackPanel Orientation="Horizontal" Margin="260,289,186,115">
             <Button x:Name="btnSalvar" Content="Salvar"   Width="100" Height="30" FontFamily="Arial" FontSize="18" Click="btnSalvar_Click"/>
             <Button x:Name="btnVoltar" Content="Voltar" Width="100" Height="30" FontFamily="Arial" FontSize="18" Click="btnVoltar_Click"/>
         </StackPanel>
-        <Label Content="Cadastro Clientes " HorizontalAlignment="Center" Margin="164,22,0,0" Width="345" FontFamily="Arial Black" FontSize="24" VerticalAlignment="Top"/>
-        <Canvas/>
-
+        <Label Content="Cadastro Clientes " HorizontalAlignment="Center" Margin="233,43,167,0" Width="345" FontFamily="Arial Black" FontSize="24" VerticalAlignment="Top"/>
     </Grid>
 </Window>
