@@ -31,7 +31,7 @@ namespace Sistema.Models.DAL
 
         public DbSet<PedidoPizzas> TblPedidoPizzas { get; set; }
 
-        public DbSet<PedidoBebidas> TblPedidoBebidas { get; set; }
+        public DbSet<BebidasPedido> TblPedidoBebidas { get; set; }
 
     }
 }

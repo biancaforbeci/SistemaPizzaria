@@ -48,7 +48,7 @@ namespace WpfView
             string caracter = txtTelefone.Text.Substring(0, 1);
             string verifica = "^[0-9]";                   
 
-            if ((txtTelefone.Text.Length != 0) && (Regex.IsMatch(caracter,verifica)))
+            if ((txtTelefone.Text != "") && (Regex.IsMatch(caracter,verifica)))
             {
                 List<Cliente> cli = ClienteController.PesquisarPorTelefone(txtTelefone.Text);
                 if (cli != null)

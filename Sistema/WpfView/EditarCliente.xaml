@@ -7,8 +7,15 @@
         mc:Ignorable="d"
         Title="EditarCliente" Style="{StaticResource estiloJanela}">
     <Grid>
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="#FFF1F5F7" Offset="0"/>
+                <GradientStop Color="#FF83C3E0" Offset="0.779"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+
         <Canvas HorizontalAlignment="Left" Height="377" Margin="10,10,0,0" VerticalAlignment="Top" Width="648"/>
-        <StackPanel Grid.Row="0" Margin="10,70,10,169">
+        <StackPanel Grid.Row="0" Margin="77,110,32,194">
             <DockPanel>
                 <TextBlock Text="Nome" Width="100" FontSize="16" FontFamily="Arial" />
                 <TextBox x:Name="txtNome"/>
@@ -42,13 +49,13 @@
                 <TextBox x:Name="txtReferencia"/>
             </DockPanel>
         </StackPanel>
-        <StackPanel Orientation="Horizontal" Margin="10,233,-10,95">
+        <StackPanel Orientation="Horizontal" Margin="212,294,201,95" RenderTransformOrigin="0.5,0.5">
             <Button x:Name="btnEditar" Content="Editar"   Width="100" Height="30" FontFamily="Arial" FontSize="18" Click="btnEditar_Click"/>
             <Button x:Name="btnLimpar" Content="Limpar Campos" Width="144" Height="30" FontFamily="Arial" FontSize="18" Margin="0,9" Click="btnLimparCampos_Click"/>
             <Button x:Name="btnVoltar" Content="Voltar" Width="80" Height="30" FontFamily="Arial" FontSize="18" Margin="0,9" Click="btnVoltar_Click"/>
         </StackPanel>
         <Label Content="Editar Clientes " HorizontalAlignment="Center" Margin="164,22,0,0" Width="345" FontFamily="Arial Black" FontSize="24" VerticalAlignment="Top"/>
-        <Canvas/>
+        <Canvas Margin="-10,0,10,0"/>
 
     </Grid>
 </Window>

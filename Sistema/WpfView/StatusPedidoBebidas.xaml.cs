@@ -17,29 +17,29 @@ using System.Windows.Shapes;
 namespace WpfView
 {
     /// <summary>
-    /// Interaction logic for PedidosStatus.xaml
+    /// Interaction logic for StatusPedidoBebidas.xaml
     /// </summary>
-    public partial class PedidosStatus : Window
+    public partial class StatusPedidoBebidas : Window
     {
         private int referencia = 0;
 
-        public PedidosStatus()
+        public StatusPedidoBebidas()
         {
             InitializeComponent();
         }
 
         private void gridPedidos_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (gridPedidos.SelectedItem != null && referencia==0)
+            if (gridPedidos.SelectedItem != null && referencia == 0)
             {
-                MessageBoxResult result = MessageBox.Show("Deseja alterar para Saiu Para Entrega o status do pedido " + ((PedidoPizzas)gridPedidos.SelectedItem).NumeroPedidoID + "?", "Exclusão", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                MessageBoxResult result = MessageBox.Show("Deseja alterar para Saiu Para Entrega o status do pedido " + ((BebidasPedido)gridPedidos.SelectedItem).NumeroPedidoID + "?", "Exclusão", MessageBoxButton.YesNo, MessageBoxImage.Question);
                 if (result == MessageBoxResult.Yes)
                 {
                     try
                     {
-                        int IDpedido1 = ((PedidoPizzas)gridPedidos.SelectedItem)._Pedido.NumeroPedidoID;
-                        PedidoController.MudarStatus(IDpedido1,"SAIU PARA ENTREGA");
-                        gridPedidos.ItemsSource = PedidoPizzasController.ProcuraPedidoPendentes();
+                        int IDpedido1 = ((BebidasPedido)gridPedidos.SelectedItem)._Pedido.NumeroPedidoID;
+                        PedidoController.MudarStatus(IDpedido1, "SAIU PARA ENTREGA");
+                        gridPedidos.ItemsSource = PedidoBebidasController.ProcuraPendentes();
                         MessageBox.Show("Pedido mudado para Saiu Para Entrega com sucesso");
                     }
                     catch (Exception erro)
@@ -47,16 +47,17 @@ namespace WpfView
                         MessageBox.Show("ERRO: " + erro);
                     }
                 }
-             }else if(gridPedidos.SelectedItem != null && referencia == 1)
-             {
-                MessageBoxResult result = MessageBox.Show("Deseja alterar para Finalizado o status do pedido " +((PedidoPizzas)gridPedidos.SelectedItem).NumeroPedidoID+ "?", "Exclusão", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            }
+            else if (gridPedidos.SelectedItem != null && referencia == 1)
+            {
+                MessageBoxResult result = MessageBox.Show("Deseja alterar para Finalizado o status do pedido " + ((BebidasPedido)gridPedidos.SelectedItem).NumeroPedidoID + "?", "Exclusão", MessageBoxButton.YesNo, MessageBoxImage.Question);
                 if (result == MessageBoxResult.Yes)
                 {
                     try
                     {
-                        int IDpedido2 = ((PedidoPizzas)gridPedidos.SelectedItem)._Pedido.NumeroPedidoID;
-                        PedidoController.MudarStatus(IDpedido2,"FINALIZADO");
-                        gridPedidos.ItemsSource = PedidoPizzasController.ProcuraPedidoSaiuParaEntrega();
+                        int IDpedido2 = ((BebidasPedido)gridPedidos.SelectedItem)._Pedido.NumeroPedidoID;
+                        PedidoController.MudarStatus(IDpedido2, "FINALIZADO");
+                        gridPedidos.ItemsSource = PedidoBebidasController.ProcuraSaiuParaEntrega();
                         MessageBox.Show("Pedido mudado para finalizado com sucesso");
                     }
                     catch (Exception erro)
@@ -77,8 +78,8 @@ namespace WpfView
         private void btnSaiuEntrega_Click(object sender, RoutedEventArgs e)
         {
             referencia = 1;
-            List<PedidoPizzas> ped=PedidoPizzasController.ProcuraPedidoSaiuParaEntrega();
-            if (ped!=null)
+            List<BebidasPedido> ped = PedidoBebidasController.ProcuraSaiuParaEntrega();
+            if (ped != null)
             {
                 gridPedidos.ItemsSource = ped;
             }
@@ -91,7 +92,7 @@ namespace WpfView
         private void btnAndamento_Click(object sender, RoutedEventArgs e)
         {
             referencia = 0;
-            List<PedidoPizzas> ped = PedidoPizzasController.ProcuraPedidoPendentes();
+            List<BebidasPedido> ped = PedidoBebidasController.ProcuraPendentes();
             if (ped != null)
             {
                 gridPedidos.ItemsSource = ped;
@@ -105,7 +106,7 @@ namespace WpfView
         private void btnFinalizado_Click(object sender, RoutedEventArgs e)
         {
             referencia = 2;
-            List<PedidoPizzas> ped = PedidoPizzasController.ProcuraPedidoFinalizado();
+            List<BebidasPedido> ped = PedidoBebidasController.Finalizados();
             if (ped != null)
             {
                 gridPedidos.ItemsSource = ped;

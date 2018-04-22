@@ -7,8 +7,14 @@
         mc:Ignorable="d"
         Title="ListagemClientes" Style="{StaticResource estiloJanela}">
     <Grid>
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="#FFF0F02C" Offset="0"/>
+                <GradientStop Color="#FF358895" Offset="1"/>
+            </LinearGradientBrush>
+        </Grid.Background>
         <Canvas>
-            <DataGrid x:Name="gridCliente" IsReadOnly="True" AutoGenerateColumns="False" SelectionMode="Single" CanUserAddRows="false"  Height="238" Width="521" Canvas.Left="100" Canvas.Top="81">
+            <DataGrid x:Name="gridCliente" IsReadOnly="True" AutoGenerateColumns="False" SelectionMode="Single" CanUserAddRows="false"  Height="276" Width="552" Canvas.Left="119" Canvas.Top="110">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="ID" Binding="{Binding Path=ClienteID}"/>
                     <DataGridTextColumn Header="Nome" Binding="{Binding Path=Nome}"/>
@@ -21,9 +27,9 @@
                     <DataGridTextColumn Header="Referência" Binding="{Binding Path=_Endereco.Referencia}"/>
                 </DataGrid.Columns>
             </DataGrid>
-            <Button x:Name="btnVoltar" Content="Voltar" Canvas.Left="300" Canvas.Top="359" Width="102" Height="31" FontFamily="Arial" FontSize="20" Click="btnVoltar_Click"/>
+            <Button x:Name="btnVoltar" Content="Voltar" Canvas.Left="345" Canvas.Top="406" Width="102" Height="31" FontFamily="Arial" FontSize="20" Click="btnVoltar_Click"/>
 
         </Canvas>
-        <Label Content="Listagem Clientes Cadastrados" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="190,24,0,0" FontFamily="Arial" FontSize="22" FontWeight="Bold"/>
+        <Label Content="Listagem Clientes Cadastrados" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="212,46,0,0" FontFamily="Arial" FontSize="22" FontWeight="Bold"/>
     </Grid>
 </Window>

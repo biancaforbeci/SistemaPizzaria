@@ -7,17 +7,29 @@
         mc:Ignorable="d"
         Title="Bebidas" Style="{StaticResource estiloJanela}" >
     <Grid>
-        <Label Content="Cadastro de Bebidas" HorizontalAlignment="Left" Margin="216,10,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.418,0.13" Width="402" FontFamily="Arial Black" FontSize="24"/>
-        <Button x:Name="btnSalvarBebida" Content="Salvar" HorizontalAlignment="Left" Margin="417,109,0,0" VerticalAlignment="Top" Width="120" FontFamily="Arial" FontSize="22" Click="btnSalvarBebida_Click" Height="44" />
-        <Button x:Name="btnListarBebidas" Content="Mostrar Bebidas Cadastradas" HorizontalAlignment="Left" Margin="50,109,0,0" VerticalAlignment="Top" Width="324" Height="44" FontFamily="Arial" FontSize="22" Click="btnListarBebidas_Click" />
-        <DataGrid x:Name="GridMostrarBebida" HorizontalAlignment="Left" Height="220" Margin="55,206,0,0" VerticalAlignment="Top" Width="638" SelectionChanged="GridMostrarBebida_SelectionChanged" />
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="#FFDAFF89" Offset="0"/>
+                <GradientStop Color="#FF82C9F1" Offset="0.454"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+        <Label Content="Cadastro de Bebidas" HorizontalAlignment="Left" Margin="236,10,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.418,0.13" Width="402" FontFamily="Arial Black" FontSize="24" FontWeight="Bold"/>
+        <Button x:Name="btnSalvarBebida" Content="Salvar" HorizontalAlignment="Left" Margin="417,109,0,0" VerticalAlignment="Top" Width="120" FontFamily="Arial" FontSize="18" Click="btnSalvarBebida_Click" Height="44" />
+        <Button x:Name="btnListarBebidas" Content="Mostrar Bebidas Cadastradas" HorizontalAlignment="Left" Margin="50,109,0,0" VerticalAlignment="Top" Width="324" Height="44" FontFamily="Arial" FontSize="18" Click="btnListarBebidas_Click" />
+        <DataGrid x:Name="gridBebida" IsReadOnly="True" AutoGenerateColumns="False" SelectionMode="Single" CanUserAddRows="false" SelectionChanged="GridMostrarBebida_SelectionChanged" Margin="55,206,54,38">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Binding="{Binding Path=BebidaID}"/>
+                <DataGridTextColumn Header="Bebida" Binding="{Binding Path=Nome}"/>
+                <DataGridTextColumn Header="Preco" Binding="{Binding Path=Preco}"/>
+            </DataGrid.Columns>
+        </DataGrid>
         <Canvas HorizontalAlignment="Left" Height="60" Margin="55,44,0,0" VerticalAlignment="Top" Width="638">
             <Label Content="Nome" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Top="17" RenderTransformOrigin="0.509,0.887" Canvas.Left="76" FontFamily="Arial" FontSize="20"/>
             <TextBox x:Name="txtBebida" HorizontalAlignment="Left" Height="35" TextWrapping="Wrap" VerticalAlignment="Top" Width="159" Canvas.Left="164" Canvas.Top="10" RenderTransformOrigin="0.483,1.003" FontFamily="Arial" FontSize="20"/>
             <Label Content="Preço" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="-0.094,0.659" Canvas.Left="365" Canvas.Top="17" FontFamily="Arial" FontSize="20"/>
             <TextBox x:Name="txtPreco" HorizontalAlignment="Left" Height="35" TextWrapping="Wrap" VerticalAlignment="Top" Width="176" Canvas.Left="452" Canvas.Top="10" FontFamily="Arial" FontSize="20"/>
         </Canvas>
-        <Button x:Name="btnVoltar" Content="Voltar" HorizontalAlignment="Left" Margin="572,109,0,0" VerticalAlignment="Top" Width="121" Height="44" FontFamily="Arial" FontSize="22" Click="btnVoltar_Click" RenderTransformOrigin="-0.024,0.582"/>
+        <Button x:Name="btnVoltar" Content="Voltar" HorizontalAlignment="Left" Margin="572,109,0,0" VerticalAlignment="Top" Width="121" Height="44" FontFamily="Arial" FontSize="18" Click="btnVoltar_Click" RenderTransformOrigin="-0.024,0.582"/>
         <Label Content="Clique na bebida desejada para editar." HorizontalAlignment="Left" Margin="190,166,0,0" VerticalAlignment="Top" Width="402" FontFamily="Arial" FontSize="22"/>
 
     </Grid>

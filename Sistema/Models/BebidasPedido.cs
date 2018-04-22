@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Models
 {
-    public class PedidoBebidas
+    public class BebidasPedido
     {
-        public int PedidoBebidasID { get; set; }
+        public int BebidasPedidoID { get; set; }
         public int NumeroPedidoID { get; set; }
         public int ClientesBebidasID { get; set; }
         public Pedido _Pedido { get; set; }

@@ -6,6 +6,12 @@
         xmlns:local="clr-namespace:WpfView"
         mc:Ignorable="d"
         Title="AreaExclusao" Style="{StaticResource estiloJanela}"  >
+    <Window.Background>
+        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+            <GradientStop Color="#FFABE7F9" Offset="0"/>
+            <GradientStop Color="White" Offset="1"/>
+        </LinearGradientBrush>
+    </Window.Background>
     <Grid>
 
         <Grid.ColumnDefinitions>
@@ -25,7 +31,7 @@
                 <DataGridTextColumn Header="Preço" Binding="{Binding Path=Preco}"/>
             </DataGrid.Columns>
         </DataGrid>
-        <Button x:Name="btnVoltar" Content="Voltar" Canvas.Left="484" Canvas.Top="328" Width="119" FontFamily="Arial" FontSize="22" Click="btnVoltar_Click" Grid.Column="1" Margin="55,437,76,10"/>
+          <Button x:Name="btnVoltar" Content="Voltar" Canvas.Left="484" Canvas.Top="328" FontFamily="Arial" FontSize="14" Click="btnVoltar_Click" Grid.Column="1" Margin="71,437,0,10" HorizontalAlignment="Left" Width="85"/>
         <DataGrid x:Name="gridBebida" IsReadOnly="True" AutoGenerateColumns="False" SelectionMode="Single" CanUserAddRows="false" SelectionChanged="gridBebida_SelectionChanged" Margin="10,199,10,45">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="ID" Binding="{Binding Path=BebidaID}"/>

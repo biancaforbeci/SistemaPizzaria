@@ -1,12 +1,11 @@
-﻿<Window x:Class="WpfView.PedidosStatus"
+﻿<Window x:Class="WpfView.StatusPedidoBebidas"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfView"
         mc:Ignorable="d"
-        Title="PedidosStatus" Style="{StaticResource estiloJanela}">
-    
+        Title="StatusPedidoBebidas" Style="{StaticResource estiloJanela}">
     <Grid>
         <Grid.Background>
             <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
@@ -18,12 +17,11 @@
         <DataGrid x:Name="gridPedidos"  IsReadOnly="True" AutoGenerateColumns="False" SelectionMode="Single" CanUserAddRows="false" Margin="78,135,61,38" SelectionChanged="gridPedidos_SelectionChanged">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Número do Pedido" Binding="{Binding Path=NumeroPedidoID}"/>
-                <DataGridTextColumn Header="Nome do Cliente" Binding="{Binding Path=_ClientesPizzas._Cliente.Nome}"/>
+                <DataGridTextColumn Header="Nome do Cliente" Binding="{Binding Path=_ClientesBebidas._Cliente.Nome}"/>
                 <DataGridTextColumn Header="Data" Binding="{Binding Path=_Pedido.Data}"/>
-                <DataGridTextColumn Header="Produtos escolhidos" Binding="{Binding Path=_ClientesPizzas._Pizza.Nome}"/>
+                <DataGridTextColumn Header="Bebidas escolhidas" Binding="{Binding Path=_ClientesBebidas._Bebida.Nome}"/>
                 <DataGridTextColumn Header="Status" Binding="{Binding Path=_Pedido.Status}"/>
-                <DataGridTextColumn Header="Tamanho da Pizza" Binding="{Binding Path=_ClientesPizzas.Tamanho_Pizza}"/>
-                <DataGridTextColumn Header="Valor Total" Binding="{Binding Path=_Pedido.ValorTotal}"/>
+                <DataGridTextColumn Header="Valor Total Pedido" Binding="{Binding Path=_Pedido.ValorTotal}"/>
             </DataGrid.Columns>
         </DataGrid>
         <Button x:Name="btnProducao" Content="Em Produção" HorizontalAlignment="Left" Margin="93,74,0,0" VerticalAlignment="Top" Width="108" Height="33" Click="btnAndamento_Click" FontFamily="Arial" FontSize="14"/>
@@ -31,6 +29,5 @@
         <Button HorizontalAlignment="Left" VerticalAlignment="Top" Width="75"/>
         <Button x:Name="btnVoltar" Content="Voltar" HorizontalAlignment="Left" VerticalAlignment="Top" Width="78" Margin="608,74,0,0" Height="33" Click="btnVoltar_Click" FontFamily="Arial" FontSize="14" RenderTransformOrigin="1.141,0.485"/>
         <Button x:Name="btnFinalizado" Content="Finalizados" HorizontalAlignment="Left" Margin="457,74,0,0" VerticalAlignment="Top" Width="98" Height="33" FontFamily="Arial" FontSize="14" Click="btnFinalizado_Click"/>
-
     </Grid>
 </Window>

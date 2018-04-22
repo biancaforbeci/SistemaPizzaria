@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfView"
         mc:Ignorable="d"
-        Title="MainWindow" Style="{StaticResource estiloJanela}" Background="{x:Null}" WindowStyle="ThreeDBorderWindow" ScrollViewer.VerticalScrollBarVisibility="Auto" WindowStartupLocation="CenterScreen" >
+        Title="MainWindow" Background="{x:Null}" WindowStyle="ThreeDBorderWindow" ScrollViewer.VerticalScrollBarVisibility="Auto" WindowStartupLocation="CenterScreen" Width="831.659" >
 
     <Grid Margin="0,0,2,-2">
         <Grid.Background>
@@ -66,7 +66,8 @@
             </MenuItem>
 
             <MenuItem Header="Pedido" FontFamily="Arial" FontSize="16">
-                <MenuItem x:Name="ItemPedidoAndamento" Header="Andamento" Click="ItemPedidoAndamento_Click"/>
+                <MenuItem x:Name="ItemPedidoAndamento" Header="Controle Status Pizzas" Click="ItemPedidoAndamento_Click"/>
+                <MenuItem x:Name="ItemStatusBebidas" Header="Controle Status Bebidas" Click="ItemStatusBebidas_Click" />
             </MenuItem>
 
             <MenuItem Header="Administrativo" FontFamily="Arial" FontSize="16">

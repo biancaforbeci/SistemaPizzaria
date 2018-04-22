@@ -7,6 +7,12 @@
         mc:Ignorable="d"
         Title="FazerPedido" Style="{StaticResource estiloJanela}" Closing="Window_Closing">
     <Grid>
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="#FFABDBE0" Offset="0"/>
+                <GradientStop Color="White" Offset="1"/>
+            </LinearGradientBrush>
+        </Grid.Background>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1.2*" ></ColumnDefinition>
             <ColumnDefinition Width="2*" ></ColumnDefinition>
@@ -19,7 +25,6 @@
                 <DataGridTextColumn Header="ID" Binding="{Binding Path=PizzaID}"/>
                 <DataGridTextColumn Header="Pizza" Binding="{Binding Path=Nome}"/>
                 <DataGridTextColumn Header="Ingredientes" Binding="{Binding Path=Ingredientes}"/>
-                <DataGridTextColumn Header="Preço" Binding="{Binding Path=Preco}"/>
             </DataGrid.Columns>
         </DataGrid>
         <Label Content="Telefone Cliente" HorizontalAlignment="Left" Margin="145,68,0,0" VerticalAlignment="Top" FontFamily="Arial" FontSize="16" Width="142" FontWeight="Bold" Grid.Column="1"/>
@@ -40,7 +45,6 @@
                 <DataGridTextColumn Header="Cliente" Binding="{Binding Path=_Cliente.Nome}"/>
                 <DataGridTextColumn Header="Pizza Escolhida" Binding="{Binding Path=_Pizza.Nome}"/>
                 <DataGridTextColumn Header="Tamanho da Pizza" Binding="{Binding Path=Tamanho_Pizza}"/>
-                <DataGridTextColumn Header="Preço" Binding="{Binding Path=Preco}"/>
             </DataGrid.Columns>
         </DataGrid>
         <TextBlock x:Name="blockTelefone" Grid.Column="2" Margin="43,71,119,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="23" FontFamily="Arial" FontSize="16"/>

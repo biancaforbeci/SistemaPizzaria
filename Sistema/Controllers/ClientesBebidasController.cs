@@ -17,7 +17,7 @@ namespace Controllers
 
         public static List<ClientesBebidas> PesquisarClientePedidos(int cliID, int num)
         {
-            var c = (from x in ContextoSingleton.Instancia.TblClientesBebidas.Include("_Cliente")
+            var c = (from x in ContextoSingleton.Instancia.TblClientesBebidas.Include("_Cliente").Include("_Bebida")
                      where x.ClienteID.Equals(cliID)  && x.NumReferencia.Equals(num)
                      select x).ToList();
 

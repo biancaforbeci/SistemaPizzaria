@@ -7,26 +7,41 @@
         mc:Ignorable="d"
         Title="CadastroPizzas" Style="{StaticResource estiloJanela}">
     <Grid>
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="#FFDAFF89" Offset="0"/>
+                <GradientStop Color="#FF82C9F1" Offset="0.454"/>
+            </LinearGradientBrush>
+        </Grid.Background>
         <Label Content="Cadastro de Pizzas" HorizontalAlignment="Left" Margin="223,14,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.418,0.13" Width="402" FontFamily="Arial Black" FontSize="24"/>
-        <Button x:Name="btnSalvarPizza" Content="Salvar" HorizontalAlignment="Left" Margin="351,108,0,0" VerticalAlignment="Top" Width="90" FontFamily="Arial" FontSize="14" Click="btnSalvarPizza_Click" RenderTransformOrigin="0.075,0.443" Height="26"/>
-        <Button x:Name="btnListarPizzas" Content="Mostrar Pizzas Cadastradas" HorizontalAlignment="Left" Margin="43,108,0,0" VerticalAlignment="Top" Width="225" Height="26" FontFamily="Arial" FontSize="14" Click="btnListarPizzas_Click"/>
-        <DataGrid x:Name="gridPizza" IsReadOnly="True" AutoGenerateColumns="False" SelectionMode="Single" CanUserAddRows="false" Margin="22,175,10,29" SelectionChanged="GridMostrarPizza_SelectionChanged">
+        <Button x:Name="btnSalvarPizza" Content="Salvar Pizza" HorizontalAlignment="Left" Margin="469,122,0,0" VerticalAlignment="Top" Width="123" FontFamily="Arial" FontSize="14" Click="btnSalvarPizza_Click" RenderTransformOrigin="0.075,0.443" Height="26"/>
+        <Button x:Name="btnListarPizzas" Content="Mostrar Pizzas Cadastradas" HorizontalAlignment="Left" Margin="127,122,0,0" VerticalAlignment="Top" Width="225" Height="26" FontFamily="Arial" FontSize="14" Click="btnListarPizzas_Click"/>
+        <DataGrid x:Name="gridPizza" IsReadOnly="True" AutoGenerateColumns="False" SelectionMode="Single" CanUserAddRows="false" Margin="416,184,24,51" SelectionChanged="GridMostrarPizza_SelectionChanged">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="ID" Binding="{Binding Path=PizzaID}"/>
                 <DataGridTextColumn Header="Pizza" Binding="{Binding Path=Nome}"/>
                 <DataGridTextColumn Header="Ingredientes" Binding="{Binding Path=Ingredientes}"/>
-                <DataGridTextColumn Header="Preço" Binding="{Binding Path=Preco}"/>
+                <DataGridTextColumn Header="Preço Broto" Binding="{Binding Path=PrecoBroto}"/>
+                <DataGridTextColumn Header="Preço Média" Binding="{Binding Path=PrecoMedia}"/>
+                <DataGridTextColumn Header="Preço Grande" Binding="{Binding Path=PrecoGrande}"/>
+                <DataGridTextColumn Header="Preço Gigante" Binding="{Binding Path=PrecoGigante}"/>
             </DataGrid.Columns>
         </DataGrid>
-        <Canvas HorizontalAlignment="Left" Height="60" Margin="22,41,0,0" VerticalAlignment="Top" Width="638">
+        <Canvas HorizontalAlignment="Left" Height="114" Margin="62,57,0,0" VerticalAlignment="Top" Width="638">
             <Label Content="Nome" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Top="19" RenderTransformOrigin="0.509,0.887" Canvas.Left="5"/>
             <TextBox x:Name="txtPizza" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Canvas.Left="53" Canvas.Top="20" RenderTransformOrigin="0.483,1.003"/>
-            <Label Content="Ingredientes" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="173" Canvas.Top="17" RenderTransformOrigin="0.751,0.695"/>
-            <TextBox x:Name="txtIngredientes" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="194" Canvas.Left="249" Canvas.Top="19"/>
-            <Label Content="Preço" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="-0.094,0.659" Canvas.Left="448" Canvas.Top="17"/>
-            <TextBox x:Name="txtPreco" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" Canvas.Left="493" Canvas.Top="17"/>
+            <Label Content="Ingredientes" HorizontalAlignment="Left" VerticalAlignment="Top" Canvas.Left="205" Canvas.Top="17" RenderTransformOrigin="1.105,0.538"/>
+            <TextBox x:Name="txtIngredientes" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="342" Canvas.Left="286" Canvas.Top="17"/>
+            <Label Content="Preço Broto" Canvas.Left="-20" Canvas.Top="146" RenderTransformOrigin="-0.368,0.577"/>
+            <TextBox x:Name="txtBroto" Height="23" Canvas.Left="68" TextWrapping="Wrap" Canvas.Top="146" Width="187"/>
+            <Label Content="Preço Média" Canvas.Left="-24" Canvas.Top="195" RenderTransformOrigin="-0.368,0.577"/>
+            <TextBox x:Name="txtMedia" Height="23" TextWrapping="Wrap" Width="187" Canvas.Left="68" Canvas.Top="195"/>
+            <Label Content="Preço Grande" Canvas.Left="-24" Canvas.Top="241" RenderTransformOrigin="-0.368,0.577"/>
+            <Label Content="Preço Gigante" Canvas.Left="-24" Canvas.Top="294" RenderTransformOrigin="-0.368,0.577"/>
+            <TextBox x:Name="txtGrande" Height="23" Canvas.Left="68" TextWrapping="Wrap" Canvas.Top="244" Width="187"/>
+            <TextBox x:Name="txtGigante" Height="23" Canvas.Left="68" TextWrapping="Wrap" Canvas.Top="297" Width="187"/>
         </Canvas>
-        <Button x:Name="btnVoltar" Content="Voltar" HorizontalAlignment="Left" Margin="525,108,0,0" VerticalAlignment="Top" Width="86" FontFamily="Arial" FontSize="14" Height="27" Click="btnVoltar_Click"/>
-        <Label Content="Clique na pizza desejada para editar." HorizontalAlignment="Left" Margin="192,139,0,0" VerticalAlignment="Top" Width="402" FontFamily="Arial" FontSize="18"/>
+        <Button x:Name="btnVoltar" Content="Voltar" HorizontalAlignment="Left" Margin="156,419,0,0" VerticalAlignment="Top" Width="86" FontFamily="Arial" FontSize="14" Height="27" Click="btnVoltar_Click"/>
+        <Label Content="Clique na pizza desejada para editar." HorizontalAlignment="Left" Margin="410,153,0,0" VerticalAlignment="Top" Width="313" FontFamily="Arial" FontSize="18" RenderTransformOrigin="0.495,0"/>
     </Grid>
 </Window>

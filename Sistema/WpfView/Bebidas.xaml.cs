@@ -32,7 +32,7 @@ namespace WpfView
             List<Bebida> list = BebidasController.ListarTodasBebidas();
             if (list != null)
             {
-                GridMostrarBebida.ItemsSource = list;
+                 gridBebida.ItemsSource = list;
             }
             else
             {
@@ -56,14 +56,14 @@ namespace WpfView
 
         private void GridMostrarBebida_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (GridMostrarBebida.SelectedItem != null)
+            if (gridBebida.SelectedItem != null)
             {
-                MessageBoxResult result = MessageBox.Show("Deseja editar a bebida " + ((Bebida)GridMostrarBebida.SelectedItem).Nome + " ?", "Edição", MessageBoxButton.YesNo, MessageBoxImage.Question);
+                MessageBoxResult result = MessageBox.Show("Deseja editar a bebida " + ((Bebida)gridBebida.SelectedItem).Nome + " ?", "Edição", MessageBoxButton.YesNo, MessageBoxImage.Question);
                 if (result == MessageBoxResult.Yes)
                 {
                     try
                     {
-                        Bebida bebida = ((Bebida)GridMostrarBebida.SelectedItem);
+                        Bebida bebida = ((Bebida)gridBebida.SelectedItem);
                         EditarProdutos edit = new EditarProdutos();
                         edit.ProdutoEditarBebida(bebida,2);
                         this.Close();
@@ -75,12 +75,7 @@ namespace WpfView
                     }
                 }
             }
-        }
-
-        private void btnEditar_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
+        }        
 
         private void btnVoltar_Click(object sender, RoutedEventArgs e)
         {

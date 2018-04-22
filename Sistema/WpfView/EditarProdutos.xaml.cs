@@ -34,10 +34,9 @@ namespace WpfView
         {
             txtPizza.Text = pizzaEdit.Nome;
             txtIngredientes.Text = pizzaEdit.Ingredientes;
-            txtPrecoPizza.Text = Convert.ToString(pizzaEdit.Preco);
             pizzaEditar = pizzaEdit;
             referenciaProduto = refer;
-            btnEditBebida.IsEnabled = false;
+            btnEditBebida.IsEnabled = false;           
         }
 
         public void ProdutoEditarBebida(Bebida bebidaEdit, int refer)
@@ -45,15 +44,19 @@ namespace WpfView
             txtBebida.Text = bebidaEdit.Nome;
             txtPreco.Text = Convert.ToString(bebidaEdit.Preco);
             referenciaProduto = refer;
-            btnEditPizza.IsEnabled = false;
+            btnEditPizza.IsEnabled = false;            
         }
+       
 
         private Pizza EditarPizza()
         {
             Pizza pizza = new Pizza();
             pizza.Nome = txtPizza.Text;
             pizza.Ingredientes = txtIngredientes.Text;
-            pizza.Preco = double.Parse(txtPrecoPizza.Text);
+            pizza.PrecoBroto = double.Parse(txtBrotoEdit.Text);
+            pizza.PrecoMedia = double.Parse(txtMediaEdit.Text);
+            pizza.PrecoGrande = double.Parse(txtGrandeEdit.Text);
+            pizza.PrecoGigante = double.Parse(txtGiganteEdit.Text);
             return pizza;
         }
 
@@ -97,6 +100,8 @@ namespace WpfView
             MainWindow tela = new MainWindow();
             this.Close();
             tela.ShowDialog();
-        }
+        }    
+
+        
     }
 }

@@ -7,20 +7,32 @@
         mc:Ignorable="d"
         Title="EditarProdutos" Style="{StaticResource estiloJanela}">
     <Grid>
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="#FF9DA5EE" Offset="0.012"/>
+                <GradientStop Color="#FFF4F5FD" Offset="0.915"/>
+            </LinearGradientBrush>
+        </Grid.Background>
         <Label Content="Edição de Produtos" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="220,10,0,0" Width="286" FontFamily="Arial Black" FontSize="24"/>
-        <Label Content="Pizza" HorizontalAlignment="Left" Margin="137,73,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.931,-0.34" FontFamily="Arial" FontSize="14"/>
-        <Label Content="Ingredientes" HorizontalAlignment="Left" Margin="110,158,0,0" VerticalAlignment="Top" FontFamily="Arial" FontSize="14"/>
-        <Label Content="Preço" HorizontalAlignment="Left" Margin="134,251,0,0" VerticalAlignment="Top" RenderTransformOrigin="-4.459,-0.631" FontFamily="Arial" FontSize="14"/>
-        <Label Content="Bebida" HorizontalAlignment="Left" Margin="541,73,0,0" VerticalAlignment="Top" FontFamily="Arial" FontSize="14" RenderTransformOrigin="0.589,-0.435"/>
-        <Label Content="Preço" HorizontalAlignment="Left" Margin="541,168,0,0" VerticalAlignment="Top" FontFamily="Arial" FontSize="14" RenderTransformOrigin="0.505,-0.589"/>
-        <TextBox x:Name="txtPizza" HorizontalAlignment="Left" Height="23" Margin="97,104,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="txtPrecoPizza" HorizontalAlignment="Left" Height="23" Margin="97,292,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <TextBox x:Name="txtIngredientes" HorizontalAlignment="Left" Height="23" Margin="97,199,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <Button x:Name="btnEditPizza" Content="Editar" HorizontalAlignment="Left" Margin="110,341,0,0" VerticalAlignment="Top" Width="107" Height="30" FontFamily="Arial" FontSize="14" Click="btnEditPizza_Click"/>
-        <TextBox x:Name="txtBebida" HorizontalAlignment="Left" Height="23" Margin="514,104,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.496,-0.707"/>
-        <TextBox x:Name="txtPreco" HorizontalAlignment="Left" Height="23" Margin="514,199,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
-        <Button x:Name="btnVoltarCadastro" Content="Voltar para cadastro de produtos" HorizontalAlignment="Left" Margin="246,156,0,0" VerticalAlignment="Top" Width="220" Height="36" FontFamily="Arial" FontSize="14" Click="btnVoltarCadastro_Click"/>
-        <Button x:Name="btnEditBebida" HorizontalAlignment="Left" VerticalAlignment="Top" Width="106" Margin="514,271,0,0" Height="31" Content="Editar" FontFamily="Arial" FontSize="14" Click="btnEditBebida_Click"/>
-        <Button x:Name="btnVoltarMenu" Content="Voltar a tela principal" HorizontalAlignment="Left" Margin="279,269,0,0" VerticalAlignment="Top" Width="153" Height="36" FontFamily="Arial" FontSize="14" Click="btnVoltarMenu_Click"/>
+        <Label Content="Pizza" HorizontalAlignment="Left" Margin="82,68,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.931,-0.34" FontFamily="Arial" FontSize="18"/>
+        <Label Content="Ingredientes" HorizontalAlignment="Left" Margin="59,148,0,0" VerticalAlignment="Top" FontFamily="Arial" FontSize="18"/>
+        <Label Content="Bebida" HorizontalAlignment="Left" Margin="591,72,0,0" VerticalAlignment="Top" FontFamily="Arial" FontSize="18" RenderTransformOrigin="0.589,-0.435"/>
+        <Label Content="Preço" HorizontalAlignment="Left" Margin="591,168,0,0" VerticalAlignment="Top" FontFamily="Arial" FontSize="18" RenderTransformOrigin="0.505,-0.589"/>
+        <TextBox x:Name="txtPizza" HorizontalAlignment="Left" Height="31" Margin="48,104,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="txtIngredientes" HorizontalAlignment="Left" Height="31" Margin="48,179,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Button x:Name="btnEditPizza" Content="Editar Pizza" HorizontalAlignment="Left" Margin="249,380,0,0" VerticalAlignment="Top" Width="145" Height="40" FontFamily="Arial" FontSize="14" Click="btnEditPizza_Click"/>
+        <TextBox x:Name="txtBebida" HorizontalAlignment="Left" Height="30" Margin="561,118,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.496,-0.707"/>
+        <TextBox x:Name="txtPreco" HorizontalAlignment="Left" Height="31" Margin="561,204,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Button x:Name="btnVoltarCadastro" Content="Voltar para cadastro de produtos" HorizontalAlignment="Left" Margin="493,397,0,0" VerticalAlignment="Top" Width="220" Height="36" FontFamily="Arial" FontSize="14" Click="btnVoltarCadastro_Click"/>
+        <Button x:Name="btnEditBebida" HorizontalAlignment="Left" VerticalAlignment="Top" Width="138" Margin="575,267,0,0" Height="31" Content=" Editar Bebida" FontFamily="Arial" FontSize="14" Click="btnEditBebida_Click"/>
+        <Button x:Name="btnVoltarMenu" Content="Voltar a tela principal" HorizontalAlignment="Left" Margin="561,329,0,0" VerticalAlignment="Top" Width="152" Height="36" FontFamily="Arial" FontSize="14" Click="btnVoltarMenu_Click" RenderTransformOrigin="-0.289,0.944"/>
+        <Label Content="Preço Broto" HorizontalAlignment="Left" Margin="59,234,0,0" VerticalAlignment="Top" FontFamily="Arial" FontSize="18"/>
+        <TextBox x:Name="txtBrotoEdit" HorizontalAlignment="Left" Height="31" Margin="31,292,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="158"/>
+        <Label Content="Preço Média" HorizontalAlignment="Left" Margin="57,352,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.039,-1.654" FontFamily="Arial" FontSize="18"/>
+        <TextBox x:Name="txtMediaEdit" HorizontalAlignment="Left" Height="31" Margin="31,406,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="158"/>
+        <TextBox x:Name="txtGrandeEdit" HorizontalAlignment="Left" Height="31" Margin="236,179,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="158"/>
+        <Label Content="Preço Grande" HorizontalAlignment="Left" Margin="249,131,0,0" VerticalAlignment="Top" FontFamily="Arial" FontSize="18"/>
+        <Label Content="Preço Gigante" HorizontalAlignment="Left" Margin="249,234,0,0" VerticalAlignment="Top" FontFamily="Arial" FontSize="18" RenderTransformOrigin="0.228,-5.548"/>
+        <TextBox x:Name="txtGiganteEdit" HorizontalAlignment="Left" Height="30" Margin="236,303,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="158"/>
     </Grid>
 </Window>

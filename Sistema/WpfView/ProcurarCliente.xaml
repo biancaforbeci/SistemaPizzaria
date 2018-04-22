@@ -6,6 +6,13 @@
         xmlns:local="clr-namespace:WpfView"
         mc:Ignorable="d"
         Title="ProcurarCliente" Style="{StaticResource estiloJanela}">
+    <Window.Background>
+        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+            <GradientStop Color="#FF85F7C3" Offset="0"/>
+            <GradientStop Color="#FF61EED4" Offset="1"/>
+            <GradientStop Color="#FF8BBBB2" Offset="0.917"/>
+        </LinearGradientBrush>
+    </Window.Background>
     <Grid>
         <Canvas HorizontalAlignment="Left" Height="457" Margin="10,10,0,0" VerticalAlignment="Top" Width="727">
             <TextBlock Text="Telefone" Width="93" FontSize="16" FontFamily="Arial" Canvas.Top="84" Canvas.Left="49" FontWeight="Bold"/>

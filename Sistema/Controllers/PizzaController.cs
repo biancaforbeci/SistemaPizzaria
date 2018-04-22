@@ -43,7 +43,10 @@ namespace Controllers
             {
                 pizzaEdit.Nome = novaPizza.Nome;
                 pizzaEdit.Ingredientes = novaPizza.Ingredientes;
-                pizzaEdit.Preco = novaPizza.Preco;
+                pizzaEdit.PrecoBroto = novaPizza.PrecoBroto;
+                pizzaEdit.PrecoGrande = novaPizza.PrecoGrande;
+                pizzaEdit.PrecoMedia = novaPizza.PrecoMedia;
+                pizzaEdit.PrecoGigante = novaPizza.PrecoGigante;
             }
 
             ContextoSingleton.Instancia.Entry(pizzaEdit).State =

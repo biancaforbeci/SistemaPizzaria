@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -43,16 +44,30 @@ namespace WpfView
 
         private void btnSalvarPizza_Click(object sender, RoutedEventArgs e)
         {
-            PizzaController.SalvarPizza(SalvarPizza());
-        }
+            string verifica = "^[0-9]";
+
+            if (txtBroto.Text == "" || txtMedia.Text == "" || txtGrande.Text == "" || txtGigante.Text == "" || txtPizza.Text=="")
+            {
+                MessageBox.Show("Erro, todos os preços precisam estar preenchidos !", "Erro", MessageBoxButton.OK, MessageBoxImage.Error);
+            }else if((!Regex.IsMatch(txtBroto.Text.Substring(0, 1), verifica)) || (!Regex.IsMatch(txtMedia.Text.Substring(0, 1), verifica)) || (!Regex.IsMatch(txtGigante.Text.Substring(0, 1), verifica)) || (!Regex.IsMatch(txtGrande.Text.Substring(0, 1), verifica)))
+            {
+                MessageBox.Show("Digite, apenas números e valores monetários.");
+            }
+            else
+            {
+                PizzaController.SalvarPizza(SalvarPizza());
+            }
+        }      
         
         private Pizza SalvarPizza()
         {
             Pizza p = new Pizza();
             p.Nome = txtPizza.Text;
             p.Ingredientes = txtIngredientes.Text;
-            p.Preco = double.Parse(txtPreco.Text);
-
+            p.PrecoBroto = double.Parse(txtBroto.Text);
+            p.PrecoMedia= double.Parse(txtMedia.Text);
+            p.PrecoGrande= double.Parse(txtGrande.Text);
+            p.PrecoGigante= double.Parse(txtGigante.Text);
             return p;
         }
 
@@ -81,10 +96,12 @@ namespace WpfView
         
 
         private void btnVoltar_Click(object sender, RoutedEventArgs e)
-        {
-            MainWindow m = new MainWindow();
-            this.Close();
-            m.ShowDialog();
+        {           
+                MainWindow m = new MainWindow();
+                this.Close();
+                m.ShowDialog();
+                     
         }
+        
     }
 }
