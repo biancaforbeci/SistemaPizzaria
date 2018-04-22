@@ -46,11 +46,11 @@ namespace WpfView
         {
 
             string caracter = txtTelefone.Text.Substring(0, 1);
-            string verifica = "^[0-9]";                   
+            string verifica = "^[0-9]";
 
-            if ((txtTelefone.Text.Trim() != "") || (Regex.IsMatch(caracter,verifica)))
+            if (txtTelefone.Text.Trim() != "" && (Regex.IsMatch(caracter,verifica)))
             {
-                List<Cliente> cli = ClienteController.PesquisarPorTelefone(txtTelefone.Text);
+                List<Cliente> cli = ClienteController.PesquisarPorTelefone(txtTelefone.Text.Replace("-", "").Replace("(", "").Replace(")", ""));
                 if (cli != null)
                 {
                     gridCliente.ItemsSource = cli;

@@ -32,7 +32,7 @@ namespace WpfView
         private void btnEditar_Click(object sender, RoutedEventArgs e)
         {
             EditarEndereco(txtRua.Text, int.Parse(txtNumero.Text), txtBairro.Text, txtComplemento.Text, txtReferencia.Text,cliEdicao.EnderecoID);
-            EnviarClienteEditado(txtNome.Text, txtCPF.Text, txtTelefone.Text);
+            EnviarClienteEditado(txtNome.Text, txtCPF.Text.Replace("-", "").Replace("(", "").Replace(")", ""), txtTelefone.Text.Replace("-", "").Replace("(", "").Replace(")", ""));
             MessageBox.Show("Cliente editado");
             FazerPedido pedido = new FazerPedido();
             pedido.MostrarCliente(cliEdicao.ClienteID);
