@@ -75,7 +75,7 @@ namespace Controllers
         {
 
             var c = (from x in ContextoSingleton.Instancia.TblPizza
-                    where x.Nome.ToLower().Equals(nome.ToLower())
+                    where x.Nome.ToLower().Trim().Equals(nome.ToLower().Trim())
                     select x).ToList();
 
             if (c.Count > 0)

@@ -30,7 +30,7 @@ namespace WpfView
 
         private void gridPedidos_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (gridPedidos.SelectedItem != null && referencia==0)
+            if (gridPedidos.SelectedItem != null && referencia == 0)
             {
                 MessageBoxResult result = MessageBox.Show("Deseja alterar para Saiu Para Entrega o status do pedido " + ((PedidoPizzas)gridPedidos.SelectedItem).NumeroPedidoID + "?", "Exclusão", MessageBoxButton.YesNo, MessageBoxImage.Question);
                 if (result == MessageBoxResult.Yes)
@@ -38,8 +38,9 @@ namespace WpfView
                     try
                     {
                         int IDpedido1 = ((PedidoPizzas)gridPedidos.SelectedItem)._Pedido.NumeroPedidoID;
-                        PedidoController.MudarStatus(IDpedido1,"SAIU PARA ENTREGA");
+                        PedidoController.MudarStatus(IDpedido1, "SAIU PARA ENTREGA");
                         gridPedidos.ItemsSource = PedidoPizzasController.ProcuraPedidoPendentes();
+                        gridPedidosBebidas.ItemsSource = PedidoBebidasController.ProcuraPendentes();
                         MessageBox.Show("Pedido mudado para Saiu Para Entrega com sucesso");
                     }
                     catch (Exception erro)
@@ -47,16 +48,17 @@ namespace WpfView
                         MessageBox.Show("ERRO: " + erro);
                     }
                 }
-             }else if(gridPedidos.SelectedItem != null && referencia == 1)
-             {
-                MessageBoxResult result = MessageBox.Show("Deseja alterar para Finalizado o status do pedido " +((PedidoPizzas)gridPedidos.SelectedItem).NumeroPedidoID+ "?", "Exclusão", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            } else if (gridPedidos.SelectedItem != null && referencia == 1)
+            {
+                MessageBoxResult result = MessageBox.Show("Deseja alterar para Finalizado o status do pedido " + ((PedidoPizzas)gridPedidos.SelectedItem).NumeroPedidoID + "?", "Exclusão", MessageBoxButton.YesNo, MessageBoxImage.Question);
                 if (result == MessageBoxResult.Yes)
                 {
                     try
                     {
                         int IDpedido2 = ((PedidoPizzas)gridPedidos.SelectedItem)._Pedido.NumeroPedidoID;
-                        PedidoController.MudarStatus(IDpedido2,"FINALIZADO");
+                        PedidoController.MudarStatus(IDpedido2, "FINALIZADO");
                         gridPedidos.ItemsSource = PedidoPizzasController.ProcuraPedidoSaiuParaEntrega();
+                        gridPedidosBebidas.ItemsSource = PedidoBebidasController.ProcuraSaiuParaEntrega();
                         MessageBox.Show("Pedido mudado para finalizado com sucesso");
                     }
                     catch (Exception erro)
@@ -77,10 +79,25 @@ namespace WpfView
         private void btnSaiuEntrega_Click(object sender, RoutedEventArgs e)
         {
             referencia = 1;
-            List<PedidoPizzas> ped=PedidoPizzasController.ProcuraPedidoSaiuParaEntrega();
-            if (ped!=null)
+            List<PedidoPizzas> ped = PedidoPizzasController.ProcuraPedidoSaiuParaEntrega();
+            if (ped != null)
             {
                 gridPedidos.ItemsSource = ped;
+            }
+            else
+            {
+                MessageBox.Show("Nada encontrado nos pedidos que saíram para entrega");
+            }
+
+            BebidasSaiuParaEntrega();
+        }
+
+        private void BebidasSaiuParaEntrega()
+        {
+            List<BebidasPedido> ped = PedidoBebidasController.ProcuraSaiuParaEntrega();
+            if (ped != null)
+            {
+                gridPedidosBebidas.ItemsSource = ped;
             }
             else
             {
@@ -100,6 +117,21 @@ namespace WpfView
             {
                 MessageBox.Show("Nada encontrado nos pedidos em produção");
             }
+
+            BebidasAndamento();
+        }
+
+        private void BebidasAndamento()
+        {
+            List<BebidasPedido> ped = PedidoBebidasController.ProcuraPendentes();
+            if (ped != null)
+            {
+                gridPedidosBebidas.ItemsSource = ped;
+            }
+            else
+            {
+                MessageBox.Show("Nada encontrado nos pedidos em produção");
+            }
         }
 
         private void btnFinalizado_Click(object sender, RoutedEventArgs e)
@@ -114,6 +146,20 @@ namespace WpfView
             {
                 MessageBox.Show("Nada encontrado nos pedidos finalizados");
             }
+        }
+
+        private void BebidasFinalizado()
+        {
+            List<BebidasPedido> ped = PedidoBebidasController.Finalizados();
+            if (ped != null)
+            {
+                gridPedidosBebidas.ItemsSource = ped;
+            }
+            else
+            {
+                MessageBox.Show("Nada encontrado nos pedidos finalizados");
+            }
+
         }
     }
 }

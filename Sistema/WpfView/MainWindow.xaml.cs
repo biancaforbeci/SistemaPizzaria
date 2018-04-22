@@ -74,13 +74,6 @@ namespace WpfView
             ListagemClientes tela = new ListagemClientes();
             this.Close();
             tela.ShowDialog();
-        }
-
-        private void ItemStatusBebidas_Click(object sender, RoutedEventArgs e)
-        {
-            StatusPedidoBebidas tela = new StatusPedidoBebidas();
-            this.Close();
-            tela.ShowDialog();
-        }
+        }        
     }
 }

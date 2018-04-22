@@ -61,7 +61,7 @@ namespace Controllers
         public static List<Bebida> PesquisarPorNome(string nome)
         {
             var c = (from x in ContextoSingleton.Instancia.TblBebida
-                    where x.Nome.ToLower().Equals(nome.ToLower())
+                    where x.Nome.ToLower().Trim().Equals(nome.ToLower().Trim())
                     select x).ToList();
 
             if (c.Count > 0)

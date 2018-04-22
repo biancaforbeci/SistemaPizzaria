@@ -67,7 +67,6 @@
 
             <MenuItem Header="Pedido" FontFamily="Arial" FontSize="16">
                 <MenuItem x:Name="ItemPedidoAndamento" Header="Controle Status Pizzas" Click="ItemPedidoAndamento_Click"/>
-                <MenuItem x:Name="ItemStatusBebidas" Header="Controle Status Bebidas" Click="ItemStatusBebidas_Click" />
             </MenuItem>
 
             <MenuItem Header="Administrativo" FontFamily="Arial" FontSize="16">

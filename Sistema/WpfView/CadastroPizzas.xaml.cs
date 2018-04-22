@@ -55,7 +55,14 @@ namespace WpfView
             }
             else
             {
-                PizzaController.SalvarPizza(SalvarPizza());
+                if(PizzaController.PesquisarPorNome(txtPizza.Text) == null)
+                {
+                    PizzaController.SalvarPizza(SalvarPizza());
+                }
+                else
+                {
+                    MessageBox.Show("Esse nome de pizza já está cadastrado", "Erro", MessageBoxButton.OK, MessageBoxImage.Information);
+                }                
             }
         }      
         

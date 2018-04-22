@@ -42,8 +42,15 @@ namespace WpfView
 
         private void btnSalvarBebida_Click(object sender, RoutedEventArgs e)
         {
-            Bebida bebida=SalvarBebida();
-            BebidasController.SalvarBebidas(bebida);            
+            if(BebidasController.PesquisarPorNome(txtBebida.Text) == null)
+            {
+                Bebida bebida = SalvarBebida();
+                BebidasController.SalvarBebidas(bebida);
+            }
+            else
+            {
+                MessageBox.Show("Essa bebida já foi cadastrada.", "Erro", MessageBoxButton.OK, MessageBoxImage.Information);
+            }                 
         }
 
         private Bebida SalvarBebida()
