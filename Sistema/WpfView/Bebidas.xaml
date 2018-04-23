@@ -20,7 +20,7 @@
             <DataGrid.Columns>
                 <DataGridTextColumn Header="ID" Binding="{Binding Path=BebidaID}"/>
                 <DataGridTextColumn Header="Bebida" Binding="{Binding Path=Nome}"/>
-                <DataGridTextColumn Header="Preco" Binding="{Binding Path=Preco}"/>
+                <DataGridTextColumn Header="Preço" Binding="{Binding Path=Preco}"/>
             </DataGrid.Columns>
         </DataGrid>
         <Canvas HorizontalAlignment="Left" Height="60" Margin="55,44,0,0" VerticalAlignment="Top" Width="638">

@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Data.Entity.Core.Objects;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -22,7 +23,7 @@ namespace WpfView
     /// </summary>
     public partial class FazerPedido : Window
     {
-        private double valorTotal = 0;
+        private Decimal valorTotal = 0;
         private Cliente clientePedido;
         private int qtdMaxPizza = 0;
         private string TamPizza;
@@ -36,6 +37,7 @@ namespace WpfView
             MostrarGrid();
             blockValorTotal.Text = valorTotal.ToString("C2");
             GerarNumReferencia();
+            btnMudarQtd.IsEnabled = false;
         }
 
         private void GerarNumReferencia()
@@ -78,22 +80,28 @@ namespace WpfView
 
         private void gridPizza_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (gridPizzasEscolhidas.Items.Count < 2 && qtdMaxPizza == 2)
+            string verifica = "^[0-9]";
+            if (txtQuantidade.Text == "" || (!Regex.IsMatch(txtQuantidade.Text.Substring(0, 1), verifica)))
             {
+                MessageBox.Show("Digite uma quantidade antes de escolher e que seja númerica");
+            }else if (gridPizzasEscolhidas.Items.Count < 2 && qtdMaxPizza == 2)
+            {
+                txtQuantidade.IsEnabled = false;
+                btnMudarQtd.IsEnabled = true;
                 SalvandoTabelaEscolhidos();
             }
             else if (gridPizzasEscolhidas.Items.Count < 3 && qtdMaxPizza == 3)
             {
+                txtQuantidade.IsEnabled = false;
+                btnMudarQtd.IsEnabled = true;
                 SalvandoTabelaEscolhidos();
             }
             else if (gridPizzasEscolhidas.Items.Count < 4 && qtdMaxPizza == 4)
             {
+                txtQuantidade.IsEnabled = false;
+                btnMudarQtd.IsEnabled = true;
                 SalvandoTabelaEscolhidos();
-            }else if(qtdMaxPizza == 0)
-            {
-                MessageBox.Show("Escolha uma opção de tamanho antes de selecionar o sabor", "Erro", MessageBoxButton.OK, MessageBoxImage.Stop);
-            }
-            else
+            } else
             {
                 MessageBox.Show("Quantidade de pizzas excedidas");
             }
@@ -103,47 +111,25 @@ namespace WpfView
         {
             if (TamPizza.Contains("Broto"))
             {
-                if (valorTotal == 0)
-                {
-                    valorTotal = pizzaEscolhida.PrecoBroto;
-                }
-                else
-                {
-                    valorTotal += pizzaEscolhida.PrecoBroto;
-                }                
                 
+              valorTotal += (pizzaEscolhida.PrecoBroto * int.Parse(txtQuantidade.Text));
+                              
             } else if (TamPizza.Contains("Média")) 
-            {
-                if (valorTotal == 0)
-                {
-                    valorTotal = pizzaEscolhida.PrecoMedia;
-                }
-                else
-                {
-                    valorTotal += pizzaEscolhida.PrecoMedia;
-                }
+            {              
+               
+              valorTotal += (pizzaEscolhida.PrecoMedia * int.Parse(txtQuantidade.Text));
+                
             }
             else if (TamPizza.Contains("Grande")) 
             {
-                if (valorTotal == 0)
-                {
-                    valorTotal = pizzaEscolhida.PrecoGrande;
-                }
-                else
-                {
-                    valorTotal += pizzaEscolhida.PrecoGrande;
-                }
+                
+               valorTotal += (pizzaEscolhida.PrecoGrande * int.Parse(txtQuantidade.Text));
+                
             }
             else
             {
-                if (valorTotal == 0)
-                {
-                    valorTotal = pizzaEscolhida.PrecoGigante;
-                }
-                else
-                {
-                    valorTotal += pizzaEscolhida.PrecoGigante;
-                }
+               valorTotal += (pizzaEscolhida.PrecoGigante * int.Parse(txtQuantidade.Text));
+               
             }
         }
 
@@ -223,7 +209,8 @@ namespace WpfView
         private void Bebidas_Click(object sender, RoutedEventArgs e)
         {
             referenciaButton = 2;
-            if(txtQuantidade.Text == "")
+            string verifica = "^[0-9]";
+            if (txtQuantidade.Text == "" || (!Regex.IsMatch(txtQuantidade.Text.Substring(0, 1), verifica)))
             {
                 MessageBox.Show("Escolha uma quantidade de pizza.");
             }else if (gridPizzasEscolhidas.Items.Count > 0)
@@ -250,7 +237,7 @@ namespace WpfView
                 }
                 else
                 {
-                    valorTotal = valorTotal-pizzaTirada._Pizza.PrecoBroto;
+                  valorTotal = valorTotal -= (pizzaTirada._Pizza.PrecoBroto * int.Parse(txtQuantidade.Text));
                 }            
             }
             else if (TamPizza.Contains("Média"))
@@ -261,7 +248,7 @@ namespace WpfView
                 }
                 else
                 {
-                    valorTotal = valorTotal  - pizzaTirada._Pizza.PrecoMedia;
+                    valorTotal -= (pizzaTirada._Pizza.PrecoMedia * int.Parse(txtQuantidade.Text));
                 }
             }
             else if (TamPizza.Contains("Grande"))
@@ -272,7 +259,7 @@ namespace WpfView
                 }
                 else
                 {
-                    valorTotal = valorTotal - pizzaTirada._Pizza.PrecoGrande;
+                    valorTotal -= (pizzaTirada._Pizza.PrecoGrande * int.Parse(txtQuantidade.Text));
                 }
             }
             else
@@ -283,7 +270,7 @@ namespace WpfView
                 }
                 else
                 {
-                    valorTotal = valorTotal  - pizzaTirada._Pizza.PrecoGigante;
+                    valorTotal -= (pizzaTirada._Pizza.PrecoGigante * int.Parse(txtQuantidade.Text));
                 }
             }
     }
@@ -299,6 +286,7 @@ namespace WpfView
                     {
                         int id = ((ClientesPizzas)gridPizzasEscolhidas.SelectedItem).ClientesPizzasID;
                         DiminuiValorTotal(((ClientesPizzas)gridPizzasEscolhidas.SelectedItem));
+                        blockValorTotal.Text = Convert.ToString(valorTotal.ToString("C2"));
                         ClientesPizzasController.ExcluirSelecao(id);
                         MessageBox.Show("Item excluído com sucesso");                     
                         MostrarGrid();
@@ -412,6 +400,20 @@ namespace WpfView
             checkMedia.IsEnabled = true;
             checkGrande.IsEnabled = true;
             TamPizza = null;
+        }
+
+        private void btnMudarQtd_Click(object sender, RoutedEventArgs e)
+        {
+            List<ClientesPizzas> listaEscolhidos = ClientesPizzasController.PesquisarClientePedidos(clientePedido,NumReferencia);
+            foreach (var item in listaEscolhidos)
+            {
+                ClientesPizzasController.ExcluirSelecao(item.ClientesPizzasID);
+            }
+            MostrarGridPizzasEscolhidas();
+            MessageBox.Show("Escolha os sabores novamente !", "Mudando quantidade", MessageBoxButton.OK, MessageBoxImage.Information);
+            valorTotal = 0;
+            blockValorTotal.Text = Convert.ToString(valorTotal.ToString("C2"));
+            txtQuantidade.IsEnabled = true;
         }
     }
 }

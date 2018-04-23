@@ -11,7 +11,7 @@ namespace Models
     {
         [Key]
         public int NumeroPedidoID { get; set;}
-        public double ValorTotal { get; set;}        
+        public Decimal ValorTotal { get; set;}        
         public string Status { get; set; }
         public DateTime Data { get; set; }
         public int QtdPizzas { get; set; }        

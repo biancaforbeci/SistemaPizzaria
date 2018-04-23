@@ -86,7 +86,7 @@ namespace WpfView
             }
             else
             {
-                MessageBox.Show("Nada encontrado nos pedidos que saíram para entrega");
+                MessageBox.Show("Nada encontrado nos pedidos que saíram para entrega na parte de pizzas");
             }
 
             BebidasSaiuParaEntrega();
@@ -101,7 +101,7 @@ namespace WpfView
             }
             else
             {
-                MessageBox.Show("Nada encontrado nos pedidos que saíram para entrega");
+                MessageBox.Show("Nada encontrado nos pedidos que saíram para entrega na parte de bebidas");
             }
         }
 
@@ -115,7 +115,7 @@ namespace WpfView
             }
             else
             {
-                MessageBox.Show("Nada encontrado nos pedidos em produção");
+                MessageBox.Show("Nada encontrado nos pedidos em produção na parte de pizzas");
             }
 
             BebidasAndamento();
@@ -130,7 +130,7 @@ namespace WpfView
             }
             else
             {
-                MessageBox.Show("Nada encontrado nos pedidos em produção");
+                MessageBox.Show("Nada encontrado nos pedidos em produção na parte de bebidas");
             }
         }
 
@@ -144,7 +144,7 @@ namespace WpfView
             }
             else
             {
-                MessageBox.Show("Nada encontrado nos pedidos finalizados");
+                MessageBox.Show("Nada encontrado nos pedidos finalizados na parte de pizza");
             }
             BebidasFinalizado();
         }
@@ -158,7 +158,7 @@ namespace WpfView
             }
             else
             {
-                MessageBox.Show("Nada encontrado nos pedidos finalizados");
+                MessageBox.Show("Nada encontrado nos pedidos finalizados na parte de bebidas");
             }
 
         }

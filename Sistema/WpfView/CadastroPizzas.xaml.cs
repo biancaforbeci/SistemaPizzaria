@@ -26,10 +26,11 @@ namespace WpfView
         public CadastroPizzas()
         {
             InitializeComponent();
+            MostrarGridPizzasCadastradas();
 
         }
 
-        private void btnListarPizzas_Click(object sender, RoutedEventArgs e)
+        private  void MostrarGridPizzasCadastradas()
         {
             List<Pizza> list = PizzaController.ListarTodasPizzas();
             if (list != null)
@@ -40,6 +41,11 @@ namespace WpfView
             {
                 MessageBox.Show("A tabela não possui nada cadastrado");
             }
+        }
+
+        private void btnListarPizzas_Click(object sender, RoutedEventArgs e)
+        {
+            MostrarGridPizzasCadastradas();
         }
 
         private void btnSalvarPizza_Click(object sender, RoutedEventArgs e)
@@ -71,10 +77,10 @@ namespace WpfView
             Pizza p = new Pizza();
             p.Nome = txtPizza.Text;
             p.Ingredientes = txtIngredientes.Text;
-            p.PrecoBroto = double.Parse(txtBroto.Text);
-            p.PrecoMedia= double.Parse(txtMedia.Text);
-            p.PrecoGrande= double.Parse(txtGrande.Text);
-            p.PrecoGigante= double.Parse(txtGigante.Text);
+            p.PrecoBroto = Decimal.Parse(txtBroto.Text);
+            p.PrecoMedia= Decimal.Parse(txtMedia.Text);
+            p.PrecoGrande= Decimal.Parse( txtGrande.Text);
+            p.PrecoGigante= Decimal.Parse( txtGigante.Text);
             return p;
         }
 

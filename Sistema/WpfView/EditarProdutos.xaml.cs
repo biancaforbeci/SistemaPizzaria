@@ -57,10 +57,10 @@ namespace WpfView
             Pizza pizza = new Pizza();
             pizza.Nome = txtPizza.Text;
             pizza.Ingredientes = txtIngredientes.Text;
-            pizza.PrecoBroto = double.Parse(txtBrotoEdit.Text);
-            pizza.PrecoMedia = double.Parse(txtMediaEdit.Text);
-            pizza.PrecoGrande = double.Parse(txtGrandeEdit.Text);
-            pizza.PrecoGigante = double.Parse(txtGiganteEdit.Text);
+            pizza.PrecoBroto = Decimal.Parse(txtBrotoEdit.Text);
+            pizza.PrecoMedia = Decimal.Parse(txtMediaEdit.Text);
+            pizza.PrecoGrande = Decimal.Parse(txtGrandeEdit.Text);
+            pizza.PrecoGigante = Decimal.Parse(txtGiganteEdit.Text);
             return pizza;
         }
 
@@ -68,7 +68,7 @@ namespace WpfView
         {
             Bebida bebida = new Bebida();
             bebida.Nome = txtBebida.Text;
-            bebida.Preco = double.Parse(txtPreco.Text);
+            bebida.Preco = Decimal.Parse(txtPreco.Text);
             return bebida;
         }
 

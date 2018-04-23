@@ -10,6 +10,6 @@ namespace Models
     {
         public int BebidaID { get; set; }
         public string Nome { get; set; }
-        public double Preco { get; set; }
+        public Decimal Preco { get; set; }
     }
 }

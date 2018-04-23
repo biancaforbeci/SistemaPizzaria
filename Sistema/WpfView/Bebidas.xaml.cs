@@ -24,20 +24,26 @@ namespace WpfView
     {
         public Bebidas()
         {
-            InitializeComponent();           
+            InitializeComponent();
+            MostrarGridBebidasCadastradas();
         }
 
-        private void btnListarBebidas_Click(object sender, RoutedEventArgs e)
+        private void MostrarGridBebidasCadastradas()
         {
             List<Bebida> list = BebidasController.ListarTodasBebidas();
             if (list != null)
             {
-                 gridBebida.ItemsSource = list;
+                gridBebida.ItemsSource = list;
             }
             else
             {
                 MessageBox.Show("A tabela não possui nada cadastrado");
             }
+        }
+
+        private void btnListarBebidas_Click(object sender, RoutedEventArgs e)
+        {
+            MostrarGridBebidasCadastradas();
         }
 
         private void btnSalvarBebida_Click(object sender, RoutedEventArgs e)
@@ -57,7 +63,7 @@ namespace WpfView
         {
             Bebida b = new Bebida();
             b.Nome = txtBebida.Text;
-            b.Preco = double.Parse(txtPreco.Text);
+            b.Preco = Decimal.Parse(txtPreco.Text);
             return b;
         }
 

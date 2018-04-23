@@ -72,6 +72,7 @@ namespace WpfView
                     {      //Se confirmado a exclusão é pego o ID da linha selecionada.
                         int id = ((Bebida)gridBebida.SelectedItem).BebidaID;
                         BebidasController.ExcluirBebida(id);
+                        MostrarGridBebidas();
                         MessageBox.Show("Bebida excluída com sucesso");
                     }
                     catch (Exception erro)
@@ -93,6 +94,7 @@ namespace WpfView
                         {      //Se confirmado a exclusão é pego o ID da linha selecionada.
                             int id = ((Pizza)gridPizza.SelectedItem).PizzaID;
                             PizzaController.ExcluirPizza(id);
+                             MostrarGridPizza();
                             MessageBox.Show("Pizza excluída com sucesso");
                         }
                         catch (Exception erro)
@@ -114,7 +116,9 @@ namespace WpfView
                         {      //Se confirmado a exclusão é pego o ID da linha selecionada.
                             int id = ((Cliente)gridCliente.SelectedItem).ClienteID;
                             ClienteController.ExcluirCliente(id);
+                            MostrarGridCliente();
                             MessageBox.Show("Cliente excluído com sucesso");
+                       
                         }
                         catch (Exception erro)
                         {
@@ -129,39 +133,25 @@ namespace WpfView
             MessageBox.Show("Erro, campo digitado não foi encontrado.");
         }
 
+        private void MostrarGridBebidas()
+        {
+            List<Bebida> bebida = BebidasController.PesquisarPorNome(txtBebida.Text);
+            if (bebida != null)
+            {
+                gridBebida.ItemsSource = bebida;
+            }
+            else
+            {
+                MensagemErro();
+            }
+        }
+
+
         private void btnProcuraBebida_Click(object sender, RoutedEventArgs e)
         {
             if ((txtBebida.Text != null) || (Regex.IsMatch(txtBebida.Text, @"^[a-zA-Z]+$")) )
             {
-                List<Bebida> bebida = BebidasController.PesquisarPorNome(txtBebida.Text);
-                if (bebida != null)
-                {
-                    gridBebida.ItemsSource = bebida;
-                }
-                else
-                {
-                    MensagemErro();
-                }
-            }
-            else
-            {
-                MessageBox.Show("Erro no campo digitado !");
-            }
-        }
-  
-        private void btnPesquisaPizza_Click(object sender, RoutedEventArgs e)
-        {
-            if(txtPizza.Text != null || (Regex.IsMatch(txtBebida.Text, @"^[a-zA-Z]+$") ))
-            {
-              List<Pizza> pizza= PizzaController.PesquisarPorNome(txtPizza.Text);
-                if (pizza != null)
-                {  
-                    gridPizza.ItemsSource = pizza;
-                }
-                else
-                {
-                    MensagemErro();
-                }
+                MostrarGridBebidas();
             }
             else
             {
@@ -169,19 +159,49 @@ namespace WpfView
             }
         }
 
+        private void MostrarGridPizza()
+        {
+            List<Pizza> pizza = PizzaController.PesquisarPorNome(txtPizza.Text);
+            if (pizza != null)
+            {
+                gridPizza.ItemsSource = pizza;
+            }
+            else
+            {
+                MensagemErro();
+            }
+        }
+  
+        private void btnPesquisaPizza_Click(object sender, RoutedEventArgs e)
+        {
+            if(txtPizza.Text != null || (Regex.IsMatch(txtBebida.Text, @"^[a-zA-Z]+$") ))
+            {
+                MostrarGridPizza();
+            }
+            else
+            {
+                MessageBox.Show("Erro no campo digitado !");
+            }
+        }
+
+        private void MostrarGridCliente()
+        {
+            List<Cliente> cli = ClienteController.PesquisarPorNome(txtCliente.Text);
+            if (cli != null)
+            {
+                gridCliente.ItemsSource = cli;
+            }
+            else
+            {
+                MensagemErro();
+            }
+        }
+
         private void btnPesquisaCliente_Click(object sender, RoutedEventArgs e)
         {
             if (txtCliente.Text != null || (Regex.IsMatch(txtBebida.Text, @"^[a-zA-Z]+$") == true))
             {
-                List<Cliente>cli = ClienteController.PesquisarPorNome(txtCliente.Text);
-                if (cli != null)
-                {
-                    gridCliente.ItemsSource = cli;
-                }
-                else
-                {
-                    MensagemErro();
-                }
+                MostrarGridCliente();
             }
             else
             {

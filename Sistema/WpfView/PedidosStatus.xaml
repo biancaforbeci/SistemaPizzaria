@@ -51,5 +51,7 @@
                 <DataGridTextColumn Header="Valor Total Pedido" Binding="{Binding Path=_Pedido.ValorTotal}"/>
             </DataGrid.Columns>
         </DataGrid>
+        <Label Content="Pizzas" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="146,112,0,0" FontFamily="Arial" FontWeight="Bold" FontSize="22"/>
+        <Label Content="Bebidas" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="493,116,0,0" FontFamily="Arial" FontWeight="Bold" FontSize="22"/>
     </Grid>
 </Window>

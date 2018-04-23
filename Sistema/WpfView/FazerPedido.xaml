@@ -33,12 +33,12 @@
         </DataGrid>
         <Label Content="Telefone Cliente" HorizontalAlignment="Left" Margin="145,68,0,0" VerticalAlignment="Top" FontFamily="Arial" FontSize="16" Width="142" FontWeight="Bold" Grid.Column="1"/>
         <Label Content="Montagem do Pedido" HorizontalAlignment="Left" Margin="217,10,0,0" VerticalAlignment="Top" Width="257" FontFamily="Arial" FontSize="24" FontWeight="Bold" Grid.ColumnSpan="3"/>
-        <Label Content="Valor Total" HorizontalAlignment="Left" Margin="39,321,0,0" VerticalAlignment="Top" FontFamily="Arial" FontSize="16" FontWeight="Bold"/>
+        <Label Content="Valor Total" HorizontalAlignment="Left" Margin="39,338,0,0" VerticalAlignment="Top" FontFamily="Arial" FontSize="16" FontWeight="Bold"/>
         <Button x:Name="btnCancelar" Content="Cancelar Pedido" HorizontalAlignment="Left" Margin="39,425,0,0" VerticalAlignment="Top" Width="135" Height="25" FontFamily="Arial" FontSize="14" Click="btnCancelar_Click" Grid.ColumnSpan="2"/>
         <Button x:Name="btnConfirmar" Content="Confirmar Pedido" HorizontalAlignment="Left" Margin="130,425,0,0" VerticalAlignment="Top" Width="131" Height="25" FontFamily="Arial" FontSize="14" Click="btnConfirmar_Click" Grid.Column="1"/>
         <Button Content="Acrescentar bebida" HorizontalAlignment="Left" Margin="118,425,0,0" VerticalAlignment="Top" Width="131" Height="25" FontFamily="Arial" FontSize="14" Click="Bebidas_Click" Grid.Column="2" RenderTransformOrigin="0.519,1"/>
         <TextBlock x:Name="blockCliente" HorizontalAlignment="Left" Margin="10,71,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="25" Width="118" FontFamily="Arial" FontSize="16" Grid.Column="1"/>
-        <TextBlock x:Name="blockValorTotal" HorizontalAlignment="Left" Margin="27,371,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontFamily="Arial" FontSize="20" Width="117" Height="24" FontWeight="Bold" TextAlignment="Center"/>
+        <TextBlock x:Name="blockValorTotal" HorizontalAlignment="Left" Margin="30,371,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontFamily="Arial" FontSize="20" Width="117" Height="24" FontWeight="Bold" TextAlignment="Center"/>
         <CheckBox x:Name="checkBroto" Content="Broto" HorizontalAlignment="Left" Margin="53,134,0,0" VerticalAlignment="Top" FontFamily="Arial" FontSize="14" Checked="CheckBoxBroto_Checked" Unchecked="checkBroto_Unchecked"/>
         <CheckBox x:Name="checkMedia" Content="Média" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="53,161,0,0" FontFamily="Arial" FontSize="14" RenderTransformOrigin="-3.062,0.267" Checked="checkMedia_Checked" Unchecked="checkMedia_Unchecked"/>
         <CheckBox x:Name="checkGrande" Content="Grande" HorizontalAlignment="Left" Margin="53,191,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.324,0.667" FontFamily="Arial" FontSize="14" Checked="checkGrande_Checked" Unchecked="checkGrande_Unchecked"/>
@@ -54,7 +54,8 @@
         <TextBlock x:Name="blockTelefone" Grid.Column="2" Margin="43,71,119,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="23" FontFamily="Arial" FontSize="16"/>
         <Label Content="Clique no item que deseja retirar do pedido" Grid.Column="2" HorizontalAlignment="Left" Margin="10,119,0,0" VerticalAlignment="Top" FontFamily="Arial"/>
         <Label Content="Clique na pizza que deseja adicionar no pedido" HorizontalAlignment="Left" Margin="10,119,0,0" VerticalAlignment="Top" FontFamily="Arial" Width="262" Grid.Column="1"/>
-        <Label Content="Quantidade" HorizontalAlignment="Left" Margin="39,249,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.079,-0.385" FontFamily="Arial" FontSize="16" FontWeight="Bold"/>
-        <TextBox x:Name="txtQuantidade" HorizontalAlignment="Left" Height="23" Margin="27,282,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Quantidade" HorizontalAlignment="Left" Margin="39,240,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.079,-0.385" FontFamily="Arial" FontSize="16" FontWeight="Bold"/>
+        <TextBox x:Name="txtQuantidade" HorizontalAlignment="Left" Height="23" Margin="27,273,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Button x:Name="btnMudarQtd" Content="Mudar Quantidade" HorizontalAlignment="Left" Margin="27,313,0,0" VerticalAlignment="Top" Width="117" Click="btnMudarQtd_Click"/>
     </Grid>
 </Window>

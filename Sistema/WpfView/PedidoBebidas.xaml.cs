@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -21,7 +22,7 @@ namespace WpfView
     /// </summary>
     public partial class PedidoBebidas : Window
     {
-        private double valorTotal = 0;
+        private Decimal valorTotal = 0;
         private Cliente clientePedido = null;
         private int Pizzas;
         private int numRef;
@@ -44,7 +45,7 @@ namespace WpfView
             w.ShowDialog();
         }
 
-        public void MostrarClienteBebidas(Cliente cli, double total, int num, List<ClientesPizzas> listPizzas, int numRefe, int qtd)
+        public void MostrarClienteBebidas(Cliente cli, Decimal total, int num, List<ClientesPizzas> listPizzas, int numRefe, int qtd)
         {
             blockCliente.Text = cli.Nome;
             blockTelefone.Text = cli.Telefone;
@@ -75,9 +76,11 @@ namespace WpfView
 
         private void gridBebida_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if(txtQuantidadeBebida.Text == "")
+            string verifica = "^[0-9]";
+
+            if (txtQuantidadeBebida.Text == "" || (!Regex.IsMatch(txtQuantidadeBebida.Text.Substring(0, 1), verifica)))
             {
-                MessageBox.Show("Escolha uma quantidade desse item", "Erro", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show("Escolha uma quantidade desse item e digite o valor númerico", "Erro", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             else
             {
@@ -90,7 +93,7 @@ namespace WpfView
         {
             Bebida bebidaEscolhida = ((Bebida)gridBebida.SelectedItem);
             SalvarEscolha(bebidaEscolhida);
-            valorTotal += ((Bebida)gridBebida.SelectedItem).Preco;
+            valorTotal += (((Bebida)gridBebida.SelectedItem).Preco*int.Parse(txtQuantidadeBebida.Text));
             blockValorTotal.Text = Convert.ToString(valorTotal.ToString("C2"));
         }
 
