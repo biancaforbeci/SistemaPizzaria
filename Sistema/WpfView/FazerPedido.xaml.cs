@@ -184,7 +184,6 @@ namespace WpfView
         private void SalvandoNaTabelaPedidos()
         {
             List<ClientesPizzas> list = ClientesPizzasController.PesquisarClientePedidos(clientePedido,NumReferencia);
-            MessageBox.Show("Num itens: " + list.Count);
             Pedido novoPed = new Pedido();            
             novoPed.Status = "EM PRODUÇÃO";
             DateTime data = DateTime.Now;

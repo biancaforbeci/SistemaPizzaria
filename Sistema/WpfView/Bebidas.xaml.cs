@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -48,7 +49,10 @@ namespace WpfView
 
         private void btnSalvarBebida_Click(object sender, RoutedEventArgs e)
         {
-            if(BebidasController.PesquisarPorNome(txtBebida.Text) == null)
+            string verifica = "^[0-9]";
+            if ((!Regex.IsMatch(txtPreco.Text.Substring(0, 1), verifica))){
+                MessageBox.Show("Digite apenas valores númericos no campo preço.", "Erro", MessageBoxButton.OK, MessageBoxImage.Error);
+            }else if(BebidasController.PesquisarPorNome(txtBebida.Text) == null)
             {
                 Bebida bebida = SalvarBebida();
                 BebidasController.SalvarBebidas(bebida);

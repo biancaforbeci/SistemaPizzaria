@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -47,6 +48,7 @@ namespace WpfView
         {
             txtBebida.Text = bebidaEdit.Nome;
             txtPreco.Text = Convert.ToString(bebidaEdit.Preco);
+            bebidaEditar = bebidaEdit;
             referenciaProduto = refer;
             btnEditPizza.IsEnabled = false;            
         }
@@ -74,14 +76,34 @@ namespace WpfView
 
         private void btnEditPizza_Click(object sender, RoutedEventArgs e)
         {
-            PizzaController.EditarPizza(pizzaEditar.PizzaID,EditarPizza());
-            MessageBox.Show("Editado com sucesso");
+            string verifica = "^[0-9]";
+            if (txtBrotoEdit.Text == "" || txtMediaEdit.Text == "" || txtGrandeEdit.Text == "" || txtGiganteEdit.Text == "" || txtPizza.Text == "")
+            {
+                MessageBox.Show("Erro, todos os preços precisam estar preenchidos !", "Erro", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            else if ((!Regex.IsMatch(txtBrotoEdit.Text.Substring(0, 1), verifica)) || (!Regex.IsMatch(txtMediaEdit.Text.Substring(0, 1), verifica)) || (!Regex.IsMatch(txtGiganteEdit.Text.Substring(0, 1), verifica)) || (!Regex.IsMatch(txtGrandeEdit.Text.Substring(0, 1), verifica)))
+            {
+                MessageBox.Show("Digite, apenas números e valores monetários.");
+            }
+            else
+            {
+                PizzaController.EditarPizza(pizzaEditar.PizzaID, EditarPizza());
+                MessageBox.Show("Editado com sucesso");
+            }            
         }
 
         private void btnEditBebida_Click(object sender, RoutedEventArgs e)
         {
-            BebidasController.EditarBebida(bebidaEditar.BebidaID, EditarBebida());
-            MessageBox.Show("Editado com sucesso");
+            string verifica = "^[0-9]";
+            if ((!Regex.IsMatch(txtPreco.Text.Substring(0, 1), verifica)))
+            {
+                MessageBox.Show("Digite apenas valores númericos no campo preço.", "Erro", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            else
+            {
+                BebidasController.EditarBebida(bebidaEditar.BebidaID, EditarBebida());
+                MessageBox.Show("Editado com sucesso");
+            }
         }       
 
         private void btnVoltarCadastro_Click(object sender, RoutedEventArgs e)

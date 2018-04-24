@@ -86,6 +86,7 @@ namespace WpfView
             }
             else
             {
+                gridPedidos.ItemsSource = ped;
                 MessageBox.Show("Nada encontrado nos pedidos que saíram para entrega na parte de pizzas");
             }
 
@@ -101,6 +102,7 @@ namespace WpfView
             }
             else
             {
+                gridPedidosBebidas.ItemsSource = ped;
                 MessageBox.Show("Nada encontrado nos pedidos que saíram para entrega na parte de bebidas");
             }
         }
@@ -115,6 +117,7 @@ namespace WpfView
             }
             else
             {
+                gridPedidos.ItemsSource = ped;
                 MessageBox.Show("Nada encontrado nos pedidos em produção na parte de pizzas");
             }
 
@@ -130,6 +133,7 @@ namespace WpfView
             }
             else
             {
+                gridPedidosBebidas.ItemsSource = ped;
                 MessageBox.Show("Nada encontrado nos pedidos em produção na parte de bebidas");
             }
         }
@@ -144,6 +148,7 @@ namespace WpfView
             }
             else
             {
+                gridPedidos.ItemsSource = ped;
                 MessageBox.Show("Nada encontrado nos pedidos finalizados na parte de pizza");
             }
             BebidasFinalizado();
@@ -158,6 +163,7 @@ namespace WpfView
             }
             else
             {
+                gridPedidosBebidas.ItemsSource = ped;
                 MessageBox.Show("Nada encontrado nos pedidos finalizados na parte de bebidas");
             }
 

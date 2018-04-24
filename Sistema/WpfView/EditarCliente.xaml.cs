@@ -31,13 +31,33 @@ namespace WpfView
 
         private void btnEditar_Click(object sender, RoutedEventArgs e)
         {
-            EditarEndereco(txtRua.Text, int.Parse(txtNumero.Text), txtBairro.Text, txtComplemento.Text, txtReferencia.Text,cliEdicao.EnderecoID);
-            EnviarClienteEditado(txtNome.Text, txtCPF.Text.Replace("-", "").Replace("(", "").Replace(")", ""), txtTelefone.Text.Replace("-", "").Replace("(", "").Replace(")", ""));
-            MessageBox.Show("Cliente editado");
-            FazerPedido pedido = new FazerPedido();
-            pedido.MostrarCliente(cliEdicao.ClienteID);
-            this.Close();
-            pedido.ShowDialog();
+            if (VerificarItens() == true)
+            {
+                EditarEndereco(txtRua.Text, int.Parse(txtNumero.Text), txtBairro.Text, txtComplemento.Text, txtReferencia.Text, cliEdicao.EnderecoID);
+                EnviarClienteEditado(txtNome.Text, txtCPF.Text.Replace("-", "").Replace("(", "").Replace(")", ""), txtTelefone.Text.Replace("-", "").Replace("(", "").Replace(")", ""));
+                MessageBox.Show("Cliente editado");
+                VerificaCadastroPizzas();
+            }            
+        }
+
+        private void VerificaCadastroPizzas()
+        {
+            List<Pizza> list = PizzaController.ListarTodasPizzas();
+
+            if (list != null)
+            {
+                FazerPedido pedido = new FazerPedido();
+                pedido.MostrarCliente(cliEdicao.ClienteID);
+                this.Close();
+                pedido.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Nenhuma pizza cadastrada");
+                CadastroPizzas tela = new CadastroPizzas();
+                this.Close();
+                tela.ShowDialog();
+            }
         }
 
         private void btnVoltar_Click(object sender, RoutedEventArgs e)
